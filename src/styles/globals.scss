@@ -1,0 +1,22 @@
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  line-height: calc(100% + 2px);
+  font-weight: $fontWeight-regular;
+  font-size: $fontSize-large;
+  color: $color-primary;
+  background-color: $color-bg;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1280px;
+  padding: 0px 32px;
+  margin: 0 auto;
+}

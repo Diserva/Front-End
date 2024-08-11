@@ -1,0 +1,16 @@
+@use '@styles/variables';
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: $borderRadius-small;
+}
+::-webkit-scrollbar-thumb {
+  background: $color-scroll;
+  border-radius: $borderRadius-small;
+  &:hover {
+    background: darken($color-scroll, $amount: 15);
+  }
+}
