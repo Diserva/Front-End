@@ -1,0 +1,9 @@
+@import '@styles/variables';
+
+.title {
+  color: $color-white;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-size: $fontSize-x-large;
+}
