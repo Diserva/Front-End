@@ -15,42 +15,54 @@ export function Footer() {
   const footerMain = (
     <div className={main}>
       <div className={social}>
-        <Image src={discord} width={32} height={32} alt='discord'></Image>
-        <Image src={email} width={32} height={32} alt='email'></Image>
-        <Image src={github} width={32} height={32} alt='github'></Image>
-        <Image src={instagram} width={32} height={32} alt='instagram'></Image>
-        <Image src={telegram} width={32} height={32} alt='telegram'></Image>
-        <Image src={twitter} width={32} height={32} alt='twitter'></Image>
+        <Link href='#'>
+          <Image src={discord} width={32} height={32} alt='discord' />
+        </Link>
+        <Link href='#'>
+          <Image src={email} width={32} height={32} alt='email' />
+        </Link>
+        <Link href='#'>
+          <Image src={github} width={32} height={32} alt='github' />
+        </Link>
+        <Link href='#'>
+          <Image src={instagram} width={32} height={32} alt='instagram' />
+        </Link>
+        <Link href='#'>
+          <Image src={telegram} width={32} height={32} alt='telegram' />
+        </Link>
+        <Link href='#'>
+          <Image src={twitter} width={32} height={32} alt='twitter' />
+        </Link>
       </div>
       <nav>
         <div>
           <div>Головне</div>
           <ul>
-            <div>Про нас</div>
+            <Link href='#'>Про нас</Link>
           </ul>
         </div>
         <div>
           <div>Партнери</div>
           <ul>
-            <div>Family Play</div>
-            <div>Strategy World</div>
+            <Link href='#'>Family Play</Link>
+            <Link href='#'>Strategy World</Link>
           </ul>
         </div>
         <div>
           <div>Довідник</div>
           <ul>
-            <div>Умови Користування</div>
-            <div>Політика конфіденційності</div>
-            <div>Cookies</div>
+            <Link href='#'>Умови Користування</Link>
+            <Link href='#'>Політика конфіденційності</Link>
+            <Link href='#'>Cookies</Link>
           </ul>
         </div>
         <div>
           <div>Розробники</div>
           <ul>
-            <div>iconservator</div>
-            <div>Viva</div>
-            <div>chyVacheck</div>
-            <div>Danya</div>
+            <Link href='#'>iconservator</Link>
+            <Link href='#'>Viva</Link>
+            <Link href='#'>chyVacheck</Link>
+            <Link href='#'>Danya</Link>
           </ul>
         </div>
       </nav>
