@@ -3,11 +3,11 @@
 import { create } from 'zustand';
 
 interface State {
-  menuBurger: boolean;
+  isOpenBurger: boolean;
   toggleBurger: () => void;
 }
 
 export const useHeaderStore = create<State>((set) => ({
-  menuBurger: false,
-  toggleBurger: () => set((state) => ({ menuBurger: !state.menuBurger })),
+  isOpenBurger: false,
+  toggleBurger: () => set((state) => ({ isOpenBurger: !state.isOpenBurger })),
 }));

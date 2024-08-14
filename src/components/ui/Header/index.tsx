@@ -5,17 +5,20 @@ import Link from 'next/link';
 
 import style from './style.module.scss';
 
-import { Logo } from '@/components/shared/';
-import { useHeaderStore } from '@/store/';
+import { useHeaderStore } from '@/store';
+import { LogoIcon } from '@/components/shared/Icon/Logo';
+import { EIconSize } from '@/utils';
 
 export const Header = () => {
-  const menuBurger = useHeaderStore((state) => state.menuBurger);
+  const isOpenBurger = useHeaderStore((state) => state.isOpenBurger);
   const toggleBurger = useHeaderStore((state) => state.toggleBurger);
 
   return (
     <header className={style.header}>
       <nav>
-        <Logo />
+        <Link href='/'>
+          <LogoIcon size={EIconSize.Size32} />
+        </Link>
         <ul>
           <li>
             <Link href='#'>Головна</Link>
@@ -30,7 +33,7 @@ export const Header = () => {
             <Link href='#'>Блог</Link>
           </li>
         </ul>
-        <div className={style.profile}>profile</div>
+        <div className={style.profile}>very very long nick name </div>
       </nav>
     </header>
   );
