@@ -46,9 +46,9 @@
         gap: 8px;
 
         > * {
-          color: white;
+          color: $color-link-neutral;
           &:hover {
-            color: #4285f4;
+            color: $color-link;
           }
         }
       }
@@ -60,7 +60,7 @@
   margin-top: 48px;
 
   hr {
-    border-top: 1px solid #d9d9d9;
+    border-top: 1px solid $color-horizontal-line;
     margin-bottom: 36px;
   }
 
