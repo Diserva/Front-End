@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { EIconSize } from '@utils/*';
+import { EIconSize } from '@utils/index';
 
 import { footer, main, social, legal } from './style.module.scss';
 
