@@ -4,34 +4,57 @@ import Image from 'next/image';
 
 import { footer, main, social, legal } from './style.module.scss';
 
-import discord from '@assets/discord.svg';
-import email from '@assets/email.svg';
-import github from '@assets/github.svg';
-import instagram from '@assets/instagram.svg';
-import telegram from '@assets/telegram.svg';
-import twitter from '@assets/twitter.svg';
-
 export function Footer() {
   const footerMain = (
     <div className={main}>
       <div className={social}>
         <Link href='#'>
-          <Image src={discord} width={32} height={32} alt='discord' />
+          <Image
+            src='/icons/social/discord.svg'
+            width={32}
+            height={32}
+            alt='discord'
+          />
         </Link>
         <Link href='#'>
-          <Image src={email} width={32} height={32} alt='email' />
+          <Image
+            src='/icons/social/email.svg'
+            width={32}
+            height={32}
+            alt='email'
+          />
         </Link>
         <Link href='#'>
-          <Image src={github} width={32} height={32} alt='github' />
+          <Image
+            src='/icons/social/github.svg'
+            width={32}
+            height={32}
+            alt='github'
+          />
         </Link>
         <Link href='#'>
-          <Image src={instagram} width={32} height={32} alt='instagram' />
+          <Image
+            src='/icons/social/instagram.svg'
+            width={32}
+            height={32}
+            alt='instagram'
+          />
         </Link>
         <Link href='#'>
-          <Image src={telegram} width={32} height={32} alt='telegram' />
+          <Image
+            src='/icons/social/telegram.svg'
+            width={32}
+            height={32}
+            alt='telegram'
+          />
         </Link>
         <Link href='#'>
-          <Image src={twitter} width={32} height={32} alt='twitter' />
+          <Image
+            src='/icons/social/twitter.svg'
+            width={32}
+            height={32}
+            alt='twitter'
+          />
         </Link>
       </div>
       <nav>
