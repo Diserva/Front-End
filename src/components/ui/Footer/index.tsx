@@ -4,6 +4,8 @@ import Image from 'next/image';
 
 import { footer, main, social, legal } from './style.module.scss';
 
+const iconSize = 32;
+
 export function Footer() {
   const footerMain = (
     <div className={main}>
@@ -11,48 +13,48 @@ export function Footer() {
         <Link href='#'>
           <Image
             src='/icons/social/discord.svg'
-            width={32}
-            height={32}
+            width={iconSize}
+            height={iconSize}
             alt='discord'
           />
         </Link>
         <Link href='#'>
           <Image
             src='/icons/social/email.svg'
-            width={32}
-            height={32}
+            width={iconSize}
+            height={iconSize}
             alt='email'
           />
         </Link>
         <Link href='#'>
           <Image
             src='/icons/social/github.svg'
-            width={32}
-            height={32}
+            width={iconSize}
+            height={iconSize}
             alt='github'
           />
         </Link>
         <Link href='#'>
           <Image
             src='/icons/social/instagram.svg'
-            width={32}
-            height={32}
+            width={iconSize}
+            height={iconSize}
             alt='instagram'
           />
         </Link>
         <Link href='#'>
           <Image
             src='/icons/social/telegram.svg'
-            width={32}
-            height={32}
+            width={iconSize}
+            height={iconSize}
             alt='telegram'
           />
         </Link>
         <Link href='#'>
           <Image
             src='/icons/social/twitter.svg'
-            width={32}
-            height={32}
+            width={iconSize}
+            height={iconSize}
             alt='twitter'
           />
         </Link>
