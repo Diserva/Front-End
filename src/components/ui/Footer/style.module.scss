@@ -36,10 +36,10 @@
       flex-direction: column;
       min-width: 128px;
 
-      > :not(ul) {
+      > :first-child {
         font-weight: bold;
       }
-      ul {
+      > :last-child {
         padding-top: 16px;
         display: flex;
         flex-direction: column;

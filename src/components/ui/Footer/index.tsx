@@ -37,33 +37,33 @@ export function Footer() {
       <nav>
         <div>
           <div>Головне</div>
-          <ul>
+          <div>
             <Link href='#'>Про нас</Link>
-          </ul>
+          </div>
         </div>
         <div>
           <div>Партнери</div>
-          <ul>
+          <div>
             <Link href='#'>Family Play</Link>
             <Link href='#'>Strategy World</Link>
-          </ul>
+          </div>
         </div>
         <div>
           <div>Довідник</div>
-          <ul>
+          <div>
             <Link href='#'>Умови Користування</Link>
             <Link href='#'>Політика конфіденційності</Link>
             <Link href='#'>Cookies</Link>
-          </ul>
+          </div>
         </div>
         <div>
           <div>Розробники</div>
-          <ul>
+          <div>
             <Link href='#'>iconservator</Link>
             <Link href='#'>Viva</Link>
             <Link href='#'>chyVacheck</Link>
             <Link href='#'>Danya</Link>
-          </ul>
+          </div>
         </div>
       </nav>
       <hr />
