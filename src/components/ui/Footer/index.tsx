@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { wrapper, container, main, social, legal } from './style.module.scss';
+import { footer, main, social, legal } from './style.module.scss';
 
 import discord from '@assets/discord.svg';
 import email from '@assets/email.svg';
@@ -83,11 +83,11 @@ export function Footer() {
     </div>
   );
   return (
-    <div className={wrapper}>
-      <div className={container}>
+    <footer className={footer}>
+      <div>
         {footerMain}
         {footerLegal}
       </div>
-    </div>
+    </footer>
   );
 }
