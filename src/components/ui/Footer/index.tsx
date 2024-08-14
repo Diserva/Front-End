@@ -12,6 +12,22 @@ export function Footer() {
       <div className={social}>
         <Link href='#'>
           <Image
+            src='/icons/social/github.svg'
+            width={EIconSize.Size32}
+            height={EIconSize.Size32}
+            alt='github'
+          />
+        </Link>
+        <Link href='#'>
+          <Image
+            src='/icons/social/telegram.svg'
+            width={EIconSize.Size32}
+            height={EIconSize.Size32}
+            alt='telegram'
+          />
+        </Link>
+        <Link href='#'>
+          <Image
             src='/icons/social/discord.svg'
             width={EIconSize.Size32}
             height={EIconSize.Size32}
@@ -28,10 +44,10 @@ export function Footer() {
         </Link>
         <Link href='#'>
           <Image
-            src='/icons/social/github.svg'
+            src='/icons/social/twitter.svg'
             width={EIconSize.Size32}
             height={EIconSize.Size32}
-            alt='github'
+            alt='twitter'
           />
         </Link>
         <Link href='#'>
@@ -40,22 +56,6 @@ export function Footer() {
             width={EIconSize.Size32}
             height={EIconSize.Size32}
             alt='instagram'
-          />
-        </Link>
-        <Link href='#'>
-          <Image
-            src='/icons/social/telegram.svg'
-            width={EIconSize.Size32}
-            height={EIconSize.Size32}
-            alt='telegram'
-          />
-        </Link>
-        <Link href='#'>
-          <Image
-            src='/icons/social/twitter.svg'
-            width={EIconSize.Size32}
-            height={EIconSize.Size32}
-            alt='twitter'
           />
         </Link>
       </div>
