@@ -2,9 +2,9 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { footer, main, social, legal } from './style.module.scss';
+import { EIconSize } from '@utils/*';
 
-const iconSize = 32;
+import { footer, main, social, legal } from './style.module.scss';
 
 export function Footer() {
   const footerMain = (
@@ -13,48 +13,48 @@ export function Footer() {
         <Link href='#'>
           <Image
             src='/icons/social/discord.svg'
-            width={iconSize}
-            height={iconSize}
+            width={EIconSize.Size32}
+            height={EIconSize.Size32}
             alt='discord'
           />
         </Link>
         <Link href='#'>
           <Image
             src='/icons/social/email.svg'
-            width={iconSize}
-            height={iconSize}
+            width={EIconSize.Size32}
+            height={EIconSize.Size32}
             alt='email'
           />
         </Link>
         <Link href='#'>
           <Image
             src='/icons/social/github.svg'
-            width={iconSize}
-            height={iconSize}
+            width={EIconSize.Size32}
+            height={EIconSize.Size32}
             alt='github'
           />
         </Link>
         <Link href='#'>
           <Image
             src='/icons/social/instagram.svg'
-            width={iconSize}
-            height={iconSize}
+            width={EIconSize.Size32}
+            height={EIconSize.Size32}
             alt='instagram'
           />
         </Link>
         <Link href='#'>
           <Image
             src='/icons/social/telegram.svg'
-            width={iconSize}
-            height={iconSize}
+            width={EIconSize.Size32}
+            height={EIconSize.Size32}
             alt='telegram'
           />
         </Link>
         <Link href='#'>
           <Image
             src='/icons/social/twitter.svg'
-            width={iconSize}
-            height={iconSize}
+            width={EIconSize.Size32}
+            height={EIconSize.Size32}
             alt='twitter'
           />
         </Link>
