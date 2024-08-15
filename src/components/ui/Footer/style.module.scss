@@ -61,8 +61,4 @@
     display: flex;
     justify-content: space-between;
   }
-
-  a:not(:active) {
-    color: $link-text-color-hover;
-  }
 }
