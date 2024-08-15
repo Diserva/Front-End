@@ -15,7 +15,7 @@ export function Footer() {
             src='/icons/social/github.svg'
             width={EIconSize.Size32}
             height={EIconSize.Size32}
-            alt='github'
+            alt='github logotype'
           />
         </Link>
         <Link href='#'>
@@ -23,7 +23,7 @@ export function Footer() {
             src='/icons/social/telegram.svg'
             width={EIconSize.Size32}
             height={EIconSize.Size32}
-            alt='telegram'
+            alt='telegram logotype'
           />
         </Link>
         <Link href='#'>
@@ -31,7 +31,7 @@ export function Footer() {
             src='/icons/social/discord.svg'
             width={EIconSize.Size32}
             height={EIconSize.Size32}
-            alt='discord'
+            alt='discord logotype'
           />
         </Link>
         <Link href='#'>
@@ -39,7 +39,7 @@ export function Footer() {
             src='/icons/social/email.svg'
             width={EIconSize.Size32}
             height={EIconSize.Size32}
-            alt='email'
+            alt='email logotype'
           />
         </Link>
         <Link href='#'>
@@ -47,7 +47,7 @@ export function Footer() {
             src='/icons/social/twitter.svg'
             width={EIconSize.Size32}
             height={EIconSize.Size32}
-            alt='twitter'
+            alt='twitter logotype'
           />
         </Link>
         <Link href='#'>
@@ -55,7 +55,7 @@ export function Footer() {
             src='/icons/social/instagram.svg'
             width={EIconSize.Size32}
             height={EIconSize.Size32}
-            alt='instagram'
+            alt='instagram logotype'
           />
         </Link>
       </div>
