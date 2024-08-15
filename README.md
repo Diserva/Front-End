@@ -21,7 +21,7 @@
 You must follow these rules
 
 ### Commit
-Сommit message must be started with:
+Commit message must be started with:
 
   - `[+]` - something added
   - `[-]` - something removed
@@ -45,12 +45,12 @@ if pull request is rejected, continue development on the same branch until pull 
   all components must have `IProps{componentName}`
 - use const/let when you use a value more than once
 - format code before adding to a commit
-- be sure to use eslint and prittierrc
-- namming
+- be sure to use eslint and prettierrc
+- naming
   + if a variable has a boolean value, its name must begin with is or has
     * example:
     ```TypeScript
-    // namming/example.boolean.ts
+    // naming/example.boolean.ts
 
     const [isOpen, setOpen] = useState<boolean>(false);
     ...
@@ -61,7 +61,7 @@ if pull request is rejected, continue development on the same branch until pull 
     * example:
 
     ```TypeScript
-    // namming/example.local.ts
+    // naming/example.local.ts
 
     function _countLikes() {
      ...
