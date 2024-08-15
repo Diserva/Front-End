@@ -24,5 +24,11 @@ body {
 }
 
 a {
-  color: $color-link;
+  color: $link-text-color-default;
+  &:hover {
+    color: $link-text-color-hover;
+  }
+  &:active {
+    color: $link-text-color-active;
+  }
 }
