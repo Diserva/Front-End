@@ -10,6 +10,14 @@
     max-width: 1280px;
     padding: 0 32px;
     margin: 0 auto;
+    .logo {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      color: $color-text-neutral-onNeutral;
+      font-size: $fontSize-x-large;
+      font-weight: $fontWeight-medium;
+    }
     ul {
       display: flex;
       gap: 32px;
@@ -27,6 +35,12 @@
       overflow: hidden;
       text-overflow: ellipsis;
       width: 160px;
+    }
+    .auth {
+      padding: 8px 48px;
+      border-radius: 8px;
+      background-color: $color-btn-primary;
+      color: $color-text-neutral-onNeutral;
     }
   }
 }
