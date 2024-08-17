@@ -35,6 +35,6 @@ export const useUserStore = create<UserState>((set) => ({
       globalName: user.globalName,
       locale: user.locale,
       avatarUrl: `https://cdn.discordapp.com/avatars/${user.discordId}/${user.avatar}`,
-      isAuth: user.isAuth,
+      isAuth: true,
     })),
 }));
