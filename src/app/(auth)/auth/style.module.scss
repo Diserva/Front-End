@@ -1,0 +1,21 @@
+@import '@styles/variables';
+
+.box {
+  .title {
+    margin-bottom: 30px;
+  }
+  .center {
+    text-align: center;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .button {
+    padding: 8px 48px;
+    border-radius: 8px;
+    background-color: $color-btn-primary;
+    color: $color-text-neutral-onNeutral;
+  }
+}
