@@ -1,0 +1,46 @@
+@import '@styles/variables';
+
+.header {
+  background-color: $color-header-bg;
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 72px;
+    max-width: 1280px;
+    padding: 0 32px;
+    margin: 0 auto;
+    .logo {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      color: $color-text-neutral-onNeutral;
+      font-size: $fontSize-x-large;
+      font-weight: $fontWeight-medium;
+    }
+    ul {
+      display: flex;
+      gap: 32px;
+      a {
+        color: $color-primary;
+        &:hover {
+          color: $color-link-hover;
+          transition: $transition-default;
+        }
+      }
+    }
+    .profile {
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 160px;
+    }
+    .auth {
+      padding: 8px 48px;
+      border-radius: 8px;
+      background-color: $color-btn-primary;
+      color: $color-text-neutral-onNeutral;
+    }
+  }
+}
