@@ -1,16 +1,16 @@
+// src/components/ui/Header/index.tsx
+
 'use client';
 
-import React from 'react';
 import Link from 'next/link';
 
 import style from './style.module.scss';
 
-import { useUserStore } from '@/store';
-import { LogoIcon } from '@/components/shared';
-import { EIconSize } from '@/utils';
-import { Profile } from '@/components/ui';
+import { LogoIcon, ProfileAvatar } from '@components';
+import { useUserStore } from '@store';
+import { EIconSize } from '@utils';
 
-export const Header = () => {
+export const Header = (): JSX.Element => {
   const { isAuth } = useUserStore();
 
   return (
@@ -24,20 +24,20 @@ export const Header = () => {
         </Link>
         <ul>
           <li>
-            <Link href='#'>Головна</Link>
+            <Link href='#'>Main</Link>
           </li>
           <li>
-            <Link href='#'>Функції</Link>
+            <Link href='#'>Functions</Link>
           </li>
           <li>
-            <Link href='#'>Про Нас</Link>
+            <Link href='#'>About us</Link>
           </li>
           <li>
-            <Link href='#'>Блог</Link>
+            <Link href='#'>Blog</Link>
           </li>
         </ul>
         {isAuth ? (
-          <Profile size={EIconSize.Size32} />
+          <ProfileAvatar size={EIconSize.Size32} />
         ) : (
           <Link className={style.auth} href='/auth'>
             Auth
