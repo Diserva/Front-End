@@ -1,33 +1,28 @@
 // src/components/ui/Profile/index.tsx
 
+// ! lib
 import Image from 'next/image';
-import { FC } from 'react';
 
-import style from './style.module.scss';
-
+// ! own
+// ? styles
+import s from './style.module.scss';
+// ? src
 import { useUserStore } from '@store';
 import { IBaseIconProps } from '@utils';
 
 interface IProfileAvatarIconProps extends IBaseIconProps {}
 
-export const ProfileAvatar: FC<IProfileAvatarIconProps> = ({
-  size,
-}): JSX.Element => {
+export function ProfileAvatar({ size }: IProfileAvatarIconProps): JSX.Element {
   const { username, avatarUrl } = useUserStore();
 
   return (
-    <div>
-      <div className={style.box}>
-        <p>{username}</p>
-        <div className={style.stroke}>
-          <Image
-            src={avatarUrl}
-            width={size}
-            height={size}
-            alt={`${username} avatar`}
-          />
-        </div>
-      </div>
+    <div className={s.avatar}>
+      <Image
+        src={avatarUrl}
+        width={size}
+        height={size}
+        alt={`${username} avatar`}
+      />
     </div>
   );
-};
+}

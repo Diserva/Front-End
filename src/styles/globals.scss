@@ -1,3 +1,5 @@
+@import '@styles/variables';
+
 :root {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -6,17 +8,34 @@
 }
 
 body {
-  line-height: calc(100% + 2px);
-  font-weight: $fontWeight-regular;
-  font-size: $fontSize-default;
+  font-weight: $font-weight-regular;
+  font-size: $font-size-default;
   color: $color-primary;
-  background-color: $color-bg;
+  background-color: $color-bg-default;
   min-width: 320px;
   min-height: 100vh;
 }
 
 .container {
   max-width: 1280px;
-  padding: 0px 32px;
   margin: 0 auto;
+}
+
+.text {
+  line-height: calc(100% + 2px);
+}
+
+.link {
+  transition: all $transition-duration-short linear;
+
+  &:hover {
+    color: $color-accent;
+    opacity: 0.8;
+  }
+
+  &:active {
+    color: $color-accent;
+    opacity: 0.6;
+  }
+
 }
