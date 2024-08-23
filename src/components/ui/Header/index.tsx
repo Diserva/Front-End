@@ -1,3 +1,5 @@
+// src/components/ui/Header/index.tsx
+
 'use client';
 
 import React from 'react';
