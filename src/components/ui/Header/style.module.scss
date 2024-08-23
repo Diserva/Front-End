@@ -62,8 +62,14 @@
 }
 
 .auth {
-  padding: 8px 48px;
-  border-radius: 8px;
+  display: block;
+  width: 100%;
+  padding: 8px 0;
+  border-radius: $border-radius-default;
+  text-align: center;
   background-color: $color-btn-primary;
   color: $color-fg-neutral-onNeutral;
+  font-size: $font-size-default;
+  line-height: $line-height-default;
+  font-weight: $font-weight-light;
 }
