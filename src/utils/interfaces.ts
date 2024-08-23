@@ -16,3 +16,12 @@ export enum EIconSize {
 export interface IBaseIconProps {
   size: EIconSize;
 }
+
+export enum ESocialMedia {
+  github = 'github',
+  telegram = 'telegram',
+  discord = 'discord',
+  threads = 'threads',
+  twitter = 'twitter',
+  instagram = 'instagram',
+}

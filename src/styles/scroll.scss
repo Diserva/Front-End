@@ -5,11 +5,11 @@
 }
 ::-webkit-scrollbar-track {
   background: transparent;
-  border-radius: $borderRadius-small;
+  border-radius: $border-radius-small;
 }
 ::-webkit-scrollbar-thumb {
   background: $color-scroll;
-  border-radius: $borderRadius-small;
+  border-radius: $border-radius-small;
   &:hover {
     background: darken($color-scroll, $amount: 15);
   }

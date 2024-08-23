@@ -18,10 +18,15 @@
       }
     ],
     "paths": {
+      "@social-media/*": ["./public/social-media/*"],
+      "@images/*": ["./public/images/*"],
+      "@favicon/*": ["./public/favicon/*"],
+      "@public/*": ["./public/*"],
       "@app/*": ["./src/app/*"],
-      "@components/*": ["./src/components"],
+      "@components": ["./src/components"],
+      "@store": ["./src/store"],
       "@styles/*": ["./src/styles/*"],
-      "@utils/*": ["./src/utils"],
+      "@utils": ["./src/utils"],
       "@/*": ["./src/*"]
     }
   },

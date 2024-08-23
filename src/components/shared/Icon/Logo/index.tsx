@@ -1,6 +1,6 @@
-import React from 'react';
+// src/components/shared/Icon/Logo/index.tsx
 
-import { IBaseIconProps } from '@/utils';
+import { IBaseIconProps } from '@utils';
 
 interface ILogoIconProps extends IBaseIconProps {}
 

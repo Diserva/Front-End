@@ -1,0 +1,13 @@
+@import '@styles/variables';
+
+.avatar {
+  width: fit-content;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: $color-avatar-stroke;
+  img {
+    border-radius: 50%;
+    box-sizing: content-box;
+    border: 1px solid $color-bg-secondary;
+  }
+}
