@@ -1,3 +1,3 @@
 // src/components/shared/index.tsx
 
-export * from './Icon/Logo';
+export * from './Icon';
