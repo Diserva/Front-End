@@ -3,47 +3,68 @@
 'use client';
 
 import Link from 'next/link';
+import clsx from 'clsx';
 
-import style from './style.module.scss';
+import s from './style.module.scss';
 
 import { LogoIcon, ProfileAvatar } from '@components';
 import { useUserStore } from '@store';
 import { EIconSize } from '@utils';
 
 export const Header = (): JSX.Element => {
-  const { isAuth } = useUserStore();
+  const { isAuth, username } = useUserStore();
 
   return (
-    <header className={style.header}>
-      <nav>
+    <header className={s.header}>
+      <div className={clsx('container', s.container)}>
+        {/* logotype */}
         <Link href='/'>
-          <div className={style.logo}>
+          <div className={s.logo}>
             <LogoIcon size={EIconSize.Size32} />
-            <p>Ceavex</p>
+            <h2>CEAVEX</h2>
           </div>
         </Link>
-        <ul>
-          <li>
-            <Link href='#'>Main</Link>
-          </li>
-          <li>
-            <Link href='#'>Functions</Link>
-          </li>
-          <li>
-            <Link href='#'>About us</Link>
-          </li>
-          <li>
-            <Link href='#'>Blog</Link>
-          </li>
-        </ul>
-        {isAuth ? (
-          <ProfileAvatar size={EIconSize.Size32} />
-        ) : (
-          <Link className={style.auth} href='/auth'>
-            Auth
-          </Link>
-        )}
-      </nav>
+
+        {/* navigation */}
+        <nav className={s.navigation}>
+          <ul className={s.navigation__list}>
+            <li>
+              <Link className={clsx('link', s.navigation__link)} href='#'>
+                Main
+              </Link>
+            </li>
+            <li>
+              <Link className={clsx('link', s.navigation__link)} href='#'>
+                Functions
+              </Link>
+            </li>
+            <li>
+              <Link className={clsx('link', s.navigation__link)} href='#'>
+                About us
+              </Link>
+            </li>
+            <li>
+              <Link className={clsx('link', s.navigation__link)} href='#'>
+                Blog
+              </Link>
+            </li>
+          </ul>
+        </nav>
+
+        {/* auth-link / avatar */}
+        <div>
+          {isAuth ? (
+            <div className={s.profile}>
+              <h6 className={s.nickname}>{username}</h6>
+              <ProfileAvatar size={EIconSize.Size32} />
+            </div>
+          ) : (
+            <Link className={s.auth} href='/auth'>
+              Auth
+            </Link>
+          )}
+        </div>
+      </div>
     </header>
   );
 };
