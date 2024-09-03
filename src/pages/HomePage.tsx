@@ -58,6 +58,7 @@ const HomePage = () => {
     setCurrentPage(1);
   }, [searchQuery, guilds]);
 
+
   const totalPages = Math.ceil(filteredGuilds.length / cardsPerPage);
 
   const handlePreviousPage = () => {

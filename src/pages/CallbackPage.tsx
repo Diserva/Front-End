@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -10,9 +11,6 @@ const CallbackPage: React.FC = () => {
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
   const code = queryParams.get('code');
-  const CLIENT_ID = '1168642212997894276';
-  const CLIENT_SECRET = 'N2nDn98p2rqPIeX1Dy39eOGzgnpQY-96';
-  const REDIRECT_URI = 'http://localhost:3000/callback';
   const { showAlert } = useAlert();
 
   useEffect(() => {
@@ -22,12 +20,12 @@ const CallbackPage: React.FC = () => {
         }
 
         const body = new URLSearchParams({
-            client_id: CLIENT_ID,
-            client_secret: CLIENT_SECRET,
-            grant_type: 'authorization_code',
-            code: code,
-            redirect_uri: REDIRECT_URI,
-            scope: 'identify+guilds'
+          client_id: process.env.REACT_APP_CLIENT_ID!,
+          client_secret: process.env.REACT_APP_CLIENT_SECRET!,
+          grant_type: 'authorization_code',
+          code: code,
+          redirect_uri: process.env.REACT_APP_REDIRECT_URI!,
+          scope: 'identify+guilds',
         }).toString();
 
         try {
