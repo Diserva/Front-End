@@ -1,0 +1,29 @@
+.overlay {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0.7;
+}
+
+.alertBox {
+    min-width: 30%;
+    max-width: 40%;
+    min-height: 60px;
+    background-color: #1E1E1E;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #dd1010;
+}
+
+.message {
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    font-family: 'Outfit', sans-serif;
+}

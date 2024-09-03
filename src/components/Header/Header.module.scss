@@ -1,0 +1,75 @@
+@import '../../styles/variables';
+
+.header {
+  background-color: $color-bg-secondary;
+}
+
+.container {
+  --width-block: 160px;
+
+  display: grid;
+  grid-template-columns: var(--width-block) 1fr var(--width-block);
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+  padding: 0 32px;
+  gap: 32px;
+}
+
+.logo {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  color: $color-fg-neutral-onNeutral;
+  font-size: $font-size-x-large;
+  line-height: $line-height-x-large;
+  font-weight: $font-weight-medium;
+}
+
+.navigation {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.navigation__list {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.navigation__link {
+  color: $color-fg-default-tertiary;
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: 86px 38px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 12px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.nickname {
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.auth {
+  display: block;
+  width: 100%;
+  padding: 8px 0;
+  border-radius: $border-radius-default;
+  text-align: center;
+  background-color: $color-btn-primary;
+  color: $color-fg-neutral-onNeutral;
+  font-size: $font-size-default;
+  line-height: $line-height-default;
+  font-weight: $font-weight-light;
+}

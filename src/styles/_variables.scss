@@ -1,0 +1,58 @@
+// colors
+$color-accent: #4285f4;
+$color-primary: #b3b3b3;
+$color-secondary: #ebffee;
+// $color-text-neutral-onNeutral: #f3f3f3;
+// bg
+$color-bg-default: #2c2c2c;
+$color-bg-secondary: #1e1e1e;
+
+// fg
+$color-fg-default-tertiary: #b3b3b3;
+$color-fg-neutral-tertiary: #767676;
+$color-fg-neutral-onNeutral: #f3f3f3;
+
+// border
+$color-border-default-default: #d9d9d9;
+
+$color-ntf-primary: #e24352;
+$color-link-hover: rgb(66, 133, 244, 80%);
+$color-avatar-stroke: linear-gradient(135deg, #4c7dff, #e24352) border-box;
+
+// button colors
+$color-btn-primary: $color-accent;
+
+// scroll
+$color-scroll: $color-accent;
+
+// font-size
+$font-size-x-small: 10px;
+$font-size-small: 12px;
+$font-size-default: 14px;
+$font-size-medium: 16px;
+$font-size-large: 20px;
+$font-size-x-large: 24px;
+// font-weight
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// line-height
+$line-height-x-small: 12px;
+$line-height-small: 14px;
+$line-height-default: 16px;
+$line-height-medium: 18px;
+$line-height-large: 22px;
+$line-height-x-large: 26px;
+
+// border-radius
+$border-radius-small: 4px;
+$border-radius-default: 8px;
+$border-radius-big: 8px;
+
+// transition-duration
+$transition-duration-short: 0.2s;
+$transition-duration-default: 0.4s;
+$transition-duration-long: 0.6s;
