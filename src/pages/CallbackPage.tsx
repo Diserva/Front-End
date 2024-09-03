@@ -40,11 +40,13 @@ const CallbackPage: React.FC = () => {
             const data = await response.json();
             const token = data.access_token
             if (token) {
-              const response = await fetch(`http://localhost:4000/api/auth/discord/${token}`, 
-                { 
-                  method: 'GET', 
-                  credentials: 'include'
-                }) //backend
+              const response = await fetch(
+                `${process.env.REACT_APP_BACKEND_URI}/auth/discord/${token}`,
+                {
+                  method: 'GET',
+                  credentials: 'include',
+                }
+              ); //backend
 
               const user: UserState = await response.json()
               dispatch(setUser({

@@ -41,6 +41,17 @@
   color: $color-fg-default-tertiary;
 }
 
+.counter_blog {
+  position: absolute;
+  margin-left: 10px;
+  margin-top: -10px;
+  background-color: #E24352;
+  border-radius: 2px;
+  padding-left: 3px;
+  padding-right: 3px;
+  font-size: 11;
+}
+
 .profile {
   display: grid;
   grid-template-columns: 86px 38px;

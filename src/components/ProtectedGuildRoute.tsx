@@ -16,10 +16,10 @@ const ProtectedAuthRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
     const checkAuth = async () => {
       try {
         const response = await fetch(
-          `http://localhost:4000/api/user/guild-verify/${id}`,
+          `${process.env.REACT_APP_BACKEND_URI}/user/guild-verify/${id}`,
           {
-            credentials: "include",
-          },
+            credentials: 'include',
+          }
         );  //backend
         
         if (response.ok) {

@@ -25,17 +25,19 @@ function App() {
       <Route
         path='/guild/:id'
         element={
-          <ProtectedGuildRoute>
-            <GuildPage />
-          </ProtectedGuildRoute>
+          <ProtectedAuthRoute>
+            <ProtectedGuildRoute>
+              <GuildPage />
+            </ProtectedGuildRoute>
+          </ProtectedAuthRoute>
         }
       />
       <Route
         path='/support'
         element={
-          <ProtectedGuildRoute>
+          <ProtectedAuthRoute>
             <GuildPage />
-          </ProtectedGuildRoute>
+          </ProtectedAuthRoute>
         } //Support
       />
       <Route
