@@ -1,5 +1,9 @@
 const GuildPage = () => {
-  return <></>;
+  return (
+    <>
+      
+    </>
+  );
 };
 
 export default GuildPage;

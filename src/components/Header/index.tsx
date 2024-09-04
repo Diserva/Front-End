@@ -9,11 +9,16 @@ import { LogoIcon } from "../../components/Logo";
 import { Avatar } from "../../components/Avatar";
 import { useEffect, useState } from "react";
 import { useAlert } from "../../components/Alert/context";
+import BurgerMenu from "../../components/BurgerMenu";
+import DownOutlined from "../../assets/icons/Down-outlined.svg";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
     const userState = useSelector((state: RootState) => state.userReducer);
     const [postCount, setPostCount] = useState<number | string | null>(null);
+    const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
     const { showAlert } = useAlert();
+    const { t } = useTranslation();
 
     useEffect(() => {
       const fetchData = async () => {
@@ -54,7 +59,7 @@ const Header = () => {
             <ul className={style.navigation__list}>
               <li>
                 <Link className={clsx('link', style.navigation__link)} to='/'>
-                  Main
+                  {t('header.main')}
                 </Link>
               </li>
               <li>
@@ -62,7 +67,7 @@ const Header = () => {
                   className={clsx('link', style.navigation__link)}
                   to='/function'
                 >
-                  Functions
+                  {t('header.functions')}
                 </Link>
               </li>
               <li>
@@ -70,7 +75,7 @@ const Header = () => {
                   className={clsx('link', style.navigation__link)}
                   to='/about-us'
                 >
-                  About us
+                  {t('header.about-us')}
                 </Link>
               </li>
               <li>
@@ -78,21 +83,29 @@ const Header = () => {
                   className={clsx('link', style.navigation__link)}
                   to='/blog'
                 >
-                  Blog
+                  {t('header.blog')}
                 </Link>
-                { postCount && <a className={style.counter_blog}>{postCount}</a> }
+                {postCount && <a className={style.counter_blog}>{postCount}</a>}
               </li>
             </ul>
           </nav>
           <div>
+            <BurgerMenu isOpen={isOpenModal} />
             {userState.isAuth ? (
               <div className={style.profile}>
-                <h6 className={style.nickname}>{userState.username}</h6>
+                <img
+                  onClick={() => setIsOpenModal((prev) => !prev)}
+                  src={DownOutlined}
+                  alt='icon'
+                />
+                <h6 style={{ color: '#fff' }} className={style.nickname}>
+                  {userState.username}
+                </h6>
                 <Avatar size={EIconSize.Size32} />
               </div>
             ) : (
               <div className={style.auth} onClick={AuthFunc}>
-                Auth
+                {t('header.auth')}
               </div>
             )}
           </div>

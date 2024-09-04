@@ -3,16 +3,19 @@ import style from "./Card.module.scss";
 
 import { UserOutlined } from "@ant-design/icons";
 import { CardProps } from "../../utils";
+import { useTranslation } from "react-i18next";
 
 const Card: React.FC<CardProps> = ({ guild }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   return (
     <div
       onClick={() =>
         guild.isBot
           ? navigate(`/guild/${guild.id}`)
-          : (window.location.href = `https://discord.com/oauth2/authorize?client_id=1168642212997894276&guild_id=${guild.id}`)
-      } // if isbot false -> invite
+          : (window.location.href =
+              process.env.REACT_APP_DISCORD_INVITE_URI + guild.id)
+      }
       className={style.container}
     >
       <div className={style.card}>
@@ -42,7 +45,7 @@ const Card: React.FC<CardProps> = ({ guild }) => {
           <>
             <div className={style.backgroundShadow} />
             <div className={style.addbotbtn}>
-              <a>Add Bot for Unlock</a>
+              <a>{t('card.addbot')}</a>
             </div>
           </>
         )}

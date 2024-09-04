@@ -7,8 +7,10 @@ import s from './Footer.module.scss';
 import { SocialMedia } from '../SocialMedia';
 import { ESocialMedia } from '../../utils';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function Footer(): JSX.Element {
+  const { t } = useTranslation();
   return (
     <footer className={s.footer}>
       <div className={clsx('container', s.container)}>
@@ -16,32 +18,50 @@ function Footer(): JSX.Element {
           <article>
             <ul className={clsx('list', s.socialMedia)}>
               <li>
-                <Link className={s.socialMedia__link} to={'#'}>
+                <Link
+                  className={s.socialMedia__link}
+                  to={process.env.REACT_APP_SOCIAL_GITHUB_URI || ''}
+                >
                   <SocialMedia size={32} type={ESocialMedia.github} />
                 </Link>
               </li>
               <li>
-                <Link className={s.socialMedia__link} to={'#'}>
+                <Link
+                  className={s.socialMedia__link}
+                  to={process.env.REACT_APP_SOCIAL_TELEGRAM_URI || ''}
+                >
                   <SocialMedia size={32} type={ESocialMedia.telegram} />
                 </Link>
               </li>
               <li>
-                <Link className={s.socialMedia__link} to={'#'}>
+                <Link
+                  className={s.socialMedia__link}
+                  to={process.env.REACT_APP_SOCIAL_DISCORD_URI || ''}
+                >
                   <SocialMedia size={32} type={ESocialMedia.discord} />
                 </Link>
               </li>
               <li>
-                <Link className={s.socialMedia__link} to={'#'}>
+                <Link
+                  className={s.socialMedia__link}
+                  to={process.env.REACT_APP_SOCIAL_THREADS_URI || ''}
+                >
                   <SocialMedia size={32} type={ESocialMedia.threads} />
                 </Link>
               </li>
               <li>
-                <Link className={s.socialMedia__link} to={'#'}>
+                <Link
+                  className={s.socialMedia__link}
+                  to={process.env.REACT_APP_SOCIAL_TWITTER_URI || ''}
+                >
                   <SocialMedia size={32} type={ESocialMedia.twitter} />
                 </Link>
               </li>
               <li>
-                <Link className={s.socialMedia__link} to={'#'}>
+                <Link
+                  className={s.socialMedia__link}
+                  to={process.env.REACT_APP_SOCIAL_INSTAGRAM_URI || ''}
+                >
                   <SocialMedia size={32} type={ESocialMedia.instagram} />
                 </Link>
               </li>
@@ -49,7 +69,7 @@ function Footer(): JSX.Element {
           </article>
           <ul className={s.blocks}>
             <li className={s.block}>
-              <h4 className={s.block__title}>Main</h4>
+              <h4 className={s.block__title}>{t('footer.main')}</h4>
               <nav>
                 <ul className={clsx('list', s.block, s.block_gap_small)}>
                   <li>
@@ -57,7 +77,7 @@ function Footer(): JSX.Element {
                       className={clsx('link', s.block__link)}
                       to={'/about-us'}
                     >
-                      About us
+                      {t('footer.about-us')}
                     </Link>
                   </li>
                   <li>
@@ -65,42 +85,41 @@ function Footer(): JSX.Element {
                       className={clsx('link', s.block__link)}
                       to={'/about-project'}
                     >
-                      About project
+                      {t('footer.about-project')}
                     </Link>
                   </li>
                   <li>
                     <Link className={clsx('link', s.block__link)} to={'#'}>
-                      {' '}
-                      {/* Link donation Alerts */}
-                      Buy us a coffee
+                      {t('footer.buy-coffee')}
                     </Link>
                   </li>
                 </ul>
               </nav>
             </li>
-            {/* partners */}
             <li className={s.block}>
-              <h4 className={s.block__title}>Partners</h4>
+              <h4 className={s.block__title}>{t('footer.partners')}</h4>
               <ul className={clsx('list', s.block, s.block_gap_small)}>
                 <li>
-                  <Link className={clsx('link', s.block__link)} to={'#'}>
-                    {' '}
-                    {/* Link Sponsor 1 */}
-                    Family Play
+                  <Link
+                    className={clsx('link', s.block__link)}
+                    to={process.env.REACT_APP_SPONSOR1_URI || ''}
+                  >
+                    {process.env.REACT_APP_SPONSOR1_NAME}
                   </Link>
                 </li>
                 <li>
-                  <Link className={clsx('link', s.block__link)} to={'#'}>
-                    {' '}
-                    {/* Link Sponsor 2 */}
-                    Strategy World
+                  <Link
+                    className={clsx('link', s.block__link)}
+                    to={process.env.REACT_APP_SPONSOR2_URI || ''}
+                  >
+                    {process.env.REACT_APP_SPONSOR2_NAME}
                   </Link>
                 </li>
               </ul>
             </li>
             {/* legal */}
             <li className={s.block}>
-              <h4 className={s.block__title}>Legal</h4>
+              <h4 className={s.block__title}>{t('footer.legal')}</h4>
               <nav>
                 <ul className={clsx('list', s.block, s.block_gap_small)}>
                   <li>
@@ -108,7 +127,7 @@ function Footer(): JSX.Element {
                       className={clsx('link', s.block__link)}
                       to={'/terms-of-use'}
                     >
-                      terms of use
+                      {t('footer.terms-of-use')}
                     </Link>
                   </li>
                   <li>
@@ -116,7 +135,7 @@ function Footer(): JSX.Element {
                       className={clsx('link', s.block__link)}
                       to={'/privacy-policy'}
                     >
-                      Privacy Policy
+                      {t('footer.privacy-policy')}
                     </Link>
                   </li>
                   <li>
@@ -124,14 +143,14 @@ function Footer(): JSX.Element {
                       className={clsx('link', s.block__link)}
                       to={'/cookies'}
                     >
-                      Cookies
+                      {t('footer.cookies')}
                     </Link>
                   </li>
                 </ul>
               </nav>
             </li>
             <li className={s.block}>
-              <h4 className={s.block__title}>Developers</h4>
+              <h4 className={s.block__title}>{t('footer.developers')}</h4>
               <nav>
                 <ul className={clsx('list', s.block, s.block_gap_small)}>
                   <li>
@@ -165,11 +184,11 @@ function Footer(): JSX.Element {
             reserved.
           </h6>
           <p className={clsx('text', s.detail)}>
-            You have any problems, our{' '}
+            {t('footer.support1')}{' '}
             <Link className={clsx('link', s.support)} to={'/support'}>
-              support
+              {t('footer.support2')}
             </Link>{' '}
-            can help you
+            {t('footer.support3')}
           </p>
         </div>
       </div>

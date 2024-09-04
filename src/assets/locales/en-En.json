@@ -1,0 +1,36 @@
+{
+  "modal": {
+    "editlang": "Change site language",
+    "switch": "Switch to",
+    "theme": "theme",
+    "light": "light",
+    "dark": "dark",
+    "needhelp": "Need help?"
+  },
+  "search": "Search",
+  "header": {
+    "main": "Home",
+    "functions": "Functions",
+    "about-us": "About us",
+    "blog": "Blog",
+    "auth": "Authentication"
+  },
+  "card": {
+    "addbot": "Add Bot for Unlock"
+  },
+  "footer": {
+    "main": "Main",
+    "about-us": "About us",
+    "about-project": "About project",
+    "buy-coffee": "Buy us a coffee",
+    "partners": "Partners",
+    "legal": "Legal",
+    "terms-of-use": "Terms of use",
+    "privacy-policy": "Privacy Policy",
+    "cookies": "Cookies",
+    "developers": "Developers",
+    "support1": "You have any problems, our",
+    "support2": "support",
+    "support3": "can help you"
+  }
+}

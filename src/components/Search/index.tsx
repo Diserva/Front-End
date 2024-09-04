@@ -3,13 +3,15 @@
 import  { useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import style from "./Search.module.scss";
+import { useTranslation } from "react-i18next";
 
 interface SearchProps {
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const Search: React.FC<SearchProps> = ({ setSearchQuery }) => {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState<string>("");
+  const { t } = useTranslation();
 
   const handleSearch = () => {
     setSearchQuery(query);
@@ -19,14 +21,14 @@ const Search: React.FC<SearchProps> = ({ setSearchQuery }) => {
     <div className={style.searchContainer}>
       <SearchOutlined className={style.searchIcon} />
       <input
-        type="text"
+        type='text'
         value={query}
-        placeholder="Пошук"
+        placeholder={t('search')}
         className={style.searchInput}
         onChange={(event) => setQuery(event.target.value)}
       />
       <button onClick={handleSearch} className={style.searchButton}>
-        Знайти
+        {t('search')}
       </button>
     </div>
   );

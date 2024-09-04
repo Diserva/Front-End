@@ -33,7 +33,7 @@
 
 .blocks {
   display: grid;
-  grid-template-columns: repeat(4, 128px);
+  grid-template-columns: repeat(4, auto);
   justify-content: flex-end;
   gap: 48px;
 }

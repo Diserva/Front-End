@@ -12,6 +12,7 @@ import DefaultLayout from "./components/DefaultLayout";
 import { AlertProvider } from "./components/Alert/context";
 
 const { defaultAlgorithm } = theme;
+import './utils/i18n';
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(

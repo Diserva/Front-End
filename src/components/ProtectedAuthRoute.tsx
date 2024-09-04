@@ -1,8 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../redux/reducers/userReducer';
 import { RootState } from '../redux/store';
 import { useAlert } from './Alert/context';
+import AuthFunc from './Auth';
 
 type ProtectedRouteProps = {
   children: React.ReactNode;
@@ -27,7 +29,7 @@ const ProtectedAuthRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
           {
             credentials: 'include',
           }
-        );  //backend
+        );
         
         if (response.ok) {
           const data = await response.json();
@@ -46,6 +48,7 @@ const ProtectedAuthRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
           setIsAuthenticated(true);
         } else {
           setIsAuthenticated(false);
+          AuthFunc();
         }
       } catch (error) {
         showAlert(`Ошибка при проверке токена: ${error}`);
