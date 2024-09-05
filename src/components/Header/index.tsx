@@ -93,15 +93,10 @@ const Header = () => {
             <BurgerMenu isOpen={isOpenModal} />
             {userState.isAuth ? (
               <div className={style.profile}>
-                <img
-                  onClick={() => setIsOpenModal((prev) => !prev)}
-                  src={DownOutlined}
-                  alt='icon'
-                />
                 <h6 style={{ color: '#fff' }} className={style.nickname}>
                   {userState.username}
                 </h6>
-                <Avatar size={EIconSize.Size32} />
+                <Avatar func={setIsOpenModal} size={EIconSize.Size32} />
               </div>
             ) : (
               <div className={style.auth} onClick={AuthFunc}>

@@ -6,7 +6,6 @@
 
 .container {
   --width-block: 160px;
-
   display: grid;
   grid-template-columns: var(--width-block) 1fr var(--width-block);
   justify-content: space-between;
@@ -71,6 +70,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-left: 15px;
 }
 
 .auth {
