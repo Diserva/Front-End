@@ -1,0 +1,228 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .background {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUMAAACcCAMAAADS8jl7AAAAA1BMVEUAAACnej3aAAAAR0lEQVR4nO3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC8GxXAAARccfysAAAAASUVORK5CYII=");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .rightText {
+    width: 100%;
+    padding: 32px 0px 8px;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 64px;
+  
+    .mainText {
+      font-size: 48px;
+      font-weight: bold;
+    }
+  
+    .Text {
+      font-size: 28px;
+      font-weight: bold;
+    }
+  }
+  
+  .attributes {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    padding: 68px 0px 12px;
+    position: relative;
+  }
+  
+  .attribute {
+    color: #F3F3F3;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    padding-bottom: 8px;
+    transition: color 0.3s ease, transform 0.3s ease;
+  
+    &:hover {
+      color: #ffffff;
+    }
+  
+    &.active {
+      color: #ffffff;
+      transform: scale(1.05);
+    }
+  }
+  
+  .underline {
+    position: absolute;
+    border-radius: 15px;
+    bottom: 0;
+    height: 4px;
+    background-color: #ffffff;
+    transition: left 0.5s ease, width 0.5s ease;
+  }
+  
+  
+  
+  .settingsContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    margin-top: 24px;
+    width: 60%;
+    background-color: #434343;
+    gap: 16px;
+    border-radius: 16px;
+  }
+  
+  .inputGroup {
+    position: relative;
+    margin-bottom: 24px;
+  
+    label {
+      position: absolute;
+      top: -12px;
+      left: 16px;
+      padding: 0 8px;
+      font-weight: bold;
+      font-size: 14px;
+      color: #ffffff;
+      background-color: #434343;
+    }
+  
+    input {
+      padding: 16px;
+      border: 2px solid #D9D9D9;
+      border-radius: 8px;
+      width: 100%;
+      font-size: 16px;
+      color: #ffffff;
+      background-color: #434343;
+      outline: none;
+      transition: border-color 0.3s ease;
+  
+      &:hover {
+        border-color: #FFF;
+      }
+  
+      &:focus {
+        border-color: #FFF;
+      }
+    }
+  }
+
+  .inputGroup select {
+    padding: 16px;
+    border: 2px solid #D9D9D9;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #434343;
+    transition: border-color 0.3s ease;
+  
+    &:hover {
+      border-color: #FFF;
+    }
+  
+    &:focus {
+      border-color: #FFF;
+    }
+  }
+  
+  
+  .languageGroup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  
+  .checkboxGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  
+    label {
+      margin-left: 8px;
+      color: #F5F5F5;
+      font-weight: normal;
+      font-size: 16px;
+    }
+  
+    input[type="checkbox"] {
+      margin-right: 12px;
+      accent-color: #4285F4;
+    }
+  }
+  
+  .switchContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 60%;
+    margin: 48px 0px 64px 24px;
+    gap: 10px;
+
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #B3B3B3;
+    transition: 0.4s;
+    border-radius: 24px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #4285f4;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(16px);
+  }
+  
+  .switchLabel {
+    font-size: 16px;
+    color: #ffffff;
+  }
+  
+  
+  
+  
