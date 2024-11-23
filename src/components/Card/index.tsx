@@ -17,7 +17,7 @@ const Card: React.FC<CardProps> = ({ guild }) => {
               process.env.REACT_APP_DISCORD_INVITE_URI + guild.id)
       }
       className={style.container}
-    >
+      >
       <div className={style.card}>
         {guild.icon ? (
           <img
