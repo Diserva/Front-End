@@ -85,10 +85,10 @@ const Header = () => {
                 >
                   {t('header.blog')}
                 </Link>
-                {postCount && <a className={style.counter_blog}>{postCount}</a>}
+                {/* {postCount && <a className={style.counter_blog} href="">{postCount}</a>} */}
               </li>
             </ul>
-          </nav>
+          </nav>D
           <div>
             <BurgerMenu isOpen={isOpenModal} />
             {userState.isAuth ? (

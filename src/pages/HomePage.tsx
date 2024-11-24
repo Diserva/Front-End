@@ -88,7 +88,7 @@ const HomePage = () => {
       <div className={style.serversContainer}>
         <div className={style.serverContainer}>
           {!isLoading && sortedGuilds.length == 0 ? (
-            <text>Не найденно</text>
+            <p>Не найденно</p>
           ) : (
             currentCards.map((guild) => (
               <Card key={guild.id} guild={guild} />
