@@ -1,3 +1,5 @@
 export type NAV_LINK = {
-      label: string
-}
+	tName: string;
+};
+
+export type AVAILABLE_LANGUAGES = 'en' | 'uk' | 'ru';

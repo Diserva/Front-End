@@ -1,10 +1,8 @@
-import LogoIcon from "../utils/Logo";
+import Image from 'next/image';
 
 export default function Header() {
-  return (
-    <header>
-      <LogoIcon size={160}/> {/* Думаю, в майбутньому можна спробувати перенести це в tailwindcss classes */}
-
-    </header>
-  )
+	return (
+		<header>
+		</header>
+	);
 }
