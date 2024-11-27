@@ -6,13 +6,15 @@
     "dev": "next dev --turbopack -p 8080",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "getLocales": "i18nexus pull"
   },
   "dependencies": {
     "clsx": "^2.1.1",
     "i18next": "^24.0.2",
     "i18next-browser-languagedetector": "^8.0.0",
     "next": "15.0.3",
+    "next-i18n-router": "^5.5.1",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
     "react-i18next": "^15.1.2"
