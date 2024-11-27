@@ -1,24 +1,23 @@
-import { createInstance } from 'i18next';
+import type i18next from 'i18next';
+import { createInstance, Resource } from 'i18next';
 import { initReactI18next } from 'react-i18next/initReactI18next';
 import resourcesToBackend from 'i18next-resources-to-backend';
 import i18nConfig from './i18nConfig';
 import { AVAILABLE_LANGUAGES } from './lib/definitions';
 
 export default async function initTranslations(
-	locale: string,
-	namespaces,
-	i18nInstance, // розібратися із типами
-	resources
+	locale: AVAILABLE_LANGUAGES,
+	namespaces: string[],
+	i18nInstance?: typeof i18next, // розібратися із типами
+	resources?: Resource
 ) {
 	i18nInstance = i18nInstance || createInstance();
 	i18nInstance.use(initReactI18next);
 
-	console.log(i18nInstance);
-
 	if (!resources) {
 		i18nInstance.use(
 			resourcesToBackend(
-				(language, namespace) =>
+				(language: AVAILABLE_LANGUAGES, namespace: string) =>
 					import(`@/locales/${language}/${namespace}.json`)
 			)
 		);
