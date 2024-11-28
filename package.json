@@ -1,33 +1,33 @@
 {
-  "name": "ceavex",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev --turbopack -p 8080",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "getLocales": "i18nexus pull"
-  },
-  "dependencies": {
-    "clsx": "^2.1.1",
-    "i18next": "^24.0.2",
-    "i18next-browser-languagedetector": "^8.0.0",
-    "i18next-resources-to-backend": "^1.2.1",
-    "next": "15.0.3",
-    "next-i18n-router": "^5.5.1",
-    "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106",
-    "react-i18next": "^15.1.2"
-  },
-  "devDependencies": {
-    "@types/node": "^22.10.0",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "eslint": "^9.15.0",
-    "eslint-config-next": "15.0.3",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.15",
-    "typescript": "^5.7.2"
-  }
+	"name": "ceavex",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "i18nexus pull && next dev --turbopack -p 8080",
+		"build": "i18nexus pull && next build",
+		"start": "i18nexus pull && next start",
+		"lint": "next lint",
+		"getLocales": "i18nexus pull"
+	},
+	"dependencies": {
+		"clsx": "^2.1.1",
+		"i18next": "^24.0.2",
+		"i18next-browser-languagedetector": "^8.0.0",
+		"i18next-resources-to-backend": "^1.2.1",
+		"next": "15.0.3",
+		"next-i18n-router": "^5.5.1",
+		"react": "19.0.0-rc-66855b96-20241106",
+		"react-dom": "19.0.0-rc-66855b96-20241106",
+		"react-i18next": "^15.1.2"
+	},
+	"devDependencies": {
+		"@types/node": "^22.10.0",
+		"@types/react": "^18.3.12",
+		"@types/react-dom": "^18.3.1",
+		"eslint": "^9.15.0",
+		"eslint-config-next": "15.0.3",
+		"postcss": "^8.4.49",
+		"tailwindcss": "^3.4.15",
+		"typescript": "^5.7.2"
+	}
 }

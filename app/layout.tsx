@@ -13,7 +13,6 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	// console.log(i18next.language)
 	return (
 		<html lang='en'>
 			<body className={clsx(inter)}>{children}</body>

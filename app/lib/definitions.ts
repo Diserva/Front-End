@@ -1,8 +1,6 @@
-import i18next from "i18next";
-
 export type NAV_LINK = {
-	tName: string;
+	tKey: string;
+	href: string;
 };
 
 export type AVAILABLE_LANGUAGES = 'en' | 'uk';
-
