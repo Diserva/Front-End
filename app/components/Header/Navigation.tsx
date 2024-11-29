@@ -1,13 +1,12 @@
 import { NAV_LINKS } from '@/app/lib/constants/header';
 import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
 
 export default function Navigation({}) {
 
 	return (
-		<nav>
+		<nav className='flex gap-4 items-center'>
 			{NAV_LINKS.map(({ tKey, href }) => (
-				<Link key={tKey} href={href}> </Link>
+				<Link key={tKey} href={href}>{tKey}</Link>
 			))}
 		</nav>
 	);

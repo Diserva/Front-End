@@ -3,22 +3,18 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "i18nexus pull && next dev --turbopack -p 8080",
-		"build": "i18nexus pull && next build",
-		"start": "i18nexus pull && next start",
+		"dev": "next dev --turbopack -p 8080",
+		"build": "next build",
+		"start": "next start",
 		"lint": "next lint",
 		"getLocales": "i18nexus pull"
 	},
 	"dependencies": {
 		"clsx": "^2.1.1",
-		"i18next": "^24.0.2",
-		"i18next-browser-languagedetector": "^8.0.0",
-		"i18next-resources-to-backend": "^1.2.1",
 		"next": "15.0.3",
-		"next-i18n-router": "^5.5.1",
 		"react": "19.0.0-rc-66855b96-20241106",
 		"react-dom": "19.0.0-rc-66855b96-20241106",
-		"react-i18next": "^15.1.2"
+		"react-icons": "^5.3.0"
 	},
 	"devDependencies": {
 		"@types/node": "^22.10.0",
