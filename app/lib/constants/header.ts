@@ -1,20 +1,20 @@
-import type { NAV_LINK } from '../definitions';
+import { LINK } from "../definitions";
 
-export const NAV_LINKS: NAV_LINK[] = [
+export const NAV_LINKS: LINK[] = [
 	{
-		tKey: 'home',
+		tKey: 'Головна',
 		href: '/'
 	},
 	{
-		tKey: 'functions',
+		tKey: 'Функції',
 		href: '/functions'
 	},
 	{
-		tKey: 'aboutUs',
+		tKey: 'Про нас',
 		href: '/about-us'
 	},
 	{
-		tKey: 'blog',
+		tKey: 'Блог',
 		href: '/blog'
 	}
 ];

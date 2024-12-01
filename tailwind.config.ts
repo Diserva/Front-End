@@ -12,8 +12,10 @@ export default {
 				navLayout: '#1E1E1E',
 				defaultText: '#B3B3B3',
 				mainBg: '#2C2C2C',
-        icon: "#757575",
-        iconHovered: "#a8a7a7"
+				icon: '#757575',
+				iconHovered: '#a8a7a7',
+				accent: '#4285F4',
+				secondary: '#767676'
 			}
 		}
 	},

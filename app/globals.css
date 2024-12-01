@@ -5,7 +5,12 @@
 @layer base {
 	p,
 	a,
+	h3,
 	span {
 		@apply text-defaultText;
+	}
+
+	h4 {
+		@apply text-secondary;
 	}
 }
