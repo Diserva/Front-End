@@ -1,6 +1,7 @@
-
 import clsx from 'clsx';
 import { inter } from './lib/fonts';
+import ReduxProvider from './lib/providers/ReduxProvider';
+import AuthProtectionProvider from './lib/providers/AuthProtectionProvider';
 
 export default function RootLayout({
 	children
@@ -9,7 +10,11 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body className={clsx(inter)}>{children}</body>
+			<ReduxProvider>
+				<AuthProtectionProvider>
+					<body className={clsx(inter)}>{children}</body>
+				</AuthProtectionProvider>
+			</ReduxProvider>
 		</html>
 	);
 }

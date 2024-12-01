@@ -3,24 +3,27 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "next dev --turbopack -p 8080",
+		"dev": "cross-env NODE_OPTIONS='--inspect' next dev",
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
 		"getLocales": "i18nexus pull"
 	},
 	"dependencies": {
+		"@reduxjs/toolkit": "^2.4.0",
 		"clsx": "^2.1.1",
+		"cross-env": "^7.0.3",
 		"next": "15.0.3",
-		"react": "19.0.0-rc-66855b96-20241106",
+		"react": "^18.0",
 		"react-dom": "19.0.0-rc-66855b96-20241106",
-		"react-icons": "^5.3.0"
+		"react-icons": "^5.3.0",
+		"react-redux": "^9.1.2"
 	},
 	"devDependencies": {
-		"@types/node": "^22.10.0",
+		"@types/node": "^22.10.1",
 		"@types/react": "^18.3.12",
 		"@types/react-dom": "^18.3.1",
-		"eslint": "^9.15.0",
+		"eslint": "^9.16.0",
 		"eslint-config-next": "15.0.3",
 		"postcss": "^8.4.49",
 		"tailwindcss": "^3.4.15",
