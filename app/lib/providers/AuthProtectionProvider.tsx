@@ -1,20 +1,18 @@
-"use client"
+'use client';
 
-import { ReactNode } from 'react';
-import { selectAuth } from '../redux/authSlice';
-import { useSelector, useStore } from 'react-redux';
-import initAuth from '../auth/initAuth';
+import { ReactNode, useEffect } from 'react';
+import { redirect } from 'next/navigation';
 
 export default function AuthProtectionProvider({
 	children
 }: {
 	children: ReactNode;
 }) {
-	const authenicated = useSelector(selectAuth);
-
-      if (!authenicated) {
-            initAuth()
-      }
+	useEffect(() => {
+		if (localStorage.getItem('authenticated') !== 'true') {
+			redirect(process.env.DISCORD_AUTH_URL || '');
+		}
+	});
 
 	return <>{children}</>;
 }
