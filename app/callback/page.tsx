@@ -6,14 +6,18 @@ import { useSearchParams } from 'next/navigation';
 import { pipe } from 'fp-ts/lib/function';
 import generateBody from '../lib/auth/generateBody';
 import consoleToken from '../lib/auth/consoleToken';
+import { useEffect } from 'react';
 
 export default function page() {
-	pipe(
-		useSearchParams().get('code') as string,
-		generateBody,
-		getToken,
-		consoleToken
-	);
+	const startValue = useSearchParams().get('code') as string
+	useEffect(() => {
+		pipe(
+			startValue,
+			generateBody,
+			getToken,
+			consoleToken
+		);
+	}, [startValue]);
 
 	return <div>Callback page</div>;
 }
