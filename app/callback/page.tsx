@@ -1,22 +1,16 @@
 'use client';
 
-import { useRouter } from 'next/router';
-import getToken from '../lib/auth/getToken';
+import getToken from './getToken';
 import { useSearchParams } from 'next/navigation';
 import { pipe } from 'fp-ts/lib/function';
-import generateBody from '../lib/auth/generateBody';
-import consoleToken from '../lib/auth/consoleToken';
+import generateBody from './generateBody';
 import { useEffect } from 'react';
 
 export default function page() {
-	const startValue = useSearchParams().get('code') as string
+	const startValue = useSearchParams().get('code') as string;
+
 	useEffect(() => {
-		pipe(
-			startValue,
-			generateBody,
-			getToken,
-			consoleToken
-		);
+		pipe(startValue, generateBody, getToken);
 	}, [startValue]);
 
 	return <div>Callback page</div>;
