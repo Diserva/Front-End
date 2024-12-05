@@ -17,4 +17,14 @@ export const getTokenResult = z.object({
 	token_type: z.string()
 });
 
+export const UserSchema = z.object({
+	avatar: z.string(),
+	discordId: z.string(),
+	globalName: z.string(),
+	locale: z.string(),
+	permission: z.string(),
+	username: z.string()
+});
+
 export type getTokenResultType = z.infer<typeof getTokenResult>;
+export type UserType = z.infer<typeof UserSchema>;

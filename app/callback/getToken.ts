@@ -10,19 +10,9 @@ export default async function getToken(body: string): Promise<string> {
 
 	const token = data?.access_token;
 
-	// const response = await fetch('https://discord.com/api/oauth2/token', {
-	// 	headers: {
-	// 		'Content-Type': 'application/x-www-form-urlencoded'
-	// 	},
-	// 	body
-	// });
-
-	// const data = await response.json();
-	// const token = data.access_token;
-
 	console.log({ token });
 
-	if (!token) {
+	if (!token || error) {
 		throw 'Не змогли отримати ваш токен. Вийшла якась помилочка' + error;
 	} else {
 		return token;
