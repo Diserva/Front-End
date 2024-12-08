@@ -8,6 +8,8 @@ export async function getUser(asyncToken: Promise<string>) {
 		serverApi.endpoints.getUserByNewToken.initiate(await asyncToken)
 	);
 
+	console.log({ token: await asyncToken, data: data });
+
 	return UserSchema.parse(data);
 }
 

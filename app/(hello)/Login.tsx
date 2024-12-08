@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Button from './Button';
+import Button from '../components/utils/Button';
 
 export default function Login() {
 	const [discordAuthUrl, setDiscordAuthUrl] = useState('');
@@ -12,7 +12,7 @@ export default function Login() {
 
 	return (
 		<a href={discordAuthUrl}>
-			<Button>Login</Button>
+			<Button className='px-14'>Login</Button>
 		</a>
 	);
 }

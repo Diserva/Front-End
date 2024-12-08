@@ -5,14 +5,12 @@ import AuthProtectionProvider from '../lib/providers/AuthProtectionProvider';
 
 export default function layout({ children }: { children: ReactNode }) {
 	return (
-		// <AuthProtectionProvider>
-			<main className='flex flex-col items-center'>
-				<Header />
-				<div className=' w-full py-8 flex flex-col items-center min-h-[500px]'>
-					{children}
-				</div>
-				<Footer />
-			</main>
-		// </AuthProtectionProvider>
+		<main className='flex flex-col items-center'>
+			<Header />
+			<div className=' w-11/12 py-8 flex flex-col items-center min-h-[500px]'>
+				{children}
+			</div>
+			<Footer />
+		</main>
 	);
 }

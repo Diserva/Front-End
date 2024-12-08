@@ -15,7 +15,8 @@ export default {
 				icon: '#757575',
 				iconHovered: '#a8a7a7',
 				accent: '#4285F4',
-				secondary: '#767676'
+				secondary: '#767676',
+				blueButtonHover: '#8EB6F8'
 			}
 		}
 	},
