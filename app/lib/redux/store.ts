@@ -1,13 +1,11 @@
 import { discordApi } from './discordApi';
 import { configureStore } from '@reduxjs/toolkit';
 import userSlice from './userSlice';
-import authSlice from './authSlice';
 import { serverApi } from './serverApi';
 
 export const store = configureStore({
 	reducer: {
 		user: userSlice,
-		auth: authSlice,
 		[discordApi.reducerPath]: discordApi.reducer,
 		[serverApi.reducerPath]: serverApi.reducer
 	},

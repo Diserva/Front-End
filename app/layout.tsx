@@ -1,6 +1,8 @@
 import clsx from 'clsx';
 import { inter } from './lib/fonts';
 import ReduxProvider from './lib/providers/ReduxProvider';
+import { CookiesProvider } from 'next-client-cookies/server';
+import './globals.css';
 import AuthProtectionProvider from './lib/providers/AuthProtectionProvider';
 
 export default function RootLayout({
@@ -9,12 +11,14 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang='en'>
-			<ReduxProvider>
-				<AuthProtectionProvider>
-					<body className={clsx(inter)}>{children}</body>
-				</AuthProtectionProvider>
-			</ReduxProvider>
+		<html lang='uk'>
+			<CookiesProvider>
+				<ReduxProvider>
+					<AuthProtectionProvider>
+						<body className={clsx(inter, 'bg-mainBg')}>{children}</body>
+					</AuthProtectionProvider>
+				</ReduxProvider>
+			</CookiesProvider>
 		</html>
 	);
 }

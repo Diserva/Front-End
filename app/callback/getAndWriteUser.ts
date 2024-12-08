@@ -1,22 +1,16 @@
-import { UserSchema } from '../lib/definitions/apiRequests';
+import { UserSchema, UserType } from '../lib/definitions/apiRequests';
 import { serverApi } from '../lib/redux/serverApi';
 import { store } from '../lib/redux/store';
-import { writeUser } from '../lib/redux/userSlice';
+import { writeAndLoginUser } from '../lib/redux/userSlice';
 
-export default async function getAndWriteUser(asyncToken: Promise<string>) {
-	const token = await asyncToken;
-
-	const { data } = await store.dispatch(
-		serverApi.endpoints.getUserByToken.initiate(token)
+export async function getUser(asyncToken: Promise<string>) {
+	const { data, status } = await store.dispatch(
+		serverApi.endpoints.getUserByNewToken.initiate(await asyncToken)
 	);
 
-	const checkedData = UserSchema.parse(data);
+	return UserSchema.parse(data);
+}
 
-	console.log({ checkedData });
-
-	store.dispatch(writeUser(checkedData));
-
-	console.log({
-		store: store.getState()
-	});
+export async function writeUserInReduxAndLogin(data: Promise<UserType>) {
+	store.dispatch(writeAndLoginUser(await data));
 }
