@@ -9,7 +9,7 @@ export const bodySchema = z.object({
 	scope: z.literal('identify+guilds')
 });
 
-export const getTokenResult = z.object({
+export const getUserByTokenResultSchema = z.object({
 	access_token: z.string(),
 	expires_in: z.number(),
 	refresh_token: z.string(),
@@ -26,5 +26,20 @@ export const UserSchema = z.object({
 	username: z.string()
 });
 
-export type getTokenResultType = z.infer<typeof getTokenResult>;
+export const GuildsSchema = z.array(
+	z.object({
+		id: z.string(),
+		name: z.string(),
+		icon: z.string(),
+		banner: z.string(),
+		permissions: z.number(),
+		approximate_member_count: z.number(),
+		isBot: z.boolean()
+	})
+);
+
+export type getUserByTokenResultType = z.infer<
+	typeof getUserByTokenResultSchema
+>;
 export type UserType = z.infer<typeof UserSchema>;
+export type GuildsType = z.infer<typeof GuildsSchema>;

@@ -21,8 +21,7 @@ function useDataHandler() {
 		if (data) {
 			store.dispatch(writeAndLoginUser(data));
 			setOutput(<GoIn />);
-		}
-		if (isError) {
+		} else if (isError) {
 			setOutput(<Login />);
 		}
 	}, [data, isError]);
@@ -35,7 +34,7 @@ export default function page() {
 
 	return (
 		<div className='w-full flex flex-col items-center justify-center gap-8 h-screen'>
-			<h1 className='text-4xl text-white '>Nice to meet you!</h1>
+			<h1 className='text-4xl text-white '>Раді бачити тебе!</h1>
 			{output}
 		</div>
 	);

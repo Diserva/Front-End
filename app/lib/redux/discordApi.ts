@@ -1,11 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query';
-import { getTokenResultType } from '../definitions/apiRequests';
+import { getUserByTokenResultSchema } from '../definitions/apiRequests';
+import { validate } from './utils';
 
 export const discordApi = createApi({
 	reducerPath: 'discordApi',
-	baseQuery: fetchBaseQuery({ baseUrl: 'fds' }),
+	baseQuery: fetchBaseQuery({
+		baseUrl: 'https://discord.com/api/oauth2/token'
+	}),
 	endpoints: builder => ({
-		getToken: builder.query<getTokenResultType, string>({
+		getToken: builder.query({
 			query: body => ({
 				method: 'POST',
 				url: 'https://discord.com/api/oauth2/token',
@@ -13,9 +16,8 @@ export const discordApi = createApi({
 					'Content-Type': 'application/x-www-form-urlencoded'
 				},
 				body
-			})
+			}),
+			transformResponse: validate(getUserByTokenResultSchema)
 		})
 	})
 });
-
-// export const { useGetToken } = discordApi;
