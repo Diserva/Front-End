@@ -1,3 +1,4 @@
+import dashBoardSlice from './DashboardSlice';
 import { discordApi } from './discordApi';
 import { configureStore } from '@reduxjs/toolkit';
 import userSlice from './userSlice';
@@ -6,6 +7,7 @@ import { serverApi } from './serverApi';
 export const store = configureStore({
 	reducer: {
 		user: userSlice,
+		dashboard: dashBoardSlice,
 		[discordApi.reducerPath]: discordApi.reducer,
 		[serverApi.reducerPath]: serverApi.reducer
 	},

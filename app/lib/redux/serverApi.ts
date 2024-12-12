@@ -1,39 +1,36 @@
+import { cookies } from 'next/headers';
 import {
-	getUserByTokenResultSchema,
-	getUserByTokenResultType,
 	GuildsSchema,
 	GuildsType,
 	UserSchema
 } from './../definitions/apiRequests';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { UserType } from '../definitions/apiRequests';
-import { Schema, z, ZodSchema } from 'zod';
-import { validate } from './utils';
+import { prepareHeaders, validate } from './utils';
 
 export const serverApi = createApi({
 	reducerPath: 'serverApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: process.env.NEXT_PUBLIC_BACKEND_URI
+		baseUrl: process.env.NEXT_PUBLIC_BACKEND_URI,
+		credentials: 'include',
+		prepareHeaders
 	}),
+
 	endpoints: builder => ({
 		getUserByNewToken: builder.query<UserType, string>({
-			query: token => ({
-				url: `/auth/discord/${token}`,
-				credentials: 'include'
-			}),
+			query: token => `/auth/discord/${token}`,
 			transformResponse: validate(UserSchema)
 		}),
 		getUserWithExistingToken: builder.query<UserType, undefined>({
-			query: () => ({
-				url: '/auth/',
-				credentials: 'include'
-			}),
+			query: () => '/auth/',
 			transformResponse: validate(UserSchema)
 		}),
-		getGuildsData: builder.query<GuildsType, undefined>({
-			query: () => ({
+		getGuildsData: builder.query<GuildsType, RequestCredentials>({
+			query: cookies => ({
 				url: '/user/guilds',
-				credentials: 'include'
+				headers: {
+					Cookie: cookies
+				}
 			}),
 			transformResponse: validate(GuildsSchema)
 		})

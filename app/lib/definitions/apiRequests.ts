@@ -30,8 +30,8 @@ export const GuildsSchema = z.array(
 	z.object({
 		id: z.string(),
 		name: z.string(),
-		icon: z.string(),
-		banner: z.string(),
+		icon: z.string().nullable(),
+		banner: z.string().nullable(),
 		permissions: z.number(),
 		approximate_member_count: z.number(),
 		isBot: z.boolean()

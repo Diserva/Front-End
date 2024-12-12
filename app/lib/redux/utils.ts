@@ -1,19 +1,20 @@
-import {
-	BaseQueryApi,
-	FetchArgs,
-	fetchBaseQuery
-} from '@reduxjs/toolkit/query';
+import { cookies, headers } from 'next/headers';
 import { z, ZodError, ZodSchema } from 'zod';
+import { GuildsType } from '../definitions/apiRequests';
 
-export function validate(schema: ZodSchema) {
+type TransformFunction = <T>(data: T) => T;
+
+export function validate(schema: ZodSchema, transformData?: TransformFunction) {
 	return (response: unknown): z.infer<typeof schema> => {
 		const { success, data, error } = schema.safeParse(response);
 
-		if (success) {
-			return data;
-		} else {
+		if (!success) {
 			handleRequestError<ZodError>(error);
 		}
+
+		return typeof transformData === 'function'
+			? transformData<z.infer<typeof schema>>(data)
+			: data;
 	};
 }
 
@@ -27,27 +28,23 @@ export function handleRequestError<SpecificError extends Error>(
 	throw errorEntity;
 }
 
-export async function createErrorHandlingWrapperForBaseQuery() {
-      
+export function sortArrayByIsBot(array: GuildsType) {
+	return array.sort((a, b) => Number(a.isBot) - Number(b.isBot));
 }
 
-export async function createBaseQueryWithErrorHandler({
 
-	args,
-	api,
-	extraOptions
-}: {
-	args: string | FetchArgs;
-	api: BaseQueryApi;
-	extraOptions: Record<string, string>;
-}) {
-	try {
-		const result = await fetchBaseQuery({ baseUrl: 'api' })(
-			args,
-			api,
-			extraOptions
-		);
+export async function prepareHeaders(headers: Headers) {
+	// const cookieStore = await cookies();
 
-		return result;
-	} catch (error) {}
+	// const cookiesArray = cookieStore.getAll();
+
+	// if (cookiesArray.length > 0) {
+	// 	for (const { name, value } of cookiesArray) {
+	// 		headers.set(name, value);
+	// 	}
+	// } else {
+	// 	console.warn('found no cookies');
+	// }
+
+	return headers;
 }
