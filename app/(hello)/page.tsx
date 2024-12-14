@@ -5,7 +5,7 @@ import { useGetUserWithExistingTokenQuery } from '../lib/redux/serverApi';
 import { useEffect, useState } from 'react';
 import GoIn from './GoIn';
 import { store } from '../lib/redux/store';
-import { writeAndLoginUser } from '../lib/redux/userSlice';
+import { writeUser } from '../lib/redux/userSlice';
 import Button from '../components/utils/Button';
 
 function LoadingBtn() {
@@ -18,7 +18,7 @@ function useDataHandler() {
 
 	useEffect(() => {
 		if (data) {
-			store.dispatch(writeAndLoginUser(data));
+			store.dispatch(writeUser(data));
 			setOutput(<GoIn />);
 		} else if (isError) {
 			setOutput(<Login />);

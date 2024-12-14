@@ -1,12 +1,15 @@
 'use client';
 
-import getToken from './getToken';
 import { useSearchParams } from 'next/navigation';
 import { pipe } from 'fp-ts/lib/function';
-import generateBody from './generateBody';
 import { useEffect } from 'react';
-import { getUser, writeUserInReduxAndLogin } from './getAndWriteUser';
-import onSuccess from './onSuccess';
+import {
+	getToken,
+	generateBody,
+	getUser,
+	onSuccess,
+	writeUserInRedux
+} from './page-utils';
 
 export default function page() {
 	const startValue = useSearchParams().get('code') as string;
@@ -17,7 +20,7 @@ export default function page() {
 			generateBody,
 			getToken,
 			getUser,
-			writeUserInReduxAndLogin,
+			writeUserInRedux,
 			onSuccess
 		);
 	}, [startValue]);
