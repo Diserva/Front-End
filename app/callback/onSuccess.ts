@@ -1,8 +1,7 @@
-'use client';
-
-import { QueryStatus } from '@reduxjs/toolkit/query';
-import { redirect } from 'next/navigation';
+'use server'
+import { login } from '../lib/actions/auth';
 
 export default async function onSuccess() {
-	redirect('/main');
+	'use server';
+	login();
 }

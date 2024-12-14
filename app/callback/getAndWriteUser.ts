@@ -8,6 +8,8 @@ export async function getUser(asyncToken: Promise<string>): Promise<UserType> {
 		serverApi.endpoints.getUserByNewToken.initiate(await asyncToken)
 	);
 
+	console.log({ data });
+
 	if (!data || error) {
 		throw error;
 	} else {

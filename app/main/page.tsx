@@ -6,7 +6,8 @@ import { store } from '../lib/redux/store';
 import { handleRequestError } from '../lib/redux/utils';
 import SearchBar from './SearchBar';
 
-async function InitReduxStore() {
+export default async function page() {
+	// переписати на pipe
 	const cookieStore = await cookies();
 
 	const { data, isError, error } = await store.dispatch(
@@ -15,19 +16,10 @@ async function InitReduxStore() {
 		)
 	);
 
-	console.log("life after")
-
-	if (isError) {
-		console.log(data, error);
-		handleRequestError(error as Error);
-	} else if (data) {
-		console.log({ data });
-		store.dispatch(writeGuilds(data));
+	if (error) {
+		throw 'something is wrong' + error;
 	}
-}
 
-export default function page() {
-	InitReduxStore();
 	return (
 		<main className='w-full'>
 			<SearchBar />

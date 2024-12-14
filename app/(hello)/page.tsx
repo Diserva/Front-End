@@ -14,7 +14,6 @@ function LoadingBtn() {
 
 function useDataHandler() {
 	const [output, setOutput] = useState(<LoadingBtn />);
-
 	const { data, isError } = useGetUserWithExistingTokenQuery(undefined);
 
 	useEffect(() => {

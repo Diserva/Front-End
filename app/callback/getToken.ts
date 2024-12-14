@@ -9,7 +9,8 @@ export default async function getToken(body: string): Promise<string> {
 	const token = data?.access_token;
 
 	if (!token || error) {
-		throw 'Не змогли отримати ваш токен. Видає помилку' + error;
+		console.error(error);
+		throw 'Не змогли отримати ваш токен. Видає помилку';
 	} else {
 		return token;
 	}

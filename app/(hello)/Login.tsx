@@ -10,6 +10,8 @@ export default function Login() {
 		setDiscordAuthUrl(process.env.NEXT_PUBLIC_DISCORD_AUTH_URL as string);
 	}, []);
 
+	console.log({ discordAuthUrl });
+
 	return (
 		<a href={discordAuthUrl}>
 			<Button className='px-14'>Login</Button>
