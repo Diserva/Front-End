@@ -1,7 +1,5 @@
-'use server'
-import { login } from '../lib/actions/auth';
+import { redirect } from 'next/navigation';
 
 export default async function onSuccess() {
-	'use server';
-	login();
+	redirect('/');
 }
