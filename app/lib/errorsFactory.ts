@@ -58,3 +58,12 @@ export function throwIfTokenError(
 		throw error.returnError();
 	}
 }
+
+export function throwIfGetUserError( // Поки що виглядає так само, як і throwIfTokenError, але після я додав description, або об'єднаю їх.
+	fetchError: FetchBaseQueryError | SerializedError | undefined
+) {
+	if (fetchError) {
+		const error = new RtkQueryError(fetchError);
+		throw error.returnError();
+	}
+}

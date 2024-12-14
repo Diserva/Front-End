@@ -8,3 +8,10 @@ export async function logut() {
 	cookieStore.delete('jwt');
 	redirect('/');
 }
+
+export async function isLogined() {
+	const cookieStore = await cookies();
+	const auth = cookieStore.get('jwt');
+
+	return Boolean(auth);
+}

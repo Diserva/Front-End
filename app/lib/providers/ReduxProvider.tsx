@@ -1,9 +1,20 @@
-"use client"
+'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, useRef } from 'react';
 import { Provider } from 'react-redux';
-import { store } from '../redux/store';
+import { Store } from '@reduxjs/toolkit';
 
-export default function ReduxProvider({ children }: { children: ReactNode }) {
-	return <Provider store={store}>{children}</Provider>;
+export default function StoreProvider<T>({
+	getStore,
+	initState,
+	children
+}: {
+	getStore: (initState: T) => Store;
+	initState: T;
+	children: ReactNode;
+}) {
+	const storeRef = useRef<Store>();
+	storeRef.current ??= getStore(initState);
+
+	return <Provider store={storeRef.current}>{children}</Provider>;
 }

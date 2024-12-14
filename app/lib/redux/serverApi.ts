@@ -21,8 +21,13 @@ export const serverApi = createApi({
 			query: token => `/auth/discord/${token}`,
 			transformResponse: validate(UserSchema)
 		}),
-		getUserWithExistingToken: builder.query<UserType, undefined>({
-			query: () => '/auth/',
+		getUserWithExistingToken: builder.query<UserType, RequestCredentials>({
+			query: cookies => ({
+				url: '/auth/',
+				headers: {
+					Cookie: cookies
+				}
+			}),
 			transformResponse: validate(UserSchema)
 		}),
 		getGuildsData: builder.query<GuildsType, RequestCredentials>({
@@ -37,5 +42,4 @@ export const serverApi = createApi({
 	})
 });
 
-export const { useGetUserWithExistingTokenQuery, useGetGuildsDataQuery } =
-	serverApi;
+export const { useGetGuildsDataQuery } = serverApi;
