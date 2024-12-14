@@ -16,7 +16,8 @@ export default {
 				iconHovered: '#a8a7a7',
 				accent: '#4285F4',
 				secondary: '#767676',
-				blueButtonHover: '#8EB6F8'
+				blueButtonHover: '#8EB6F8',
+				lightBg: '#5A5A5A'
 			}
 		}
 	},

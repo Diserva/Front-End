@@ -26,18 +26,19 @@ export const UserSchema = z.object({
 	username: z.string()
 });
 
-export const GuildsSchema = z.array(
-	z.object({
-		id: z.string(),
-		name: z.string(),
-		icon: z.string().nullable(),
-		banner: z.string().nullable(),
-		permissions: z.number(),
-		approximate_member_count: z.number(),
-		isBot: z.boolean()
-	})
-);
+export const GuildShema = z.object({
+	id: z.string(),
+	name: z.string(),
+	icon: z.string().nullable(),
+	banner: z.string().nullable(),
+	permissions: z.number(),
+	approximate_member_count: z.number(),
+	isBot: z.boolean()
+});
+
+export const GuildsSchema = z.array(GuildShema);
 
 export type TokenType = z.infer<typeof TokenSchema>;
 export type UserType = z.infer<typeof UserSchema>;
 export type GuildsType = z.infer<typeof GuildsSchema>;
+export type GuildType = z.infer<typeof GuildShema>;

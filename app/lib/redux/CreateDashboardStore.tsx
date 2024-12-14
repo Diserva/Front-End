@@ -3,16 +3,14 @@
 import { configureStore, createSlice, Store } from '@reduxjs/toolkit';
 import { useDispatch, useSelector, useStore } from 'react-redux';
 import { GuildsType, UserType } from '../definitions/apiRequests';
-
-// export type DashboardInitState = {
-// 	guilds: GuildsType;
-// };
+import { RootState } from './store';
 
 export function makeDashboardSlice(guilds: GuildsType) {
 	return createSlice({
 		name: 'user',
 		initialState: {
 			allGuilds: guilds,
+			filteredGuilds: guilds,
 			page: 1,
 			amoutOfServers: guilds.length
 		},
@@ -20,20 +18,5 @@ export function makeDashboardSlice(guilds: GuildsType) {
 	});
 }
 
-export function makeDashboardStore(params: GuildsType) {
-	return configureStore({
-		reducer: {
-			user: makeDashboardSlice(params).reducer
-		}
-	});
-}
-
-export type AppStore = ReturnType<typeof makeDashboardStore>;
-export type RootState = ReturnType<AppStore['getState']>;
-export type AppDispatch = AppStore['dispatch'];
-
-export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
-export const useAppSelector = useSelector.withTypes<RootState>();
-export const useAppStore = useStore.withTypes<AppStore>();
-
-export const selectUser = (state: RootState) => state.user;
+export const selectFilteredGuilds = (state: RootState) =>
+	state.dashboard.filteredGuilds
