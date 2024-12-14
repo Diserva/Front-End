@@ -5,6 +5,7 @@ import { store } from '../lib/redux/store';
 import { writeUser } from '../lib/redux/userSlice';
 import { redirect } from 'next/navigation';
 import { discordApi } from '../lib/redux/discordApi';
+import { throwIfTokenError } from '../lib/errorsFactory';
 
 export function generateBody(code: string) {
 	const body = new URLSearchParams(
@@ -28,12 +29,8 @@ export async function getToken(body: string): Promise<string> {
 
 	const token = data?.access_token;
 
-	if (!token || error) {
-		console.error(error);
-		throw 'Не змогли отримати ваш токен. Видає помилку';
-	} else {
-		return token;
-	}
+	throwIfTokenError(error);
+	return token;
 }
 
 export async function getUser(asyncToken: Promise<string>): Promise<UserType> {
