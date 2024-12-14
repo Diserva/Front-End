@@ -3,26 +3,13 @@
 import { useSearchParams } from 'next/navigation';
 import { pipe } from 'fp-ts/lib/function';
 import { useEffect } from 'react';
-import {
-	getToken,
-	generateBody,
-	getUser,
-	onSuccess,
-	writeUserInRedux
-} from './page-utils';
+import { getToken, generateBody, getUser, onSuccess } from './page-utils';
 
 export default function page() {
 	const startValue = useSearchParams().get('code') as string;
 
 	useEffect(() => {
-		pipe(
-			startValue,
-			generateBody,
-			getToken,
-			getUser,
-			writeUserInRedux,
-			onSuccess
-		);
+		pipe(startValue, generateBody, getToken, getUser, onSuccess);
 	}, [startValue]);
 
 	return (

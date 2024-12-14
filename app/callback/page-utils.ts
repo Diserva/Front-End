@@ -1,11 +1,8 @@
 import { bodySchema } from '../lib/definitions/apiRequests';
 import { UserType } from '../lib/definitions/apiRequests';
-import { serverApi } from '../lib/redux/serverApi';
-import { store } from '../lib/redux/store';
-import { writeUser } from '../lib/redux/userSlice';
 import { redirect } from 'next/navigation';
-import { discordApi } from '../lib/redux/discordApi';
-import { throwIfTokenError } from '../lib/errorsFactory';
+import { getTokenQuery } from '../lib/axios/discord';
+import { getUserByNewToken } from '../lib/axios/server';
 
 export function generateBody(code: string) {
 	const body = new URLSearchParams(
@@ -23,30 +20,22 @@ export function generateBody(code: string) {
 }
 
 export async function getToken(body: string): Promise<string> {
-	const { data, error } = await store.dispatch(
-		discordApi.endpoints.getToken.initiate(body)
-	);
-
+	const { data } = await getTokenQuery(body);
 	const token = data?.access_token;
 
-	throwIfTokenError(error);
+	console.log({ token });
+
 	return token;
 }
 
 export async function getUser(asyncToken: Promise<string>): Promise<UserType> {
-	const { data, error } = await store.dispatch(
-		serverApi.endpoints.getUserByNewToken.initiate(await asyncToken)
-	);
+	console.log(await asyncToken);
 
-	if (!data || error) {
-		throw error;
-	} else {
-		return data;
-	}
-}
+	const { data } = await getUserByNewToken(await asyncToken);
 
-export async function writeUserInRedux(data: Promise<UserType>) {
-	store.dispatch(writeUser(await data));
+	console.log(data);
+
+	return data;
 }
 
 export async function onSuccess() {
