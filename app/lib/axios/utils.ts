@@ -1,17 +1,15 @@
 import { z, ZodSchema } from 'zod';
+import { returnValidationError } from './errors';
 
-type TransformFunction = <T>(data: T) => T;
-export function validate(schema: ZodSchema, transformData?: TransformFunction) {
+export function validate(schema: ZodSchema) {
 	return (response: unknown): z.infer<typeof schema> => {
-		const { success, data } = schema.safeParse(response);
+		const { success, data, error } = schema.safeParse(response);
 
 		if (!success) {
-			throw 'error';
+			throw returnValidationError(error);
 		}
 
-		return typeof transformData === 'function'
-			? transformData<z.infer<typeof schema>>(data)
-			: data;
+		return data;
 	};
 }
 
