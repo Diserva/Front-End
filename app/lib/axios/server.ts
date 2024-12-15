@@ -1,24 +1,23 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 // import { validate } from './utils';
-import { GuildsType, UserType } from '../definitions/apiRequests';
+import {
+	GuildsSchema,
+	GuildsType,
+	UserSchema,
+	UserType
+} from '../definitions/apiRequests';
+import { json, validate } from './utils';
 
 const server = axios.create({
 	baseURL: process.env.NEXT_PUBLIC_BACKEND_URI
 });
 
-server.interceptors.response.use(
-	data => data,
-	error => {
-		console.error(error);
-
-		throw error;
-	}
-);
+// const selectData = (response: AxiosResponse) => response.data;
 
 export const getUserByNewToken = (token: string) =>
 	server<UserType>({
 		url: `/auth/discord/${token}`,
-		// transformResponse: validate(UserSchema)
+		transformResponse: json(validate(UserSchema)),
 		withCredentials: true
 	});
 
@@ -27,8 +26,8 @@ export const getUserWithExistingToken = (cookies: RequestCredentials) =>
 		url: '/auth/',
 		headers: {
 			Cookie: cookies
-		}
-		// transformResponse: validate(UserSchema)
+		},
+		transformResponse: json(validate(UserSchema))
 	});
 
 export const getGuilds = (cookies: RequestCredentials) =>
@@ -36,6 +35,6 @@ export const getGuilds = (cookies: RequestCredentials) =>
 		url: '/user/guilds',
 		headers: {
 			Cookie: cookies
-		}
-		// transformResponse: validate(GuildsSchema)
+		},
+		transformResponse: json(validate(GuildsSchema))
 	});

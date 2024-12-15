@@ -1,7 +1,4 @@
-import { SerializedError } from '@reduxjs/toolkit';
-import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
-import { extend } from 'fp-ts/lib/pipeable';
-import { z, ZodError } from 'zod';
+import { z } from 'zod';
 
 const ErrorSchema = z.object({
 	name: z.string(),
@@ -12,7 +9,7 @@ const ErrorSchema = z.object({
 
 export type ErrorFielsType = z.infer<typeof ErrorSchema>;
 
-class GeneralError extends Error {
+export class GeneralError extends Error {
 	constructor(generalError: unknown) {
 		super();
 
@@ -33,37 +30,7 @@ class GeneralError extends Error {
 			throw parseError;
 		}
 	}
-	returnError() {
+	throwError() {
 		throw this;
-	}
-}
-
-export class SafeZodError extends GeneralError {
-	constructor(zodError: ZodError) {
-		super(zodError);
-	}
-}
-
-export class RtkQueryError extends GeneralError {
-	constructor(fetchError: FetchBaseQueryError | SerializedError | undefined) {
-		super(fetchError);
-	}
-}
-
-export function throwIfTokenError(
-	fetchError: FetchBaseQueryError | SerializedError | undefined
-) {
-	if (fetchError) {
-		const error = new RtkQueryError(fetchError);
-		throw error.returnError();
-	}
-}
-
-export function throwIfGetUserError( // Поки що виглядає так само, як і throwIfTokenError, але після я додав description, або об'єднаю їх.
-	fetchError: FetchBaseQueryError | SerializedError | undefined
-) {
-	if (fetchError) {
-		const error = new RtkQueryError(fetchError);
-		throw error.returnError();
 	}
 }

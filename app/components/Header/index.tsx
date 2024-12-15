@@ -4,8 +4,8 @@ import Profile from './Profile';
 
 export default function Header() {
 	return (
-		<section className='h-[72px]'>
-			<header className='w-full bg-navLayout flex justify-between py-4 px-8 fixed top-0 left-0'>
+		<section className='h-[72px] '>
+			<header className='w-full bg-navLayout flex justify-between py-4 px-8 fixed top-0 left-0 z-50'>
 				<Logo />
 				<Navigation />
 				<Profile />

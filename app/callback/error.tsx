@@ -14,7 +14,7 @@ export default function error({
 			<h2>Authorization went wrong!</h2>
 			<p>{error.digest}</p>
 
-			{/* <button>try again!</button> */}
+			<button onClick={reset}>try again!</button>
 		</main>
 	);
 }

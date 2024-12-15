@@ -1,7 +1,6 @@
 'use client';
 
-import { configureStore, createSlice, Store } from '@reduxjs/toolkit';
-import { useDispatch, useSelector, useStore } from 'react-redux';
+import { configureStore, createSlice } from '@reduxjs/toolkit';
 import { UserType } from '../definitions/apiRequests';
 import { RootState } from './store';
 

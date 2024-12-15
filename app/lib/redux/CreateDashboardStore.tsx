@@ -1,8 +1,7 @@
 'use client';
 
-import { configureStore, createSlice, Store } from '@reduxjs/toolkit';
-import { useDispatch, useSelector, useStore } from 'react-redux';
-import { GuildsType, UserType } from '../definitions/apiRequests';
+import { createSlice } from '@reduxjs/toolkit';
+import { GuildsType } from '../definitions/apiRequests';
 import { RootState } from './store';
 
 export function makeDashboardSlice(guilds: GuildsType) {

@@ -1,15 +1,16 @@
 'use client';
 
+import clsx from 'clsx';
 import { GuildType } from '../lib/definitions/apiRequests';
 import { RiUser3Line } from 'react-icons/ri';
 
 function Background({ guild }: { guild: GuildType }) {
 	const bgSrc = guild.banner
-		? `https://cdn.discordapp.com/banners/${guild.id}/${guild.banner}?size=480`
+		? `https://cdn.discordapp.com/banners/${guild.id}/${guild.banner}?size=1024`
 		: 'https://i.pinimg.com/originals/b6/07/6b/b6076bb4df9a3532e01ad33b4e563643.jpg';
 
 	return (
-		<section className='w-full  relative flex justify-center items-center'>
+		<section className='w-full relative flex justify-center items-center'>
 			<div className='border-rounded overflow-hidden'>
 				<img
 					src={bgSrc}
@@ -47,20 +48,24 @@ function AmountOfUsers({ guild }: { guild: GuildType }) {
 			<span className='text-white'>
 				{`${displayedNum}${prefix}`.toUpperCase()}
 			</span>
-			<RiUser3Line color='white' width={10} height={10}/>
+			<RiUser3Line color='white' width={10} height={10} />
 		</section>
 	);
 }
 
 function Title({ name }: { name: string }) {
-	return <h3 className='text-white text-lg'>{name}</h3>;
+	return <h3 className='text-white text-lg max-lg:text-base'>{name}</h3>;
 }
 
 export default function Guild({ guild }: { guild: GuildType }) {
 	return (
-		<section className='flex flex-col gap-2 group'>
+		<section
+			className={clsx(
+				'flex flex-col gap-2 group max-md:w-9/12 max-sm:w-10/12',
+				{ 'opacity-80': !guild.isBot }
+			)}>
 			<Background guild={guild} />
-			<section className='flex justify-between'>
+			<section className='flex justify-between items-center'>
 				<Title name={guild.name} />
 				<AmountOfUsers guild={guild} />
 			</section>

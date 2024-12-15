@@ -5,7 +5,7 @@ import { pipe } from 'fp-ts/lib/function';
 import { useEffect } from 'react';
 import { getToken, generateBody, getUser, onSuccess } from './page-utils';
 
-export default function page() {
+export default function Page() {
 	const startValue = useSearchParams().get('code') as string;
 
 	useEffect(() => {
