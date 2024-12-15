@@ -9,8 +9,8 @@ function Background({ guild }: { guild: GuildType }) {
 		: 'https://i.pinimg.com/originals/b6/07/6b/b6076bb4df9a3532e01ad33b4e563643.jpg';
 
 	return (
-		<section className='w-full h-[200px]  relative flex justify-center items-center'>
-			<div className='absolute top-0 left-0 border-rounded  overflow-hidden'>
+		<section className='w-full  relative flex justify-center items-center'>
+			<div className='border-rounded overflow-hidden'>
 				<img
 					src={bgSrc}
 					alt=''
@@ -18,11 +18,13 @@ function Background({ guild }: { guild: GuildType }) {
 				/>
 			</div>
 
-			<img
-				src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.webp`}
-				alt=''
-				className='z-10 rounded-full [box-shadow:0_4px_8px_rgba(0,0,0,0.84)]'
-			/>
+			<div className='absolute w-full h-full top-0 left-0 flex justify-center items-center'>
+				<img
+					src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.webp`}
+					alt=''
+					className='z-10 rounded-full w-1/3'
+				/>
+			</div>
 		</section>
 	);
 }
@@ -41,9 +43,11 @@ function AmountOfUsers({ guild }: { guild: GuildType }) {
 	}
 
 	return (
-		<section className='flex justify-between p-1 bg-lightBg rounded-[4px] items-center gap-1'>
-			<span className='text-white'>{`${displayedNum}${prefix}`.toUpperCase()}</span>
-			<RiUser3Line color='white' />
+		<section className='flex justify-between p-1 bg-lightBg rounded-[4px] items-center gap-1 max-h-5'>
+			<span className='text-white'>
+				{`${displayedNum}${prefix}`.toUpperCase()}
+			</span>
+			<RiUser3Line color='white' width={10} height={10}/>
 		</section>
 	);
 }

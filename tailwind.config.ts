@@ -17,7 +17,8 @@ export default {
 				accent: '#4285F4',
 				secondary: '#767676',
 				blueButtonHover: '#8EB6F8',
-				lightBg: '#5A5A5A'
+				lightBg: '#5A5A5A',
+				borderColor: '#424242'
 			}
 		}
 	},

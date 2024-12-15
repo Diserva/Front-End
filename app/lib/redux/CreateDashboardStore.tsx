@@ -19,4 +19,6 @@ export function makeDashboardSlice(guilds: GuildsType) {
 }
 
 export const selectFilteredGuilds = (state: RootState) =>
-	state.dashboard.filteredGuilds
+	state.dashboard.filteredGuilds;
+
+export const selectDashboard = (state: RootState) => state.dashboard;
