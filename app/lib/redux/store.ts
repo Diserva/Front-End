@@ -3,10 +3,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { GuildsType, UserType } from '../definitions/apiRequests';
 import { makeUserSlice } from './CreateUserStore';
-import { makeDashboardSlice } from './CreateDashboardStore';
+import { dashboardSlice } from './CreateDashboardStore';
 import { useDispatch, useSelector, useStore } from 'react-redux';
 
-type initialValues = {
+export type StoreInitState = {
 	userInitState: UserType;
 	dashboardInitState: GuildsType;
 };
@@ -14,14 +14,15 @@ type initialValues = {
 export function makeStore({
 	dashboardInitState,
 	userInitState
-}: initialValues) {
+}: StoreInitState) {
 	return configureStore({
 		reducer: {
 			user: makeUserSlice(userInitState).reducer,
-			dashboard: makeDashboardSlice(dashboardInitState).reducer
+			dashboard: dashboardSlice.reducer
 		}
 	});
 }
+
 
 export type AppStore = ReturnType<typeof makeStore>;
 export type RootState = ReturnType<AppStore['getState']>;

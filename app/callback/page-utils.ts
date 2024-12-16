@@ -23,8 +23,6 @@ export async function getToken(body: string): Promise<string> {
 	const { data } = await getTokenQuery(body);
 	const token = data?.access_token;
 
-	console.log({ token });
-
 	return token;
 }
 
@@ -32,8 +30,6 @@ export async function getUser(asyncToken: Promise<string>): Promise<UserType> {
 	console.log(await asyncToken);
 
 	const { data } = await getUserByNewToken(await asyncToken);
-
-	console.log(data);
 
 	return data;
 }

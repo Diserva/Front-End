@@ -1,5 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
-// import { validate } from './utils';
+import axios from 'axios';
 import {
 	GuildsSchema,
 	GuildsType,
@@ -11,8 +10,6 @@ import { json, validate } from './utils';
 const server = axios.create({
 	baseURL: process.env.NEXT_PUBLIC_BACKEND_URI
 });
-
-// const selectData = (response: AxiosResponse) => response.data;
 
 export const getUserByNewToken = (token: string) =>
 	server<UserType>({
