@@ -6,7 +6,12 @@ export const pageAtom = atom(1);
 export const searchInputAtom = atom('');
 
 export const filteredGuildsAtom = atom(get => {
-	return get(guildsAtom);
+	const allGuilds = get(guildsAtom);
+	const searchInput = get(searchInputAtom);
+
+	return allGuilds?.filter(({ name }) =>
+		name.toLowerCase().includes(searchInput.toLowerCase())
+	);
 });
 export const amountOfServersAtom = atom(get => {
 	const guilds = get(guildsAtom);

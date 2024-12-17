@@ -4,12 +4,18 @@ import { IoIosSearch } from 'react-icons/io';
 import Button from '../components/utils/Button';
 import { useForm } from 'react-hook-form';
 import { useCallback } from 'react';
+import { useAtomCallback } from 'jotai/utils';
+import { searchInputAtom } from '../lib/jotai/dashboardAtoms';
+import { useAtom } from 'jotai';
 
 export default function SearchBar() {
-	const { register, handleSubmit } = useForm();
-	const onSubmit = useCallback((data: unknown) => {
-		console.log(data);
-	}, []);
+	type Fields = {
+		input: string;
+	};
+
+	const { register, handleSubmit } = useForm<Fields>();
+	const [_, setInput] = useAtom(searchInputAtom);
+	const onSubmit = useCallback((data: Fields) => setInput(data.input), []);
 
 	return (
 		<form
