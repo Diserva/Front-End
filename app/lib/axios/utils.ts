@@ -6,6 +6,8 @@ export function validate(schema: ZodSchema) {
 		const { success, data, error } = schema.safeParse(response);
 
 		if (!success) {
+			console.log({ response, success, error });
+
 			throw returnValidationError(error);
 		}
 
