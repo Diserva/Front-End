@@ -1,4 +1,5 @@
 import AdditionalInfo from './AdditionalInfo';
+import NavigatePages from './navPages';
 import RenderGuilds from './RenderGuilds';
 import SearchBar from './SearchBar';
 
@@ -8,6 +9,7 @@ export default async function page() {
 			<SearchBar />
 			<AdditionalInfo />
 			<RenderGuilds />
+			<NavigatePages />
 		</main>
 	);
 }

@@ -22,4 +22,7 @@
 	.shadow {
 		@apply [box-shadow:0_4px_8px_rgba(0,0,0,0.84)];
 	}
+	.page-section {
+		@apply flex w-6 h-6 items-center justify-center;
+	}
 }
