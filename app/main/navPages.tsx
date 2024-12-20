@@ -1,30 +1,71 @@
 'use client';
 
-import { useAtom } from 'jotai';
-import { ReactNode, useCallback } from 'react';
+import { useAtomValue, useSetAtom } from 'jotai';
 import { FaChevronLeft } from 'react-icons/fa';
 import { FaChevronRight } from 'react-icons/fa';
-import { pageAtom } from '../lib/jotai/dashboardAtoms';
+import {
+	decrementPageAtom,
+	incrementPageAtom,
+	maxPageAtom,
+	pageAtom
+} from '../lib/jotai/dashboardAtoms';
+import clsx from 'clsx';
+import { ReactNode } from 'react';
+
+function Btn({
+	disabled,
+	onCLick,
+	children
+}: {
+	disabled: boolean;
+	onCLick: () => void;
+	children: ReactNode;
+}) {
+	return (
+		<button
+			className={clsx('page-section rounded-[4px] bg-navLayout', {
+				'bg-lightBg': disabled
+			})}
+			onClick={onCLick}
+			disabled={disabled}>
+			{children}
+		</button>
+	);
+}
+
+function NavPrevPage() {
+	const decrement = useSetAtom(decrementPageAtom);
+	const disabled = useAtomValue(pageAtom) === 1;
+
+	return (
+		<Btn onCLick={decrement} disabled={disabled}>
+			<FaChevronLeft />
+		</Btn>
+	);
+}
+
+function NavNextPage() {
+	const increment = useSetAtom(incrementPageAtom);
+	const disabled = useAtomValue(pageAtom) === useAtomValue(maxPageAtom);
+
+	return (
+		<Btn onCLick={increment} disabled={disabled}>
+			<FaChevronRight />
+		</Btn>
+	);
+}
+
+function CurrentPage() {
+	const page = useAtomValue(pageAtom);
+	return <section className='page-section'>{page}</section>;
+}
 
 export default function NavigatePages() {
-	const [page, setPage] = useAtom(pageAtom);
-	const navLastPage = useCallback(() => setPage(prev => prev - 1), []);
-	const navNextPage = useCallback(() => setPage(prev => prev + 1), []);
 	return (
 		<section className='w-full flex justify-center text-white mt-11'>
-			<button
-				className='page-section rounded-[4px] bg-navLayout'
-				onClick={navLastPage}>
-				<FaChevronLeft />
-			</button>
-
-			<section className='page-section'>{page}</section>
-
-			<button
-				onClick={navNextPage}
-				className='page-section rounded-[4px] bg-navLayout'>
-				<FaChevronRight />
-			</button>
+			<NavPrevPage />
+			<CurrentPage />
+			<NavNextPage />
 		</section>
 	);
 }

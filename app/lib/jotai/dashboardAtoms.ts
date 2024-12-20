@@ -25,3 +25,14 @@ export const amountOfServersAtom = atom(get => {
 	const guilds = get(guildsAtom);
 	return guilds ? guilds.length : 0;
 });
+export const maxPageAtom = atom(get => {
+	const amountOfGuilds = get(filteredGuildsAtom)?.length;
+	return amountOfGuilds ? Math.ceil(amountOfGuilds / MAX_PAGE_LENGTH) : 1;
+});
+
+export const incrementPageAtom = atom(null, (get, set) =>
+	set(pageAtom, lastPage => lastPage + 1)
+);
+export const decrementPageAtom = atom(null, (get, set) =>
+	set(pageAtom, lastPage => lastPage - 1)
+);
