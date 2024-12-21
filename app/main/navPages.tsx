@@ -24,7 +24,7 @@ function Btn({
 	return (
 		<button
 			className={clsx('page-section rounded-[4px] bg-navLayout', {
-				'bg-lightBg': disabled
+				'!bg-lightBg': disabled
 			})}
 			onClick={onCLick}
 			disabled={disabled}>

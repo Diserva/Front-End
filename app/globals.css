@@ -25,4 +25,12 @@
 	.page-section {
 		@apply flex w-6 h-6 items-center justify-center;
 	}
+
+	.on-active {
+		@apply first:rotate-[23deg] last:rotate-[-23deg] first:origin-bottom-left last:origin-top-left duration-200;
+	}
+
+	.nav-on-mobile {
+		@apply !w-screen flex absolute left-0 -top-header order-3 py-1 bg-navLayout;
+	}
 }

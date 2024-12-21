@@ -19,6 +19,9 @@ export default {
 				blueButtonHover: '#8EB6F8',
 				lightBg: '#5A5A5A',
 				borderColor: '#424242'
+			},
+			spacing: {
+				header: '72px'
 			}
 		}
 	},
