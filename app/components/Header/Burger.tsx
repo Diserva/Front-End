@@ -1,25 +1,20 @@
 'use client';
 
-import { navShownAtom, toggleNavShownAtom } from '@/app/lib/jotai/headerAtom';
+import { toggleNavShownAtom } from '@/app/lib/jotai/headerAtom';
 import clsx from 'clsx';
-import { useAtomValue, useSetAtom } from 'jotai';
+import { useSetAtom } from 'jotai';
 import React from 'react';
 
 export default function Burger() {
-	const navShown = useAtomValue(navShownAtom);
 	const toggleNavShown = useSetAtom(toggleNavShownAtom);
 	return (
 		<section
 			className={clsx(
-				'hidden max-md:flex flex-col gap-2 w-7 [&>*]:h-1 [&>*]:bg-white justify-center caret-transparent',
-				{
-					'[&>*]:on-active': navShown,
-					'[&>*]:duration-200': !navShown
-				}
+				'hidden max-md:flex flex-col gap-2 caret-transparent justify-center active:scale-75 w-8 z-50 duration-200 '
 			)}
 			onClick={toggleNavShown}>
-			<span />
-			<span />
+			<span className='w-6 !h-[3px] rounded-l-full rounded-r-full bg-white' />
+			<span className='w-3 !h-[3px] rounded-l-full rounded-r-full bg-white' />
 		</section>
 	);
 }

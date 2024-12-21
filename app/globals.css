@@ -30,7 +30,10 @@
 		@apply first:rotate-[23deg] last:rotate-[-23deg] first:origin-bottom-left last:origin-top-left duration-200;
 	}
 
-	.nav-on-mobile {
-		@apply !w-screen flex absolute left-0 -top-header order-3 py-1 bg-navLayout;
+	.nav-on-mobile-visible {
+		@apply !left-0 duration-200 ease-in-out;
+	}
+	.nav-on-mobile-always {
+		@apply !absolute left-[-250px] top-0 flex flex-col bg-navLayout w-[200px] h-screen pt-14;
 	}
 }

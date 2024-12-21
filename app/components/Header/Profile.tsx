@@ -8,7 +8,7 @@ export default function Profile() {
 	const avatarUrl = useAtomValue(userAvatarUrl);
 
 	return (
-		<section className='flex gap-4 items-center max-md:order-2 justify-center'>
+		<section className='flex gap-4 items-center justify-center'>
 			<h3 className='text-white'>{user?.username}</h3>
 
 			{avatarUrl && (
