@@ -9,7 +9,6 @@ const discord = axios.create({
 export const getTokenQuery = (body: string) =>
 	discord<TokenType>({
 		method: 'POST',
-		url: 'https://discord.com/api/oauth2/token',
 		headers: {
 			'Content-Type': 'application/x-www-form-urlencoded'
 		},

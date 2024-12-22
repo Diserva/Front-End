@@ -13,7 +13,7 @@ export default function Page() {
 	}, [startValue]);
 
 	return (
-		<div className='flex justify-center items-center h-screen w-full'>
+		<div className='flex-center h-screen w-full'>
 			<h1 className='text-accent text-4xl'>Майже готово!</h1>
 		</div>
 	);

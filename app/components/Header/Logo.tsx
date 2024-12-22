@@ -15,7 +15,7 @@ export default function Logo() {
 		<section className='flex gap-5 items-center max-md:order-2'>
 			<Image src={'/Logo.png'} width={32} height={32} alt='Logo' />
 			<span
-				className={clsx(workSans.className, 'text-2xl text-white font-medium')}>
+				className={clsx(workSans.className, 'text-2xl text-white font-medium max-md:hidden')}>
 				CEAVEX
 			</span>
 		</section>

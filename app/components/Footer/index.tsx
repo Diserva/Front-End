@@ -4,8 +4,8 @@ import Links from './Links';
 
 export default function Footer() {
 	return (
-		<footer className='flex flex-col gap-12 w-full p-8 bg-navLayout'>
-			<section className='flex justify-between'>
+		<footer className='footer'>
+			<section className='between items-center max-sm:sm-foot'>
 				<Icons />
 				<Links />
 			</section>
