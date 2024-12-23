@@ -6,6 +6,7 @@ import { getGuilds, getUserWithExistingToken } from '../lib/axios/server';
 import { Provider } from 'jotai';
 import HydrateAtoms from '../lib/providers/HydrateAtoms';
 import { GuildsType, UserType } from '../lib/definitions/apiRequests';
+import BlurOnScreen from '../components/utils/BlurOnScreen';
 
 async function initUserStore(credentials: RequestCredentials) {
 	const { data } = await getUserWithExistingToken(credentials);
@@ -41,6 +42,7 @@ export default async function layout({ children }: { children: ReactNode }) {
 			<HydrateAtoms hydrationDataList={hydrationDataList}>
 				<main className='flex flex-col items-center'>
 					<Header />
+					<BlurOnScreen />
 					<div className=' w-11/12 py-8 flex flex-col items-center min-h-[500px]'>
 						{children}
 					</div>
