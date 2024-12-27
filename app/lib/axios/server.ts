@@ -11,7 +11,7 @@ const server = axios.create({
 	baseURL: process.env.NEXT_PUBLIC_BACKEND_URI
 });
 
-export const getUserByNewToken = (token: string) =>
+export const getUserHeaders = (token: string) =>
 	server<UserType>({
 		url: `/auth/discord/${token}`,
 		transformResponse: json(validate(UserSchema)),
