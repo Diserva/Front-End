@@ -1,4 +1,4 @@
-import { z, ZodError } from 'zod';
+import { z } from 'zod';
 import { GeneralError } from '../errorsFactory';
 
 export function returnValidationError({

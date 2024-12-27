@@ -23,8 +23,6 @@ export async function GET(req: NextRequest) {
 function getCookies(req: NextRequest) {
 	const params = req.nextUrl.searchParams;
 
-	// console.log(params;
-
 	if (params.has('code')) {
 		return pipe(params.get('code') as string, generateBody, getToken, getJwt);
 	} else {
