@@ -13,7 +13,7 @@ function RenderLinksList({
 		// Нажаль, ця абстракція для двох типів лінків призвела до невеликого повторення коду, але це найкраще, що я зміг придувати
 		<section
 			role='list'
-			className='flex flex-col text-xs gap-2 max-sm:justify-center max-sm:items-center'>
+			className='flex flex-col text-[13px] gap-2 max-sm:justify-center max-sm:items-center'>
 			{areExternalLinks
 				? links.map(({ href, tKey }) => (
 						<a key={tKey} href={href}>

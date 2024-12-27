@@ -27,6 +27,7 @@ function Btn({
 				'!bg-lightBg': disabled
 			})}
 			onClick={onCLick}
+			aria-label='move back or forward'
 			disabled={disabled}>
 			{children}
 		</button>

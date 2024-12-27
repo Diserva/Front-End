@@ -5,7 +5,6 @@ import { navShownAtom } from '@/app/lib/jotai/headerAtom';
 import clsx from 'clsx';
 import { useAtomValue } from 'jotai';
 import Link from 'next/link';
-import BlurOnScreen from '../utils/BlurOnScreen';
 
 export default function Navigation({}) {
 	const navShown = useAtomValue(navShownAtom);
