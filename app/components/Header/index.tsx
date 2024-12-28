@@ -1,7 +1,7 @@
 import Burger from './Burger';
 import Logo from './Logo';
 import Navigation from './Navigation';
-import Profile from './Profile';
+import ProfileSection from './Profile';
 
 export default function Header() {
 	return (
@@ -12,7 +12,7 @@ export default function Header() {
 					<Logo />
 				</section>
 				<Navigation />
-				<Profile />
+				<ProfileSection />
 			</header>
 		</section>
 	);
