@@ -8,7 +8,7 @@ import SearchBar from './SearchBar';
 
 export default async function page() {
 	const hydrationDataList = await getHydrationDataList();
-	
+
 	return (
 		<HydrateAtoms hydrationDataList={hydrationDataList}>
 			<BlurOnScreenWhenNavShown>

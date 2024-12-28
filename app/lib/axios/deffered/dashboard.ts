@@ -18,14 +18,19 @@ export async function getHydrationDataList() {
 	const cookieStore = await cookies();
 	const credentials = cookieStore.toString();
 
-	const [userInitState, dashboardInitState] = await Promise.all([
+      const startTime = Date.now();
+	const [userInitState, guilds] = await Promise.all([
 		initUserStore(credentials as RequestCredentials),
 		initDashboardStore(credentials as RequestCredentials)
 	]);
+      const endTime = Date.now();
 
 	const hydrationDataList: HydrationDataList = {
 		userInitState,
-		dashboardInitState
+		dashboardInitState: {
+                  guilds,
+                  loadTime: ((endTime - startTime) / 1000).toFixed(2)
+            }
 	};
 
 	return hydrationDataList;
@@ -33,5 +38,8 @@ export async function getHydrationDataList() {
 
 export type HydrationDataList = {
 	userInitState: UserType;
-	dashboardInitState: GuildsType;
+	dashboardInitState: {
+		guilds: GuildsType;
+		loadTime: string;
+	};
 };

@@ -5,6 +5,7 @@ import { MAX_PAGE_LENGTH } from '../constants/dashboard';
 export const guildsAtom = atom<GuildsType>();
 export const pageAtom = atom(1);
 export const searchInputAtom = atom('');
+export const loadTimeAtom = atom('');
 
 export const filteredGuildsAtom = atom(get => {
 	const allGuilds = get(guildsAtom);
