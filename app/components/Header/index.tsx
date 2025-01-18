@@ -1,19 +1,20 @@
-import Burger from './Burger';
 import Logo from './Logo';
 import Navigation from './Navigation';
 import ProfileSection from './Profile';
+import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from '@radix-ui/react-navigation-menu';
+
+
 
 export default function Header() {
 	return (
-		<section className='h-header'>
-			<header className='header'>
-				<section className='flex gap-5 '>
-					<Burger />
-					<Logo />
-				</section>
+		<NavigationMenu className='header-cont'>
+			<NavigationMenuList className='header'>
+				<Logo />
 				<Navigation />
-				<ProfileSection />
-			</header>
-		</section>
+				<NavigationMenuItem>
+					<ProfileSection />
+				</NavigationMenuItem>
+			</NavigationMenuList>
+		</NavigationMenu>
 	);
 }
