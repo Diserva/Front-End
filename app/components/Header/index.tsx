@@ -11,9 +11,7 @@ export default function Header() {
 			<NavigationMenuList className='header'>
 				<Logo />
 				<Navigation />
-				<NavigationMenuItem>
-					<ProfileSection />
-				</NavigationMenuItem>
+				<ProfileSection />
 			</NavigationMenuList>
 		</NavigationMenu>
 	);
