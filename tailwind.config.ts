@@ -15,6 +15,7 @@ export default {
     			mainBg: '#2C2C2C',
     			icon: '#757575',
     			iconHovered: '#a8a7a7',
+				modalGray: "#38383",
     			accent: {
     				DEFAULT: 'hsl(var(--accent))',
     				foreground: 'hsl(var(--accent-foreground))'
