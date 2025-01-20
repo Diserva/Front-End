@@ -1,6 +1,6 @@
 import { MAIN_NAV_LINKS } from '@/app/lib/constants/header';
 import { Button } from '@/components/ui/button';
-import { NavigationMenuItem } from '@radix-ui/react-navigation-menu';
+import { NavigationMenuItem } from '@/components/ui/navigation-menu';
 import Link from 'next/link';
 
 export default function Navigation() {

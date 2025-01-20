@@ -3,9 +3,9 @@
 import Image from 'next/image';
 import { workSans } from '@/app/lib/fonts';
 import clsx from 'clsx';
-import { NavigationMenuItem } from '@radix-ui/react-navigation-menu';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { NavigationMenuItem } from '@/components/ui/navigation-menu';
 
 
 export default function Logo() {

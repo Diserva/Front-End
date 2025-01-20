@@ -199,13 +199,6 @@
 		@apply flex-col gap-10 flex w-full p-8 bg-navLayout;
 	}
 
-	.header-cont {
-		@apply h-header w-screen bg-navLayout
-	}
-
-	.header {
-		@apply between w-full py-4 px-8;
-	}
 
 	.footer-links-lg {
 		@apply !gap-x-6 grid-cols-3;
