@@ -13,5 +13,5 @@ export type ICON_LINK = {
 };
 
 export type MODAL_LINK_TYPE = LINK & {
-	Icon: IconType;
+	ComponentSVG: () => React.JSX.Element;
 };

@@ -7,7 +7,7 @@ export default function Navigation() {
 	return (
 		<NavigationMenuItem className='flex-center max-md:hidden gap-4'>
 			{MAIN_NAV_LINKS.map(link => (
-				<NavLink {...link} />
+				<NavLink key={link.label} {...link} />
 			))}
 		</NavigationMenuItem>
 	);

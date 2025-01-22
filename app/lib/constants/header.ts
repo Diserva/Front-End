@@ -1,6 +1,6 @@
 import { LINK, MODAL_LINK_TYPE } from '../definitions';
-import { TbSettingsSpark } from 'react-icons/tb';
-import { MdOutlineHelp } from 'react-icons/md';
+import SettingsSVG from './svgIcons/SettingsSVG';
+import HelpSVG from './svgIcons/HelpSVG';
 
 export const MAIN_NAV_LINKS: LINK[] = [
 	{
@@ -21,11 +21,11 @@ export const MODAL_NAV_LINKS: MODAL_LINK_TYPE[] = [
 	{
 		label: 'Налаштування',
 		href: '/settings',
-		Icon: TbSettingsSpark
+		ComponentSVG: SettingsSVG
 	},
 	{
 		label: 'Допомога',
 		href: '/help',
-		Icon: MdOutlineHelp
+		ComponentSVG: HelpSVG
 	}
 ];
