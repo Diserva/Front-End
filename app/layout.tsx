@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='uk'>
-			<body className={clsx(inter, 'bg-mainBg')}>{children}</body>
+			<body className={clsx(inter, 'bg-mainBg m-0 box-border')}>{children}</body>
 		</html>
 	);
 }

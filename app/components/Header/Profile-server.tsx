@@ -9,9 +9,7 @@ import { NavigationMenuItem } from '@/components/ui/navigation-menu';
 import { Avatar, LogoutBtn, Username } from './Profile-client';
 import { MODAL_NAV_LINKS } from '@/app/lib/constants/header';
 import { MODAL_LINK_TYPE } from '@/app/lib/definitions';
-import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function ProfileSection() {
 	return (
@@ -58,13 +56,6 @@ function ModalLinkWithIcon({ label, href, ComponentSVG }: MODAL_LINK_TYPE) {
 			asChild
 			className='justify-start focus:bg-modalItemHover focus:border-none w-full'>
 			<Link href={href} className='!text-defaultText !shadow-none !px-2'>
-				{/* <Image
-					src={iconSrc}
-					width={18}
-					height={18}
-					alt=''
-					unoptimized
-				/> */}
 				<ComponentSVG />
 				{label}
 			</Link>
