@@ -1,7 +1,6 @@
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { getHydrationDataList } from '../lib/axios/deffered/dashboard';
-import BlurOnScreenWhenNavShown from '../lib/providers/BlurOnScreen';
 import HydrateAtoms from '../lib/providers/HydrateAtoms';
 import AdditionalInfo from './AdditionalInfo';
 import NavigatePages from './navPages';
@@ -14,14 +13,12 @@ export default async function page() {
 	return (
 		<HydrateAtoms hydrationDataList={hydrationDataList}>
 			<Header />
-			<BlurOnScreenWhenNavShown>
 				<main className='w-full'>
 					<SearchBar />
 					<AdditionalInfo />
 					<RenderGuilds />
 					<NavigatePages />
 				</main>
-			</BlurOnScreenWhenNavShown>
 			<Footer />
 		</HydrateAtoms>
 	);

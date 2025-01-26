@@ -30,14 +30,31 @@ export function Avatar() {
 	);
 }
 
+export function Balance() {
+	
+	return (
+		<DropdownMenuItem>
+			<Button className='flex justify-between'>
+				<h2>Баланс:</h2>
+				<p>0 грн</p>
+			</Button>
+		</DropdownMenuItem>
+	);
+}
+
 export function LogoutBtn() {
 	return (
 		<DropdownMenuGroup>
 			<DropdownMenuItem>
-				<Button variant='destructive' onClick={logout} className='bg-transparent'>
+				<Button
+					variant='destructive'
+					onClick={logout}
+					className='bg-transparent'>
 					Log out
 				</Button>
 			</DropdownMenuItem>
 		</DropdownMenuGroup>
 	);
 }
+
+export function BalanceSection() {}

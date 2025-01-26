@@ -33,7 +33,7 @@ function Profile() {
 
 function Modal() {
 	return (
-		<DropdownMenuContent className='bg-modalGray bg-opacity-100 border-none px-3'>
+		<DropdownMenuContent className='bg-modalGray bg-opacity-100 border-none px-3 py-[18px]'>
 			<IterateModalLinks />
 			<LogoutBtn />
 		</DropdownMenuContent>
@@ -54,7 +54,7 @@ function ModalLinkWithIcon({ label, href, ComponentSVG }: MODAL_LINK_TYPE) {
 	return (
 		<DropdownMenuItem
 			asChild
-			className='justify-start focus:bg-modalItemHover focus:border-none w-full'>
+			className='justify-start focus:bg-modalItemHover focus:border-none w-full py-[10px]'>
 			<Link href={href} className='!text-defaultText !shadow-none !px-2'>
 				<ComponentSVG />
 				{label}
