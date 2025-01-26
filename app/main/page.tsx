@@ -13,12 +13,12 @@ export default async function page() {
 	return (
 		<HydrateAtoms hydrationDataList={hydrationDataList}>
 			<Header />
-				<main className='w-full'>
-					<SearchBar />
-					<AdditionalInfo />
-					<RenderGuilds />
-					<NavigatePages />
-				</main>
+			<div className='w-11/12 py-8 flex flex-col items-center min-h-[500px]'>
+				<SearchBar />
+				<AdditionalInfo />
+				<RenderGuilds />
+				<NavigatePages />
+			</div>
 			<Footer />
 		</HydrateAtoms>
 	);
