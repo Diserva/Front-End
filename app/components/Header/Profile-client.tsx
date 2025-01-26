@@ -12,6 +12,7 @@ import { DropdownMenuGroup } from '@/components/ui/dropdown-menu';
 
 import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
 import { useAtomValue } from 'jotai';
+import { ModalItem } from './Profile-server';
 
 export function Username() {
 	const user = useAtomValue(userAtom);
@@ -31,29 +32,23 @@ export function Avatar() {
 }
 
 export function Balance() {
-	
 	return (
-		<DropdownMenuItem>
-			<Button className='flex justify-between'>
+		<ModalItem>
+			<Button className='flex justify-between text-white' variant={"ghost"}>
 				<h2>Баланс:</h2>
 				<p>0 грн</p>
 			</Button>
-		</DropdownMenuItem>
+		</ModalItem>
 	);
 }
 
 export function LogoutBtn() {
 	return (
-		<DropdownMenuGroup>
-			<DropdownMenuItem>
-				<Button
-					variant='destructive'
-					onClick={logout}
-					className='bg-transparent'>
-					Log out
-				</Button>
-			</DropdownMenuItem>
-		</DropdownMenuGroup>
+		<ModalItem>
+			<Button variant='destructive' onClick={logout} className='bg-transparent'>
+				Log out
+			</Button>
+		</ModalItem>
 	);
 }
 

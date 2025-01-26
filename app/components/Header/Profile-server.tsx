@@ -6,10 +6,12 @@ import {
 	DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { NavigationMenuItem } from '@/components/ui/navigation-menu';
-import { Avatar, LogoutBtn, Username } from './Profile-client';
+import { Avatar, Balance, LogoutBtn, Username } from './Profile-client';
 import { MODAL_NAV_LINKS } from '@/app/lib/constants/header';
 import { MODAL_LINK_TYPE } from '@/app/lib/definitions';
 import Link from 'next/link';
+import { ReactNode } from 'react';
+import { Button } from '@/components/ui/button';
 
 export default function ProfileSection() {
 	return (
@@ -34,6 +36,7 @@ function Profile() {
 function Modal() {
 	return (
 		<DropdownMenuContent className='bg-modalGray bg-opacity-100 border-none px-3 py-[18px]'>
+			<Balance />
 			<IterateModalLinks />
 			<LogoutBtn />
 		</DropdownMenuContent>
@@ -50,15 +53,27 @@ function IterateModalLinks() {
 	);
 }
 
-function ModalLinkWithIcon({ label, href, ComponentSVG }: MODAL_LINK_TYPE) {
+export function ModalItem({
+	children,
+	href
+}: {
+	children: ReactNode;
+	href?: string;
+}) {
 	return (
 		<DropdownMenuItem
 			asChild
-			className='justify-start focus:bg-modalItemHover focus:border-none w-full py-[10px]'>
-			<Link href={href} className='!text-defaultText !shadow-none !px-2'>
-				<ComponentSVG />
-				{label}
-			</Link>
+			className='justify-start focus:bg-modalItemHover focus:border-none w-full py-[10px] !text-defaultText !shadow-none !px-2'>
+			{href ? <Link href={href}>{children}</Link> : children}
 		</DropdownMenuItem>
+	);
+}
+
+function ModalLinkWithIcon({ label, href, ComponentSVG }: MODAL_LINK_TYPE) {
+	return (
+		<ModalItem href={href}>
+			<ComponentSVG />
+			{label}
+		</ModalItem>
 	);
 }
