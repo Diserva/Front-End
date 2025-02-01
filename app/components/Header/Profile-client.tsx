@@ -8,11 +8,11 @@ import {
 	AvatarImage
 } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { DropdownMenuGroup } from '@/components/ui/dropdown-menu';
-
-import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
 import { useAtomValue } from 'jotai';
 import { ModalItem } from './Profile-server';
+import clsx from 'clsx';
+import { useState } from 'react';
+import LogOutSVG from '@/app/lib/constants/svgIcons/LogOutSVG';
 
 export function Username() {
 	const user = useAtomValue(userAtom);
@@ -32,11 +32,16 @@ export function Avatar() {
 }
 
 export function Balance() {
+	const [balance] = useState(0);
+	const turnRedIf = balance === 0;
+
 	return (
 		<ModalItem>
-			<Button className='flex justify-between text-white' variant={"ghost"}>
+			<Button
+				className='flex justify-between bg-modalItemHover focus:bg-mainBg !text-white'
+				variant='ghost'>
 				<h2>Баланс:</h2>
-				<p>0 грн</p>
+				<p className={clsx({ '!text-red': turnRedIf })}>0 грн</p>
 			</Button>
 		</ModalItem>
 	);
@@ -45,8 +50,9 @@ export function Balance() {
 export function LogoutBtn() {
 	return (
 		<ModalItem>
-			<Button variant='destructive' onClick={logout} className='bg-transparent'>
-				Log out
+			<Button variant='destructive' onClick={logout} className='bg-specialModalItemHover group focus:bg-[#DA373C] '>
+				<LogOutSVG />
+				<span className='group-focus:text-white'>Log out</span>
 			</Button>
 		</ModalItem>
 	);

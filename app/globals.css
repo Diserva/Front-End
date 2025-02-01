@@ -4,9 +4,12 @@
 
 @layer base {
 	* {
-		@apply !box-border 
+		@apply !box-border;
 	}
 
+	::-webkit-scrollbar {
+		display: block;
+	}
 
 	p,
 	a,
@@ -222,10 +225,6 @@
 	* {
 		@apply border-border;
 	}
-
-	/* html, body {
-		@apply !overflow-x-hidden;
-	} */
 
 	body {
 		@apply bg-background text-foreground;
