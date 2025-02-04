@@ -1,24 +1,14 @@
-import { getHydrationDataList } from '../lib/axios/deffered/dashboard';
-import BlurOnScreenWhenNavShown from '../lib/providers/BlurOnScreen';
-import HydrateAtoms from '../lib/providers/HydrateAtoms';
-import AdditionalInfo from './AdditionalInfo';
-import NavigatePages from './navPages';
-import RenderGuilds from './RenderGuilds';
-import SearchBar from './SearchBar';
+import { Provider } from 'jotai';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import MainSection from './MainSection';
 
 export default async function page() {
-	const hydrationDataList = await getHydrationDataList();
-
 	return (
-		<HydrateAtoms hydrationDataList={hydrationDataList}>
-			<BlurOnScreenWhenNavShown>
-				<main className='w-full'>
-					<SearchBar />
-					<AdditionalInfo />
-					<RenderGuilds />
-					<NavigatePages />
-				</main>
-			</BlurOnScreenWhenNavShown>
-		</HydrateAtoms>
+		<Provider>
+			<Header />
+			<MainSection />
+			<Footer />
+		</Provider>
 	);
 }

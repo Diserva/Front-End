@@ -1,19 +1,19 @@
-import Burger from './Burger';
-import Logo from './Logo';
+import {
+	NavigationMenu,
+	NavigationMenuList
+} from '@/components/ui/navigation-menu';
+import LogoMenuItem from './Logo';
 import Navigation from './Navigation';
-import ProfileSection from './Profile';
+import ProfileSection from './Profile-server';
 
 export default function Header() {
 	return (
-		<section className='h-header'>
-			<header className='header'>
-				<section className='flex gap-5 '>
-					<Burger />
-					<Logo />
-				</section>
+		<NavigationMenu className='nav'>
+			<NavigationMenuList className='header'>
+				<LogoMenuItem />
 				<Navigation />
 				<ProfileSection />
-			</header>
-		</section>
+			</NavigationMenuList>
+		</NavigationMenu>
 	);
 }

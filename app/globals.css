@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 @layer base {
+	* {
+		@apply !box-border;
+	}
+
+	::-webkit-scrollbar {
+		display: block;
+	}
+
 	p,
 	a,
 	h3,
@@ -13,15 +21,151 @@
 	h4 {
 		@apply text-secondary;
 	}
+
+	:root {
+		--background: 0 0% 100%;
+
+		--foreground: 240 10% 3.9%;
+
+		--card: 0 0% 100%;
+
+		--card-foreground: 240 10% 3.9%;
+
+		--popover: 0 0% 100%;
+
+		--popover-foreground: 240 10% 3.9%;
+
+		--primary: 240 5.9% 10%;
+
+		--primary-foreground: 0 0% 98%;
+
+		--secondary: 240 4.8% 95.9%;
+
+		--secondary-foreground: 240 5.9% 10%;
+
+		--muted: 240 4.8% 95.9%;
+
+		--muted-foreground: 240 3.8% 46.1%;
+
+		--accent: 240 4.8% 95.9%;
+
+		--accent-foreground: 240 5.9% 10%;
+
+		--destructive: 0 84.2% 60.2%;
+
+		--destructive-foreground: 0 0% 98%;
+
+		--border: 240 5.9% 90%;
+
+		--input: 240 5.9% 90%;
+
+		--ring: 240 10% 3.9%;
+
+		--chart-1: 12 76% 61%;
+
+		--chart-2: 173 58% 39%;
+
+		--chart-3: 197 37% 24%;
+
+		--chart-4: 43 74% 66%;
+
+		--chart-5: 27 87% 67%;
+
+		--radius: 0.5rem;
+
+		--sidebar-background: 0 0% 98%;
+
+		--sidebar-foreground: 240 5.3% 26.1%;
+
+		--sidebar-primary: 240 5.9% 10%;
+
+		--sidebar-primary-foreground: 0 0% 98%;
+
+		--sidebar-accent: 240 4.8% 95.9%;
+
+		--sidebar-accent-foreground: 240 5.9% 10%;
+
+		--sidebar-border: 220 13% 91%;
+
+		--sidebar-ring: 217.2 91.2% 59.8%;
+	}
+
+	.dark {
+		--background: 240 10% 3.9%;
+
+		--foreground: 0 0% 98%;
+
+		--card: 240 10% 3.9%;
+
+		--card-foreground: 0 0% 98%;
+
+		--popover: 240 10% 3.9%;
+
+		--popover-foreground: 0 0% 98%;
+
+		--primary: 0 0% 98%;
+
+		--primary-foreground: 240 5.9% 10%;
+
+		--secondary: 240 3.7% 15.9%;
+
+		--secondary-foreground: 0 0% 98%;
+
+		--muted: 240 3.7% 15.9%;
+
+		--muted-foreground: 240 5% 64.9%;
+
+		--accent: 240 3.7% 15.9%;
+
+		--accent-foreground: 0 0% 98%;
+
+		--destructive: 0 62.8% 30.6%;
+
+		--destructive-foreground: 0 0% 98%;
+
+		--border: 240 3.7% 15.9%;
+
+		--input: 240 3.7% 15.9%;
+
+		--ring: 240 4.9% 83.9%;
+
+		--chart-1: 220 70% 50%;
+
+		--chart-2: 160 60% 45%;
+
+		--chart-3: 30 80% 55%;
+
+		--chart-4: 280 65% 60%;
+
+		--chart-5: 340 75% 55%;
+
+		--sidebar-background: 240 5.9% 10%;
+
+		--sidebar-foreground: 240 4.8% 95.9%;
+
+		--sidebar-primary: 224.3 76.3% 48%;
+
+		--sidebar-primary-foreground: 0 0% 100%;
+
+		--sidebar-accent: 240 3.7% 15.9%;
+
+		--sidebar-accent-foreground: 240 4.8% 95.9%;
+
+		--sidebar-border: 240 3.7% 15.9%;
+
+		--sidebar-ring: 217.2 91.2% 59.8%;
+	}
 }
 
 @layer utilities {
 	.border-rounded {
 		@apply rounded-lg;
 	}
+
 	.shadow {
-		@apply [box-shadow:0_4px_8px_rgba(0,0,0,0.84)];
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.84);
 	}
+
 	.page-section {
 		@apply flex w-6 h-6 items-center justify-center;
 	}
@@ -33,15 +177,19 @@
 	.nav-on-mobile-visible {
 		@apply !left-0 duration-200 ease-in-out shadow-2xl shadow-slate-950;
 	}
+
 	.nav-on-mobile-always {
 		@apply !absolute left-[-250px] top-0 bottom-0 flex flex-col bg-navLayout w-[200px] !h-screen pt-14 !z-50;
 	}
+
 	.flex-center {
 		@apply flex justify-center items-center;
 	}
+
 	.between {
 		@apply flex justify-between;
 	}
+
 	.column {
 		@apply flex flex-col;
 	}
@@ -51,23 +199,48 @@
 	.sm-foot {
 		@apply flex-col gap-5;
 	}
+
 	.footer {
 		@apply flex-col gap-10 flex w-full p-8 bg-navLayout;
-	}
-	.header {
-		@apply w-screen h-header bg-navLayout flex justify-between fixed py-4 px-8 top-0 left-0 z-20 box-border;
 	}
 
 	.footer-links-lg {
 		@apply !gap-x-6 grid-cols-3;
 	}
+
 	.footer-links-sm {
 		@apply !grid-cols-1 justify-center items-center content-center place-items-center;
 	}
+
 	.footer-links {
 		@apply grid grid-cols-4 gap-12 max-lg:footer-links-lg max-md:grid-cols-2 max-sm:footer-links-sm;
 	}
+
 	.blur-after {
 		@apply z-30 w-screen h-screen bg-opacity-80;
+	}
+
+	.nav {
+		@apply h-header bg-navLayout w-full;
+	}
+	.nav > div, header {
+		@apply w-screen;
+	}
+	.navigation-list {
+		@apply flex-center max-md:hidden gap-4;
+	}
+
+	.header {
+		@apply flex !justify-between w-full py-4 px-8 !space-x-0;
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+
+	body {
+		@apply bg-background text-foreground;
 	}
 }

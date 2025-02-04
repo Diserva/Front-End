@@ -2,7 +2,7 @@
 
 import Guild from './Guild';
 import { useAtomValue } from 'jotai';
-import { filteredGuildsAtom } from '../lib/jotai/dashboardAtoms';
+import { filteredGuildsAtom } from '../../lib/jotai/dashboardAtoms';
 
 export default function RenderGuilds() {
 	const filteredGuilds = useAtomValue(filteredGuildsAtom);

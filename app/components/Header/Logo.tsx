@@ -3,21 +3,24 @@
 import Image from 'next/image';
 import { workSans } from '@/app/lib/fonts';
 import clsx from 'clsx';
-import { useAtom } from 'jotai';
-import { userAtom } from '@/app/lib/jotai/userAtoms';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { NavigationMenuItem } from '@/components/ui/navigation-menu';
 
-export default function Logo() {
-	const [user] = useAtom(userAtom);
 
-	console.log({ user });
+export default function LogoMenuItem() {
 
 	return (
-		<section className='flex gap-5 items-center max-md:order-2'>
-			<Image src={'/Logo.png'} width={32} height={32} alt='Logo' />
-			<span
-				className={clsx(workSans.className, 'text-2xl text-white font-medium max-md:hidden')}>
-				CEAVEX
-			</span>
-		</section>
+		<NavigationMenuItem>
+			<Button asChild variant="link">
+				<Link href="/main" className='between gap-2 items-center'>
+					<Image src={'/Logo.png'} width={32} height={32} alt='Logo'/>
+					<span
+						className={clsx(workSans.className, 'text-2xl text-white font-medium')}>
+						CEAVEX
+					</span>
+				</Link>
+			</Button>
+		</NavigationMenuItem>
 	);
 }
