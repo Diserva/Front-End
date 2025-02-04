@@ -1,22 +1,12 @@
-import { MAIN_NAV_LINKS } from '@/app/lib/constants/header';
-import { Button } from '@/components/ui/button';
-import { NavigationMenuItem } from '@/components/ui/navigation-menu';
-import Link from 'next/link';
 
-export default function Navigation() {
+import { NavigationMenuItem } from '@/components/ui/navigation-menu';
+import Navigation from '../utils/Navigation';
+
+export default function NavMenuItem() {
 	return (
-		<NavigationMenuItem className='flex-center max-md:hidden gap-4'>
-			{MAIN_NAV_LINKS.map(link => (
-				<NavLink key={link.label} {...link} />
-			))}
+		<NavigationMenuItem className='navigation-list'>
+			<Navigation />
 		</NavigationMenuItem>
 	);
 }
 
-function NavLink({ href, label }: { href: string; label: string }) {
-	return (
-		<Button asChild variant='link'>
-			<Link href={href}>{label}</Link>
-		</Button>
-	);
-}

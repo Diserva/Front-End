@@ -1,26 +1,21 @@
 'use client';
 
-import { ReactNode } from 'react';
 import { useHydrateAtoms } from 'jotai/utils';
-import { userAtom } from '../jotai/userAtoms';
-import { guildsAtom, loadTimeAtom } from '../jotai/dashboardAtoms';
-import { HydrationDataList } from '../axios/deffered/dashboard';
+import { ReactNode } from 'react';
+import {
+	AnyWritableAtom,
+	AssignableHydrationList,
+	HydrationList
+} from '../definitions/atoms';
 
 export default function HydrateAtoms({
 	children,
-	hydrationDataList: {
-		userInitState,
-		dashboardInitState: { guilds, loadTime }
-	}
+	hydrationDataList
 }: {
 	children: ReactNode;
-	hydrationDataList: HydrationDataList;
+	hydrationDataList: HydrationList;
 }) {
-	useHydrateAtoms([
-		[userAtom, userInitState],
-		[guildsAtom, guilds],
-		[loadTimeAtom, loadTime]
-	]);
+	useHydrateAtoms(hydrationDataList as AssignableHydrationList);
 
 	return <>{children}</>;
 }

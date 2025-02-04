@@ -3,14 +3,15 @@
 import { useAtomValue, useSetAtom } from 'jotai';
 import { FaChevronLeft } from 'react-icons/fa';
 import { FaChevronRight } from 'react-icons/fa';
+
+import clsx from 'clsx';
+import { ReactNode } from 'react';
 import {
 	decrementPageAtom,
 	incrementPageAtom,
 	maxPageAtom,
 	pageAtom
-} from '../lib/jotai/dashboardAtoms';
-import clsx from 'clsx';
-import { ReactNode } from 'react';
+} from '@/app/lib/jotai/dashboardAtoms';
 
 function Btn({
 	disabled,

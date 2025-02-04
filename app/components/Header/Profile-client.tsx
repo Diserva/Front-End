@@ -52,7 +52,7 @@ export function LogoutBtn() {
 		<ModalItem>
 			<Button variant='destructive' onClick={logout} className='bg-specialModalItemHover group focus:bg-[#DA373C] '>
 				<LogOutSVG />
-				<span className='group-focus:text-white'>Log out</span>
+				<span className='group-focus:text-white'>Вийти</span>
 			</Button>
 		</ModalItem>
 	);

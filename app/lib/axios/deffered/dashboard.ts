@@ -2,44 +2,38 @@
 
 import { cookies } from 'next/headers';
 import { getGuilds, getUserWithExistingToken } from '../server';
-import { GuildsType, UserType } from '../../definitions/apiRequests';
+import { userAtom } from '../../jotai/userAtoms';
+import { guildsAtom, loadTimeAtom } from '../../jotai/dashboardAtoms';
+import { HydrationList } from '../../definitions/atoms';
 
-async function initUserStore(credentials: RequestCredentials) {
-	const { data } = await getUserWithExistingToken(credentials);
-	return data;
-}
-
-async function initDashboardStore(credentials: RequestCredentials) {
-	const { data } = await getGuilds(credentials);
-	return data;
-}
-
-export async function getHydrationDataList() {
+export async function doHydrationListReqWithCreds( // do hydration list request with credentials
+	callback: (credentials: RequestCredentials) => Promise<HydrationList>
+): Promise<HydrationList> {
 	const cookieStore = await cookies();
 	const credentials = cookieStore.toString();
 
-      const startTime = Date.now();
-	const [userInitState, guilds] = await Promise.all([
-		initUserStore(credentials as RequestCredentials),
-		initDashboardStore(credentials as RequestCredentials)
-	]);
-      const endTime = Date.now();
-
-	const hydrationDataList: HydrationDataList = {
-		userInitState,
-		dashboardInitState: {
-                  guilds,
-                  loadTime: ((endTime - startTime) / 1000).toFixed(2)
-            }
-	};
-
-	return hydrationDataList;
+	return await callback(credentials as RequestCredentials);
 }
 
-export type HydrationDataList = {
-	userInitState: UserType;
-	dashboardInitState: {
-		guilds: GuildsType;
-		loadTime: string;
-	};
-};
+export async function getUserHydrationList(credentials: RequestCredentials) {
+	const { data }: { data: unknown } = await getUserWithExistingToken(
+		credentials
+	);
+
+	return [[userAtom, data]];
+}
+
+export async function getGuildsHydrationList(
+	credentials: RequestCredentials
+): Promise<HydrationList> {
+	const startTime = Date.now();
+	const { data } = (await getGuilds(credentials));
+	const endTime = Date.now();
+
+	const loadTimeFormatted = ((endTime - startTime) / 1000).toFixed(2);
+
+	return [
+		[guildsAtom, data],
+		[loadTimeAtom, loadTimeFormatted]
+	] 
+}

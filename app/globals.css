@@ -219,6 +219,20 @@
 	.blur-after {
 		@apply z-30 w-screen h-screen bg-opacity-80;
 	}
+
+	.nav {
+		@apply h-header bg-navLayout w-full;
+	}
+	.nav > div, header {
+		@apply w-screen;
+	}
+	.navigation-list {
+		@apply flex-center max-md:hidden gap-4;
+	}
+
+	.header {
+		@apply flex !justify-between w-full py-4 px-8 !space-x-0;
+	}
 }
 
 @layer base {
