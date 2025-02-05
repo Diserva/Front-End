@@ -7,7 +7,7 @@ import {
 	doHydrationListReqWithCreds,
 	getGuildsHydrationList
 } from '@/app/lib/axios/deffered/dashboard';
-import HydrateAtoms from '@/app/lib/providers/HydrateAtoms';
+import HydrateDashboardAtoms from '@/app/lib/providers/HydrateDashboardAtoms';
 
 async function FetchAndHydrateAtoms() {
 	const hydrationDataList = await doHydrationListReqWithCreds(
@@ -15,14 +15,14 @@ async function FetchAndHydrateAtoms() {
 	);
 
 	return (
-		<HydrateAtoms hydrationDataList={hydrationDataList}>
+		<HydrateDashboardAtoms hydrationDataList={hydrationDataList}>
 			<section className='w-11/12 py-8 flex flex-col items-center min-h-[500px]'>
 				<SearchBar />
 				<AdditionalInfo />
 				<RenderGuilds />
 				<NavigatePages />
 			</section>
-		</HydrateAtoms>
+		</HydrateDashboardAtoms>
 	);
 }
 export default function MainSection() {

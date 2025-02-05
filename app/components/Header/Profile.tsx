@@ -4,7 +4,6 @@ import {
 	doHydrationListReqWithCreds,
 	getUserHydrationList
 } from '@/app/lib/axios/deffered/dashboard';
-import HydrateAtoms from '@/app/lib/providers/HydrateAtoms';
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -18,6 +17,7 @@ import { Avatar } from '@/components/ui/avatar';
 import { MODAL_NAV_LINKS } from '@/app/lib/constants/header';
 import { MODAL_LINK_TYPE } from '@/app/lib/definitions';
 import { Link } from 'lucide-react';
+import HydrateUserAtoms from '@/app/lib/providers/HydrateUserAtoms';
 
 export default async function ProfileSection() {
 	const hydrationDataList = await doHydrationListReqWithCreds(
@@ -26,14 +26,14 @@ export default async function ProfileSection() {
 
 	return (
 		<Suspense fallback={<div>loading...</div>}>
-			<HydrateAtoms hydrationDataList={hydrationDataList}>
+			<HydrateUserAtoms hydrationDataList={hydrationDataList}>
 				<NavigationMenuItem>
 					<DropdownMenu>
 						<Profile />
 						<Modal />
 					</DropdownMenu>
 				</NavigationMenuItem>
-			</HydrateAtoms>
+			</HydrateUserAtoms>
 		</Suspense>
 	);
 }
