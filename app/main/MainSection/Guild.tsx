@@ -1,7 +1,7 @@
 'use client';
 
+import { GuildType } from '@/app/lib/definitions/apiRequests';
 import clsx from 'clsx';
-import { GuildType } from '../lib/definitions/apiRequests';
 import { RiUser3Line } from 'react-icons/ri';
 
 function Background({ guild }: { guild: GuildType }) {

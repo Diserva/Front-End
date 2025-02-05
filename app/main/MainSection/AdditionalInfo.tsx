@@ -1,7 +1,7 @@
 'use client';
 
+import { amountOfServersAtom, loadTimeAtom } from '@/app/lib/jotai/dashboardAtoms';
 import { useAtomValue } from 'jotai';
-import { amountOfServersAtom, loadTimeAtom } from '../lib/jotai/dashboardAtoms';
 
 export default function AdditionalInfo() {
 	const amountOfServers = useAtomValue(amountOfServersAtom);

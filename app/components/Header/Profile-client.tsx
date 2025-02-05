@@ -9,10 +9,10 @@ import {
 } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { useAtomValue } from 'jotai';
-import { ModalItem } from './Profile-server';
 import clsx from 'clsx';
 import { useState } from 'react';
 import LogOutSVG from '@/app/lib/constants/svgIcons/LogOutSVG';
+import { ModalItem } from './Profile';
 
 export function Username() {
 	const user = useAtomValue(userAtom);
@@ -58,4 +58,3 @@ export function LogoutBtn() {
 	);
 }
 
-export function BalanceSection() {}

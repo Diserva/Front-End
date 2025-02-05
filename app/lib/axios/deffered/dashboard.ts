@@ -9,13 +9,16 @@ import { HydrationList } from '../../definitions/atoms';
 export async function doHydrationListReqWithCreds( // do hydration list request with credentials
 	callback: (credentials: RequestCredentials) => Promise<HydrationList>
 ): Promise<HydrationList> {
+	"use server"
 	const cookieStore = await cookies();
 	const credentials = cookieStore.toString();
 
 	return await callback(credentials as RequestCredentials);
 }
 
-export async function getUserHydrationList(credentials: RequestCredentials) {
+export async function getUserHydrationList(
+	credentials: RequestCredentials
+): Promise<HydrationList> {
 	const { data }: { data: unknown } = await getUserWithExistingToken(
 		credentials
 	);
@@ -27,7 +30,7 @@ export async function getGuildsHydrationList(
 	credentials: RequestCredentials
 ): Promise<HydrationList> {
 	const startTime = Date.now();
-	const { data } = (await getGuilds(credentials));
+	const { data } = await getGuilds(credentials);
 	const endTime = Date.now();
 
 	const loadTimeFormatted = ((endTime - startTime) / 1000).toFixed(2);
@@ -35,5 +38,5 @@ export async function getGuildsHydrationList(
 	return [
 		[guildsAtom, data],
 		[loadTimeAtom, loadTimeFormatted]
-	] 
+	];
 }

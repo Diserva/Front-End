@@ -4,7 +4,7 @@ import {
 } from '@/components/ui/navigation-menu';
 import LogoMenuItem from './Logo';
 import Navigation from './Navigation';
-import ProfileSection from './Profile-server';
+import ProfileSection from './Profile';
 
 export default function Header() {
 	return (

@@ -1,25 +1,40 @@
+'use server'
+
+import {
+	doHydrationListReqWithCreds,
+	getUserHydrationList
+} from '@/app/lib/axios/deffered/dashboard';
+import HydrateAtoms from '@/app/lib/providers/HydrateAtoms';
 import {
 	DropdownMenu,
 	DropdownMenuContent,
-	DropdownMenuGroup,
 	DropdownMenuItem,
 	DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { NavigationMenuItem } from '@/components/ui/navigation-menu';
-import { Avatar, Balance, LogoutBtn, Username } from './Profile-client';
+import { ReactNode, Suspense } from 'react';
+import { Balance, LogoutBtn, Username } from './Profile-client';
+import { Avatar } from '@/components/ui/avatar';
 import { MODAL_NAV_LINKS } from '@/app/lib/constants/header';
 import { MODAL_LINK_TYPE } from '@/app/lib/definitions';
-import Link from 'next/link';
-import { ReactNode } from 'react';
+import { Link } from 'lucide-react';
 
-export default function ProfileSection() {
+export default async function ProfileSection() {
+	const hydrationDataList = await doHydrationListReqWithCreds(
+		getUserHydrationList
+	);
+
 	return (
-		<NavigationMenuItem>
-			<DropdownMenu>
-				<Profile />
-				<Modal />
-			</DropdownMenu>
-		</NavigationMenuItem>
+		<Suspense fallback={<div>loading...</div>}>
+			<HydrateAtoms hydrationDataList={hydrationDataList}>
+				<NavigationMenuItem>
+					<DropdownMenu>
+						<Profile />
+						<Modal />
+					</DropdownMenu>
+				</NavigationMenuItem>
+			</HydrateAtoms>
+		</Suspense>
 	);
 }
 
@@ -34,7 +49,12 @@ function Profile() {
 
 function Modal() {
 	return (
-		<DropdownMenuContent sideOffset={30} alignOffset={-40} side='top' align="start" className='bg-modalGray bg-opacity-100 border-none px-3 py-[18px]'>
+		<DropdownMenuContent
+			sideOffset={30}
+			alignOffset={-40}
+			side='top'
+			align='start'
+			className='bg-modalGray bg-opacity-100 border-none px-3 py-[18px]'>
 			<Balance />
 			<IterateModalLinks />
 			<LogoutBtn />
@@ -48,7 +68,7 @@ function IterateModalLinks() {
 	));
 }
 
-export function ModalItem({ children }: { children: ReactNode }) {
+export async function ModalItem({ children }: { children: ReactNode }) {
 	return (
 		<DropdownMenuItem
 			asChild
