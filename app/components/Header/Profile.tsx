@@ -1,5 +1,3 @@
-'use server'
-
 import {
 	doHydrationListReqWithCreds,
 	getUserHydrationList
@@ -12,12 +10,11 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { NavigationMenuItem } from '@/components/ui/navigation-menu';
 import { ReactNode, Suspense } from 'react';
-import { Balance, LogoutBtn, Username } from './Profile-client';
-import { Avatar } from '@/components/ui/avatar';
+import { AvatarSection, Balance, LogoutBtn, Username } from './Profile-client';
 import { MODAL_NAV_LINKS } from '@/app/lib/constants/header';
 import { MODAL_LINK_TYPE } from '@/app/lib/definitions';
-import { Link } from 'lucide-react';
 import HydrateUserAtoms from '@/app/lib/providers/HydrateUserAtoms';
+import Link from 'next/link';
 
 export default async function ProfileSection() {
 	const hydrationDataList = await doHydrationListReqWithCreds(
@@ -25,16 +22,14 @@ export default async function ProfileSection() {
 	);
 
 	return (
-		<Suspense fallback={<div>loading...</div>}>
-			<HydrateUserAtoms hydrationDataList={hydrationDataList}>
-				<NavigationMenuItem>
-					<DropdownMenu>
-						<Profile />
-						<Modal />
-					</DropdownMenu>
-				</NavigationMenuItem>
-			</HydrateUserAtoms>
-		</Suspense>
+		<NavigationMenuItem>
+			<DropdownMenu>
+				<HydrateUserAtoms hydrationDataList={hydrationDataList}>
+					<Profile />
+					<Modal />
+				</HydrateUserAtoms>
+			</DropdownMenu>
+		</NavigationMenuItem>
 	);
 }
 
@@ -42,7 +37,7 @@ function Profile() {
 	return (
 		<DropdownMenuTrigger className='flex-center gap-2'>
 			<Username />
-			<Avatar />
+			<AvatarSection />
 		</DropdownMenuTrigger>
 	);
 }
@@ -63,12 +58,13 @@ function Modal() {
 }
 
 function IterateModalLinks() {
+	console.log({ MODAL_NAV_LINKS });
 	return MODAL_NAV_LINKS.map(link => (
 		<ModalLinkWithIcon key={link.label} {...link} />
 	));
 }
 
-export async function ModalItem({ children }: { children: ReactNode }) {
+export function ModalItem({ children }: { children: ReactNode }) {
 	return (
 		<DropdownMenuItem
 			asChild

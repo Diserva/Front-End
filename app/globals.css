@@ -223,15 +223,20 @@
 	.nav {
 		@apply h-header bg-navLayout w-full;
 	}
-	.nav > div, header {
+	.nav > div,
+	header {
 		@apply w-screen;
-	}
-	.navigation-list {
-		@apply flex-center max-md:hidden gap-4;
 	}
 
 	.header {
 		@apply flex !justify-between w-full py-4 px-8 !space-x-0;
+	}
+
+	.guilds-layout {
+		@apply grid grid-cols-3 max-lg:grid-cols-2 max-md:flex max-md:flex-col max-md:items-center w-full gap-x-9 gap-y-8;
+	}
+	.guild {
+		@apply flex flex-col gap-2 max-md:w-9/12 max-sm:w-10/12;
 	}
 }
 

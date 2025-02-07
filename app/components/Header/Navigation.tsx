@@ -1,12 +1,13 @@
-
 import { NavigationMenuItem } from '@/components/ui/navigation-menu';
-import Navigation from '../utils/Navigation';
+import { MAIN_NAV_LINKS } from '@/app/lib/constants/header';
+import NavLink from '../utils/NavLink';
 
 export default function NavMenuItem() {
 	return (
-		<NavigationMenuItem className='navigation-list'>
-			<Navigation />
+		<NavigationMenuItem className='flex-center max-md:hidden gap-4;'>
+			{MAIN_NAV_LINKS.map(link => (
+				<NavLink key={link.label} {...link} />
+			))}
 		</NavigationMenuItem>
 	);
 }
-

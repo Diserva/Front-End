@@ -9,7 +9,7 @@ import {
 } from '@/app/lib/axios/deffered/dashboard';
 import HydrateDashboardAtoms from '@/app/lib/providers/HydrateDashboardAtoms';
 
-async function FetchAndHydrateAtoms() {
+export default async function MainSection() {
 	const hydrationDataList = await doHydrationListReqWithCreds(
 		getGuildsHydrationList
 	);
@@ -23,12 +23,5 @@ async function FetchAndHydrateAtoms() {
 				<NavigatePages />
 			</section>
 		</HydrateDashboardAtoms>
-	);
-}
-export default function MainSection() {
-	return (
-		<Suspense fallback={<div>Loading...</div>}>
-			<FetchAndHydrateAtoms />
-		</Suspense>
 	);
 }

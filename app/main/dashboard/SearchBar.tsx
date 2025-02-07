@@ -30,7 +30,7 @@ export default function SearchBar() {
 					{...register('input')}
 				/>
 			</div>
-			<Button type='submit'>Знайти</Button>
+			<Button type='submit' className='shadow-none bg-accent'>Знайти</Button>
 		</form>
 	);
 }
