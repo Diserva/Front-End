@@ -15,14 +15,14 @@ function RenderLinksList({
 			role='list'
 			className='flex flex-col text-[13px] gap-2 max-sm:justify-center max-sm:items-center'>
 			{areExternalLinks
-				? links.map(({ href, tKey }) => (
-						<a key={tKey} href={href}>
-							{tKey}
+				? links.map(({ href, label }) => (
+						<a key={label} href={href}>
+							{label}
 						</a>
 				  ))
-				: links.map(({ href, tKey }) => (
-						<Link key={tKey} href={href}>
-							{tKey}
+				: links.map(({ href, label }) => (
+						<Link key={label} href={href}>
+							{label}
 						</Link>
 				  ))}
 		</section>

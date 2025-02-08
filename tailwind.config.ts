@@ -21,6 +21,14 @@ export default {
 				skeletonCardBg: '#232323',
 				skeletonIconBg: '#252525',
 				blueAccent: '#4285F4',
+				footIcon: {
+					telegram: '#2AABEE',
+					github: '#24292F',
+					discord: '#5865F2',
+					threads: '#000000',
+					twitter: '#000000',
+					instagram: '#000000'
+				},
 				accent: {
 					DEFAULT: 'hsl(var(--accent))',
 					foreground: 'hsl(var(--accent-foreground))'
@@ -87,5 +95,12 @@ export default {
 			}
 		}
 	},
+	safelist: [
+		{
+			pattern:
+				/text-footIcon-(telegram|github|discord|threads|twitter|instagram)/,
+			variants: ['hover']
+		}
+	],
 	plugins: [require('tailwindcss-animate')]
 } satisfies Config;

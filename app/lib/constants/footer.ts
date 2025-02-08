@@ -8,30 +8,40 @@ import {
 } from 'react-icons/fa6';
 import type { FOOTER_NAVIGATIION, ICON_LINK } from '../definitions';
 
-export const LINK_ICONS: ICON_LINK[] = [
+type FOOTER_LINK_ICON = ICON_LINK & {
+	hoverColor: string;
+};
+
+export const LINK_ICONS: FOOTER_LINK_ICON[] = [
 	{
 		Icon: FaTelegram,
-		href: '1'
+		href: '1',
+		hoverColor: 'telegram'
 	},
 	{
 		Icon: FaGithub,
-		href: '2'
+		href: '2',
+		hoverColor: 'github'
 	},
 	{
 		Icon: FaDiscord,
-		href: '3'
+		href: '3',
+		hoverColor: "discord"
 	},
 	{
 		Icon: FaThreads,
-		href: '4'
+		href: '4',
+		hoverColor: "threads"
 	},
 	{
 		Icon: FaXTwitter,
-		href: '5'
+		href: '5',
+		hoverColor: "twitter"
 	},
 	{
 		Icon: FaInstagram,
-		href: '6'
+		href: '6',
+		hoverColor: "instagram"
 	}
 ];
 
@@ -40,11 +50,11 @@ export const FOOTER_NAV: FOOTER_NAVIGATIION = {
 		areExternalLinks: false,
 		links: [
 			{
-				tKey: 'Про Нас',
+				label: 'Про Нас',
 				href: "doesn't exist yet"
 			},
 			{
-				tKey: 'Про Нас 2',
+				label: 'Про Нас 2',
 				href: "doesn't exist yet"
 			}
 		]
@@ -53,11 +63,11 @@ export const FOOTER_NAV: FOOTER_NAVIGATIION = {
 		areExternalLinks: true,
 		links: [
 			{
-				tKey: 'Family Play',
+				label: 'Family Play',
 				href: "doesn't exist yet"
 			},
 			{
-				tKey: 'Strategy World',
+				label: 'Strategy World',
 				href: "doesn't exist yet"
 			}
 		]
@@ -66,15 +76,15 @@ export const FOOTER_NAV: FOOTER_NAVIGATIION = {
 		areExternalLinks: false,
 		links: [
 			{
-				tKey: 'Умови Користування',
+				label: 'Умови Користування',
 				href: "doesn't exist yet"
 			},
 			{
-				tKey: 'Політика конфіденційності',
+				label: 'Політика конфіденційності',
 				href: "doesn't exist yet"
 			},
 			{
-				tKey: 'Cookies',
+				label: 'Cookies',
 				href: "doesn't exist yet"
 			}
 		]
@@ -83,19 +93,19 @@ export const FOOTER_NAV: FOOTER_NAVIGATIION = {
 		areExternalLinks: true,
 		links: [
 			{
-				tKey: 'iconservator',
+				label: 'iconservator',
 				href: "doesn't exist yet"
 			},
 			{
-				tKey: 'Viva',
+				label: 'Viva',
 				href: "doesn't exist yet"
 			},
 			{
-				tKey: 'chyVacheck',
+				label: 'chyVacheck',
 				href: "doesn't exist yet"
 			},
 			{
-				tKey: 'Danya',
+				label: 'Danya',
 				href: "doesn't exist yet"
 			}
 		]
