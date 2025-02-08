@@ -8,7 +8,6 @@ import {
 	getGuildsHydrationList
 } from '@/app/lib/axios/deffered/dashboard';
 import HydrateDashboardAtoms from '@/app/lib/providers/HydrateDashboardAtoms';
-import { PageContainer } from './utils';
 
 export default async function MainSection() {
 	const hydrationDataList = await doHydrationListReqWithCreds(
@@ -25,12 +24,12 @@ export default async function MainSection() {
 
 	return (
 		<HydrateDashboardAtoms hydrationDataList={hydrationDataList}>
-			<PageContainer>
+			<section className='dashboard-page-container'>
 				<SearchBar />
 				<AdditionalInfo />
 				<RenderGuilds />
 				<NavigatePages />
-			</PageContainer>
+			</section>
 		</HydrateDashboardAtoms>
 	);
 }

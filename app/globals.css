@@ -238,6 +238,14 @@
 	.guild {
 		@apply flex flex-col gap-2 max-md:w-9/12 max-sm:w-10/12;
 	}
+
+	.dashboard-page-container {
+		@apply w-11/12 py-8 flex flex-col items-center min-h-mainPageMinH;
+	}
+
+	.additional-info-func {
+		@apply w-full flex justify-between text-white h-16 px-additionalInfoSpacingX items-end border-t border-t-borderColor my-9;
+	}
 }
 
 @layer base {
