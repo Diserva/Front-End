@@ -47,7 +47,7 @@ function RenderGuildsSkeleton() {
 
 function GuildSkeleton() {
 	return (
-		<section className='guild w-full h-full'>
+		<section className='w-full h-full guild '>
 			<BgImageSkeleton displayed={true} />
 			<section className='guild-info [&>*]:bg-skeletonCardBg [&>*]:h-5'>
 				<Skeleton className='w-5/12' />
@@ -59,10 +59,16 @@ function GuildSkeleton() {
 
 export function BgImageSkeleton({ displayed }: { displayed: boolean }) {
 	return (
-		<Skeleton
-			className={clsx('w-full h-[16vw] bg-skeletonCardBg', {
-				hidden: !displayed
-			})}
-		/>
+		<section className='relative flex justify-center items-center w-full h-[16vw] max-lg:h-[24vw] max-md:h-[37.7vw] max-sm:h-[41vw]'>
+			<Skeleton
+				className={clsx(
+					'absolute top-0 left-0 w-full h-full bg-skeletonCardBg',
+					{
+						hidden: !displayed
+					}
+				)}
+			/>
+			<Skeleton className='bg-skeletonIconBg w-1/3 pt-[33.3%] rounded-full  z-10 drop-shadow-lg shadow-inner' />
+		</section>
 	);
 }

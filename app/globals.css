@@ -236,7 +236,7 @@
 		@apply grid grid-cols-3 max-lg:grid-cols-2 max-md:flex max-md:flex-col max-md:items-center w-full gap-x-9 gap-y-8;
 	}
 	.guild {
-		@apply flex flex-col gap-2 max-md:w-9/12 max-sm:w-10/12;
+		@apply flex flex-col gap-2 max-md:!w-9/12 max-sm:!w-10/12;
 	}
 	.guild-info {
 		@apply flex w-full justify-between items-center p-4;

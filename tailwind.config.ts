@@ -19,6 +19,7 @@ export default {
 				modalItemHover: '#4B4A4A',
 				specialModalItemHover: '#403F3F',
 				skeletonCardBg: '#232323',
+				skeletonIconBg: '#252525',
 				blueAccent: '#4285F4',
 				accent: {
 					DEFAULT: 'hsl(var(--accent))',
