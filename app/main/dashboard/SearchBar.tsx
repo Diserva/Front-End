@@ -1,11 +1,11 @@
 'use client';
 
 import { IoIosSearch } from 'react-icons/io';
-import Button from '../components/utils/Button';
 import { useForm } from 'react-hook-form';
 import { useCallback } from 'react';
-import { searchInputAtom } from '../lib/jotai/dashboardAtoms';
 import { useSetAtom } from 'jotai';
+import { searchInputAtom } from '@/app/lib/jotai/dashboardAtoms';
+import { Button } from '@/components/ui/button';
 
 export default function SearchBar() {
 	type Fields = {
@@ -30,7 +30,7 @@ export default function SearchBar() {
 					{...register('input')}
 				/>
 			</div>
-			<Button type='submit'>Знайти</Button>
+			<Button type='submit' className='shadow-none bg-blueAccent'>Знайти</Button>
 		</form>
 	);
 }

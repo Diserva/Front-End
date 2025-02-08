@@ -1,32 +1,45 @@
 'use client';
 
+import { GuildType } from '@/app/lib/definitions/apiRequests';
 import clsx from 'clsx';
-import { GuildType } from '../lib/definitions/apiRequests';
 import { RiUser3Line } from 'react-icons/ri';
 
-function Background({ guild }: { guild: GuildType }) {
+function BackgroundContainer({ guild }: { guild: GuildType }) {
+	return (
+		<section className='w-full relative flex justify-center items-center'>
+			<MainBg guild={guild} />
+			<BgIcon guild={guild} />
+		</section>
+	);
+}
+
+function MainBg({ guild }: { guild: GuildType }) {
 	const bgSrc = guild.banner
 		? `https://cdn.discordapp.com/banners/${guild.id}/${guild.banner}?size=1024`
 		: 'https://i.pinimg.com/originals/b6/07/6b/b6076bb4df9a3532e01ad33b4e563643.jpg';
 
 	return (
-		<section className='w-full relative flex justify-center items-center'>
-			<div className='border-rounded overflow-hidden'>
-				<img
-					src={bgSrc}
-					alt=''
-					className='group-hover:scale-125 group-hover:opacity-60 duration-300'
-				/>
-			</div>
+		<div className='border-rounded overflow-hidden'>
+			<img
+				src={bgSrc}
+				alt=''
+				className={clsx(
+					'group-hover:scale-125 group-hover:opacity-60 duration-300'
+				)}
+			/>
+		</div>
+	);
+}
 
-			<div className='absolute w-full h-full top-0 left-0 flex justify-center items-center'>
-				<img
-					src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.webp`}
-					alt=''
-					className='z-10 rounded-full w-1/3'
-				/>
-			</div>
-		</section>
+function BgIcon({ guild }: { guild: GuildType }) {
+	return (
+		<div className='absolute w-full h-full top-0 left-0 flex justify-center items-center'>
+			<img
+				src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.webp`}
+				alt=''
+				className={clsx('z-10 rounded-full w-1/3')}
+			/>
+		</div>
 	);
 }
 
@@ -59,13 +72,9 @@ function Title({ name }: { name: string }) {
 
 export default function Guild({ guild }: { guild: GuildType }) {
 	return (
-		<section
-			className={clsx(
-				'flex flex-col gap-2 group max-md:w-9/12 max-sm:w-10/12',
-				{ 'opacity-80': !guild.isBot }
-			)}>
-			<Background guild={guild} />
-			<section className='flex justify-between items-center'>
+		<section className={clsx('guild group', { 'opacity-80': !guild.isBot })}>
+			<BackgroundContainer guild={guild} />
+			<section className='guild-info'>
 				<Title name={guild.name} />
 				<AmountOfUsers guild={guild} />
 			</section>

@@ -2,38 +2,41 @@
 
 import { cookies } from 'next/headers';
 import { getGuilds, getUserWithExistingToken } from '../server';
-import { userAtom } from '../../jotai/userAtoms';
-import { guildsAtom, loadTimeAtom } from '../../jotai/dashboardAtoms';
-import { HydrationList } from '../../definitions/atoms';
+import { GuildsType, UserType } from '../../definitions/apiRequests';
 
-export async function doHydrationListReqWithCreds( // do hydration list request with credentials
-	callback: (credentials: RequestCredentials) => Promise<HydrationList>
-): Promise<HydrationList> {
+export async function doHydrationListReqWithCreds<T>( // do hydration list request with credentials
+	callback: (credentials: RequestCredentials) => Promise<T>
+): Promise<T> {
 	const cookieStore = await cookies();
 	const credentials = cookieStore.toString();
 
 	return await callback(credentials as RequestCredentials);
 }
 
-export async function getUserHydrationList(credentials: RequestCredentials) {
-	const { data }: { data: unknown } = await getUserWithExistingToken(
-		credentials
-	);
+export async function getUserHydrationList(
+	credentials: RequestCredentials
+): Promise<UserType> {
+	const { data } = await getUserWithExistingToken(credentials);
 
-	return [[userAtom, data]];
+	return data;
 }
+
+type GuildsHydrationSet = {
+	guilds: GuildsType;
+	loadTime: string;
+};
 
 export async function getGuildsHydrationList(
 	credentials: RequestCredentials
-): Promise<HydrationList> {
+): Promise<GuildsHydrationSet> {
 	const startTime = Date.now();
-	const { data } = (await getGuilds(credentials));
+	const { data } = await getGuilds(credentials);
 	const endTime = Date.now();
 
 	const loadTimeFormatted = ((endTime - startTime) / 1000).toFixed(2);
 
-	return [
-		[guildsAtom, data],
-		[loadTimeAtom, loadTimeFormatted]
-	] 
+	return {
+		guilds: data,
+		loadTime: loadTimeFormatted
+	};
 }

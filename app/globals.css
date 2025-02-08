@@ -223,15 +223,34 @@
 	.nav {
 		@apply h-header bg-navLayout w-full;
 	}
-	.nav > div, header {
+	.nav > div,
+	header {
 		@apply w-screen;
-	}
-	.navigation-list {
-		@apply flex-center max-md:hidden gap-4;
 	}
 
 	.header {
 		@apply flex !justify-between w-full py-4 px-8 !space-x-0;
+	}
+
+	.guilds-layout {
+		@apply grid grid-cols-3 max-lg:grid-cols-2 max-md:flex max-md:flex-col max-md:items-center w-full gap-x-9 gap-y-8;
+	}
+	.guild {
+		@apply flex flex-col gap-2 max-md:!w-9/12 max-sm:!w-10/12;
+	}
+	.guild-info {
+		@apply flex w-full justify-between items-center p-4;
+	}
+
+	.dashboard-page-container {
+		@apply w-11/12 py-8 flex flex-col items-center min-h-mainPageMinH;
+	}
+
+	.additional-info-func {
+		@apply w-full flex justify-between text-white h-16 px-additionalInfoSpacingX items-end border-t border-t-borderColor my-9;
+	}
+	.pagination-cont {
+		@apply w-full flex justify-center text-white mt-11;
 	}
 }
 
