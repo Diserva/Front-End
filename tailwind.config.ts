@@ -75,7 +75,9 @@ export default {
 				}
 			},
 			spacing: {
-				header: '72px'
+				header: '72px',
+				mainPageMinH: '500px',
+				additionalInfoSpacingX: '22px'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
