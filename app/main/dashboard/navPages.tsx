@@ -64,7 +64,7 @@ function CurrentPage() {
 
 export default function NavigatePages() {
 	return (
-		<section className='w-full flex justify-center text-white mt-11'>
+		<section className='pagination-cont'>
 			<NavPrevPage />
 			<CurrentPage />
 			<NavNextPage />

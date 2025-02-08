@@ -7,6 +7,7 @@ export default function Loading() {
 			<SearchBarSkeleton />
 			<AdditionalInfoSkeleton />
 			<RenderGuildsSkeleton />
+			<NavPagesSkeleton />
 		</section>
 	);
 }
@@ -57,7 +58,7 @@ function GuildSkeleton() {
 	);
 }
 
-export function BgImageSkeleton({ displayed }: { displayed: boolean }) {
+function BgImageSkeleton({ displayed }: { displayed: boolean }) {
 	return (
 		<section className='relative flex justify-center items-center w-full h-[16vw] max-lg:h-[24vw] max-md:h-[37.7vw] max-sm:h-[41vw]'>
 			<Skeleton
@@ -69,6 +70,16 @@ export function BgImageSkeleton({ displayed }: { displayed: boolean }) {
 				)}
 			/>
 			<Skeleton className='bg-skeletonIconBg w-1/3 pt-[33.3%] rounded-full  z-10 drop-shadow-lg shadow-inner' />
+		</section>
+	);
+}
+
+function NavPagesSkeleton() {
+	return (
+		<section className='pagination-cont gap-2'>
+			<Skeleton className='size-[22px]' />
+			<Skeleton className='size-[22px]' />
+			<Skeleton className='size-[22px]' />
 		</section>
 	);
 }

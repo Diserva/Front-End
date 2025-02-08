@@ -14,14 +14,6 @@ export default async function MainSection() {
 		getGuildsHydrationList
 	);
 
-	console.log(
-		await new Promise(resolve => {
-			setTimeout(() => {
-				resolve(true);
-			}, 10_000);
-		})
-	);
-
 	return (
 		<HydrateDashboardAtoms hydrationDataList={hydrationDataList}>
 			<section className='dashboard-page-container'>

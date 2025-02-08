@@ -249,6 +249,9 @@
 	.additional-info-func {
 		@apply w-full flex justify-between text-white h-16 px-additionalInfoSpacingX items-end border-t border-t-borderColor my-9;
 	}
+	.pagination-cont {
+		@apply w-full flex justify-center text-white mt-11;
+	}
 }
 
 @layer base {
