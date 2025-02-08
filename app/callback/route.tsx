@@ -7,7 +7,9 @@ import { bodySchema } from '../lib/definitions/apiRequests';
 
 export async function GET(req: NextRequest) {
 	const jwt = await getCookies(req);
-	const res = NextResponse.redirect(new URL('/main', req.url));
+	const res = NextResponse.redirect(
+		new URL(process.env.NEXT_PUBLIC_DASHBOARD_ROOT as string, req.url)
+	);
 
 	if (jwt) {
 		res.cookies.set('jwt', jwt, {
