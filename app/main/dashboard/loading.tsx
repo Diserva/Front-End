@@ -1,21 +1,12 @@
 import { Skeleton } from '@/components/ui/skeleton';
 import clsx from 'clsx';
 
-export function BgImageSkeleton({ displayed }: { displayed: boolean }) {
-	return (
-		<Skeleton
-			className={clsx({
-				'hidden w-full aspect-9/5 bg-skeletonCardBg': !displayed
-			})}
-		/>
-	);
-}
-
 export default function Loading() {
 	return (
 		<section className='dashboard-page-container'>
 			<SearchBarSkeleton />
 			<AdditionalInfoSkeleton />
+			<RenderGuildsSkeleton />
 		</section>
 	);
 }
@@ -38,26 +29,40 @@ function AdditionalInfoSkeleton() {
 	);
 }
 
-// export default function GuildSkeletonsLayout() {
-// 	console.log('you called me');
-
-// 	return (
-// 		<section className='guilds-layout'>
-// 			{Array(9).map(() => (
-// 				<GuildSkeleton />
-// 			))}
-// 		</section>
-// 	);
-// }
+function RenderGuildsSkeleton() {
+	return (
+		<section className='guilds-layout w-full'>
+			<GuildSkeleton />
+			<GuildSkeleton />
+			<GuildSkeleton />
+			<GuildSkeleton />
+			<GuildSkeleton />
+			<GuildSkeleton />
+			<GuildSkeleton />
+			<GuildSkeleton />
+			<GuildSkeleton />
+		</section>
+	);
+}
 
 function GuildSkeleton() {
 	return (
-		<section className='[&>*]:bg-skeletonCardBg guild w-full'>
+		<section className='guild w-full h-full'>
 			<BgImageSkeleton displayed={true} />
-			<div className='flex justify-between '>
-				<Skeleton />
-				<Skeleton />
-			</div>
+			<section className='guild-info [&>*]:bg-skeletonCardBg [&>*]:h-5'>
+				<Skeleton className='w-5/12' />
+				<Skeleton className='w-1/6' />
+			</section>
 		</section>
+	);
+}
+
+export function BgImageSkeleton({ displayed }: { displayed: boolean }) {
+	return (
+		<Skeleton
+			className={clsx('w-full h-[16vw] bg-skeletonCardBg', {
+				hidden: !displayed
+			})}
+		/>
 	);
 }
