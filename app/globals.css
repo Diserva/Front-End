@@ -238,6 +238,9 @@
 	.guild {
 		@apply flex flex-col gap-2 max-md:w-9/12 max-sm:w-10/12;
 	}
+	.guild-info {
+		@apply flex w-full justify-between items-center p-4;
+	}
 
 	.dashboard-page-container {
 		@apply w-11/12 py-8 flex flex-col items-center min-h-mainPageMinH;

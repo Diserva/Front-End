@@ -74,7 +74,7 @@ export default function Guild({ guild }: { guild: GuildType }) {
 	return (
 		<section className={clsx('guild group', { 'opacity-80': !guild.isBot })}>
 			<BackgroundContainer guild={guild} />
-			<section className='flex justify-between items-center'>
+			<section className='guild-info'>
 				<Title name={guild.name} />
 				<AmountOfUsers guild={guild} />
 			</section>

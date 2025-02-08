@@ -18,7 +18,7 @@ import {
 export function Username() {
 	const user = useAtomValue(userAtom);
 
-	return <h3 className='text-white'>{user?.username}</h3>;
+	return <h3 className='text-white select-none'>{user?.username}</h3>;
 }
 
 export function AvatarSection() {
