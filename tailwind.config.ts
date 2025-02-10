@@ -5,7 +5,8 @@ export default {
 	content: [
 		'./pages/**/*.{js,ts,jsx,tsx,mdx}',
 		'./components/**/*.{js,ts,jsx,tsx,mdx}',
-		'./app/**/*.{js,ts,jsx,tsx,mdx}'
+		'./app/**/*.{js,ts,jsx,tsx,mdx}',
+		'./@/components/**/*.{tsx,ts}'
 	],
 	theme: {
 		extend: {
@@ -97,8 +98,7 @@ export default {
 	},
 	safelist: [
 		{
-			pattern:
-				/text-footIcon-(telegram|github|discord|threads|twitter|instagram)/,
+			pattern: /text-footIcon-(telegram|github|discord|threads|twitter|instagram)/,
 			variants: ['hover']
 		}
 	],

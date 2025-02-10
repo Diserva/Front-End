@@ -1,7 +1,7 @@
 import { LINK } from '.';
 
 type T_COLUMN_LABEL = string;
-type COLUMN_LINKS = {
+export type COLUMN_LINKS = {
 	areExternalLinks: boolean;
 	links: LINK[];
 };
