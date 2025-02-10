@@ -6,7 +6,7 @@ import {
 import HydrateDashboardAtoms from '@/app/lib/providers/HydrateDashboardAtoms';
 import NavigatePages from './NavPages';
 import SearchBar from './SearchBar';
-import Guilds from '../Guilds';
+import Guilds from './Guilds';
 
 export default async function MainSection() {
 	const hydrationDataList = await doHydrationListReqWithCreds(

@@ -17,7 +17,7 @@ export default function SearchBarUI({
 	return (
 		<form
 			role='search'
-			className='flex justify-between px-6 h-20 items-center w-full bg-navLayout border-rounded select-none'
+			className='flex justify-between px-6 h-20 items-center w-full bg-navLayout rounded-lg select-none'
 			onSubmit={onSubmit}>
 			<div className='flex flex-1 gap-2 items-center'>
 				<IoIosSearch color='white' className='w-[22px] h-[22px]' />

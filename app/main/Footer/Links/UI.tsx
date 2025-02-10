@@ -1,5 +1,4 @@
-import { FOOTER_NAV } from '@/app/lib/constants/footer';
-import { LINK } from '@/app/lib/definitions';
+import { COLUMN_LINKS, LINK } from '@/app/lib/definitions';
 import Link from 'next/link';
 
 function RenderLinksList({
@@ -28,21 +27,21 @@ function RenderLinksList({
 	);
 }
 
-export default function Links() {
-	const footerData = Object.entries(FOOTER_NAV);
-
+export function LinksUI({
+	footerData
+}: {
+	footerData: [string, COLUMN_LINKS][];
+}) {
 	return (
 		<section className='footer-links'>
-			{footerData.map(([label, columnData]) => {
-				return (
-					<section
-						key={label}
-						className='flex flex-col gap-4 w-fit max-sm:grid-cols-1 max-sm:justify-center max-sm:items-center'>
-						<h3 className='text-white'>{label}</h3>
-						<RenderLinksList {...columnData} />
-					</section>
-				);
-			})}
+			{footerData.map(([label, columnData]) => (
+				<section
+					key={label}
+					className='flex flex-col gap-4 w-fit max-sm:grid-cols-1 max-sm:justify-center max-sm:items-center'>
+					<h3 className='text-white'>{label}</h3>
+					<RenderLinksList {...columnData} />
+				</section>
+			))}
 		</section>
 	);
 }

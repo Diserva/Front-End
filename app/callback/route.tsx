@@ -11,25 +11,25 @@ export async function GET(req: NextRequest) {
 		new URL(process.env.NEXT_PUBLIC_DASHBOARD_ROOT as string, req.url)
 	);
 
-	if (jwt) {
-		res.cookies.set('jwt', jwt, {
-			maxAge: 24 * 60 * 60
-		});
-
-		return res;
-	} else {
+	if (!jwt) {
 		return new NextResponse('failed. Something went wrong', { status: 400 });
 	}
+
+	res.cookies.set('jwt', jwt, {
+		maxAge: 24 * 60 * 60
+	});
+
+	return res;
 }
 
 function getCookies(req: NextRequest) {
 	const params = req.nextUrl.searchParams;
 
-	if (params.has('code')) {
-		return pipe(params.get('code') as string, generateBody, getToken, getJwt);
-	} else {
+	if (!params.has('code')) {
 		return 'no code exception';
 	}
+
+	return pipe(params.get('code') as string, generateBody, getToken, getJwt);
 }
 
 async function getToken(body: string): Promise<string> {
@@ -57,10 +57,10 @@ function generateBody(code: string) {
 async function getJwt(token: Promise<string>) {
 	const { headers } = await getUserHeaders(await token);
 
-	if (headers['set-cookie']) {
-		const cookies = parseCookie(headers['set-cookie'][0] as string);
-		return cookies.get('jwt') as string;
-	} else {
+	if (!headers['set-cookie']) {
 		throw 'there were no cookies in response';
 	}
+	
+	const cookies = parseCookie(headers['set-cookie'][0] as string);
+	return cookies.get('jwt') as string;
 }

@@ -1,3 +1,5 @@
+"use client"
+
 import { filteredGuildsAtom } from '@/app/lib/jotai/dashboardAtoms';
 import { useAtomValue } from 'jotai';
 import React from 'react';

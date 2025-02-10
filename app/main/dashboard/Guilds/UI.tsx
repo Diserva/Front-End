@@ -1,6 +1,6 @@
 import { GuildType } from '@/app/lib/definitions/apiRequests';
 import React from 'react';
-import Guild from '../dashboard/Guild';
+import Guild from '../Guild';
 
 export default function GuildsUI({
 	filteredGuilds

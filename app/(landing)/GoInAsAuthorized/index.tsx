@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-export default function GoIn() {
+export default function GoInAsAuthorized() {
 	return (
 		<Button className='px-14'>
 			<Link
