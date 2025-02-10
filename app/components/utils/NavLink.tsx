@@ -1,18 +1,23 @@
 import { Button } from '@/components/ui/button';
+import { headers } from 'next/headers';
 import Link from 'next/link';
 
-export default function NavLink({
+export default async function NavLink({
 	href,
 	label
 }: {
 	href: string;
 	label: string;
 }) {
-	console.log({ href, label });
+	const headersList = await headers(),
+		fullUrl = headersList.get('referer') || '',
+		pathname = new URL(fullUrl).pathname;
 
 	return (
 		<Button asChild variant='link'>
-			<Link href={href}>{label}</Link>
+			<Link href={href} className={pathname === href ? 'text-white' : ''}>
+				{label}
+			</Link>
 		</Button>
 	);
 }

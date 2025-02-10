@@ -1,13 +1,12 @@
-import { Suspense } from 'react';
-import SearchBar from './SearchBar';
 import AdditionalInfo from './AdditionalInfo';
-import RenderGuilds from './RenderGuilds';
-import NavigatePages from './navPages';
 import {
 	doHydrationListReqWithCreds,
 	getGuildsHydrationList
 } from '@/app/lib/axios/deffered/dashboard';
 import HydrateDashboardAtoms from '@/app/lib/providers/HydrateDashboardAtoms';
+import NavigatePages from './NavPages';
+import SearchBar from './SearchBar';
+import Guilds from '../Guilds';
 
 export default async function MainSection() {
 	const hydrationDataList = await doHydrationListReqWithCreds(
@@ -19,7 +18,7 @@ export default async function MainSection() {
 			<section className='dashboard-page-container'>
 				<SearchBar />
 				<AdditionalInfo />
-				<RenderGuilds />
+				<Guilds />
 				<NavigatePages />
 			</section>
 		</HydrateDashboardAtoms>

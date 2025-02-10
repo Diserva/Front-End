@@ -15,7 +15,13 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='uk'>
-			<body className={clsx(inter, 'bg-mainBg m-0 box-border flex flex-col items-center justify-center')}>{children}</body>
+			<body
+				className={clsx(
+					inter,
+					'bg-mainBg m-0 box-border flex flex-col items-center justify-center'
+				)}>
+				{children}
+			</body>
 		</html>
 	);
 }

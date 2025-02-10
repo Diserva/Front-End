@@ -23,7 +23,7 @@ export default async function ProfileSection() {
 
 	return (
 		<NavigationMenuItem>
-			<DropdownMenu>
+			<DropdownMenu modal={false}>
 				<HydrateUserAtoms hydrationDataList={hydrationDataList}>
 					<Profile />
 					<Modal />

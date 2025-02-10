@@ -5,7 +5,7 @@ import Links from './Links';
 export default function Footer() {
 	return (
 		<footer className='footer'>
-			<section className='between max-sm:sm-foot'>
+			<section className='flex justify-between max-sm:flex-col max-sm:gap-5'>
 				<Icons />
 				<Links />
 			</section>

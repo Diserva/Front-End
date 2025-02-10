@@ -8,7 +8,7 @@ import StickyNoteSVG from './svgIcons/StickyNoteSVG';
 export const MAIN_NAV_LINKS: LINK[] = [
 	{
 		label: 'Керувати серверами',
-		href: '/main/'
+		href: '/main/dashboard'
 	},
 	{
 		label: 'Блог',
@@ -23,12 +23,12 @@ export const MAIN_NAV_LINKS: LINK[] = [
 export const MODAL_NAV_LINKS: MODAL_LINK_TYPE[] = [
 	{
 		label: 'Керувати серверами',
-		href: '/main/',
+		href: '/main/dasboard',
 		ComponentSVG: DashboardSVG
 	},
 	{
 		label: 'Блог',
-		href: '/blog',
+		href: '/blog/',
 		ComponentSVG: StickyNoteSVG
 	},
 	{
@@ -38,7 +38,7 @@ export const MODAL_NAV_LINKS: MODAL_LINK_TYPE[] = [
 	},
 	{
 		label: 'Налаштування',
-		href: '/settings',
+		href: '/main/settings',
 		ComponentSVG: SettingsSVG
 	},
 	{
