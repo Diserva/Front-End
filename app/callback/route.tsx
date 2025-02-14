@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
 	}
 
 	res.cookies.set('jwt', jwt, {
-		maxAge: 24 * 60 * 60
+		maxAge: 30 * 24 * 60 * 60
 	});
 
 	return res;
@@ -55,12 +55,14 @@ function generateBody(code: string) {
 }
 
 async function getJwt(token: Promise<string>) {
-	const { headers } = await getUserHeaders(await token);
+	const { headers, data } = await getUserHeaders(await token);
+
+	console.log({ headers, data });
 
 	if (!headers['set-cookie']) {
 		throw 'there were no cookies in response';
 	}
-	
+
 	const cookies = parseCookie(headers['set-cookie'][0] as string);
 	return cookies.get('jwt') as string;
 }

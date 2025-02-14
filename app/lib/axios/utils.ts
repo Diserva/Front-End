@@ -5,10 +5,13 @@ export function validate(schema: ZodSchema) {
 	return (response: unknown): z.infer<typeof schema> => {
 		const { success, data, error } = schema.safeParse(response);
 
-		if (!success) {
-			console.log({ response, success, error });
+		// console.log({data, success, error});
 
-			throw returnValidationError(error);
+		if (!success) {
+			// console.log({ response, success, error });
+
+			// throw returnValidationError(error);
+			return;
 		}
 
 		return data;

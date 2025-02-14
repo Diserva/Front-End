@@ -18,7 +18,7 @@ export const TokenSchema = z.object({
 });
 
 export const UserSchema = z.object({
-	avatar: z.string(),
+	avatar: z.string().nullable(),
 	discordId: z.string(),
 	globalName: z.string(),
 	locale: z.string(),

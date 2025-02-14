@@ -5,6 +5,7 @@
 	"scripts": {
 		"dev": "cross-env NODE_OPTIONS='--inspect' next dev",
 		"build": "next build",
+		"test": "npx playwright test end2end_tests/index.spec.ts",
 		"start": "next start",
 		"lint": "next lint"
 	},
@@ -20,6 +21,7 @@
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
 		"cross-env": "^7.0.3",
+		"dotenv": "^16.4.7",
 		"fp-ts": "^2.16.9",
 		"gsap": "^3.12.5",
 		"jotai": "^2.10.4",
@@ -36,6 +38,7 @@
 		"zod": "^3.23.8"
 	},
 	"devDependencies": {
+		"@playwright/test": "^1.50.1",
 		"@types/node": "^22.10.1",
 		"@types/react": "^19.0.8",
 		"@types/react-dom": "^18.3.1",

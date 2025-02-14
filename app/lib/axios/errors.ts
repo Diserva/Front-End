@@ -9,7 +9,7 @@ export function returnValidationError({
 }: z.ZodError) {
 	const error = new GeneralError({
 		name: `Zod response validation error;; ${name}`,
-		message: `Error occured due to failure in validating query's response;; ${message}`,
+		message: `Error occured due to failure in validating query's response;; ${message} ${name}`,
 		cause: `Response data is not compatible with given zod validation schema;; ${cause}`,
 		stack
 	});

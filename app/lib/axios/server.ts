@@ -12,11 +12,10 @@ const server = axios.create({
 });
 
 export const getUserHeaders = (token: string) =>
-	server<UserType>({
+	server({
 		url: `/auth/discord/${token}`,
-		transformResponse: json(validate(UserSchema)),
 		withCredentials: true
-	});
+	})
 
 export const getUserWithExistingToken = (cookies: RequestCredentials) =>
 	server<UserType>({
