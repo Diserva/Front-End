@@ -5,8 +5,10 @@
 	"scripts": {
 		"dev": "cross-env NODE_OPTIONS='--inspect' next dev",
 		"build": "next build",
-		"test": "npx playwright test end2end_tests/index.spec.ts",
+		"test": "npx playwright test ./end2end_tests/index.spec.ts --trace on",
+		"test:clean": "del-cli __tests__/screenshots/*.png && pnpm test",
 		"start": "next start",
+		"cleanScreens": "del-cli",
 		"lint": "next lint"
 	},
 	"dependencies": {
@@ -21,6 +23,7 @@
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
 		"cross-env": "^7.0.3",
+		"del-cli": "^6.0.0",
 		"dotenv": "^16.4.7",
 		"fp-ts": "^2.16.9",
 		"gsap": "^3.12.5",

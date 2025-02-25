@@ -7,12 +7,10 @@ import { bodySchema } from '../lib/definitions/apiRequests';
 
 export async function GET(req: NextRequest) {
 	const jwt = await getCookies(req);
-	const res = NextResponse.redirect(
-		new URL(process.env.NEXT_PUBLIC_DASHBOARD_ROOT as string, req.url)
-	);
+	const res = NextResponse.redirect(new URL('/main/dashboard', req.url));
 
 	if (!jwt) {
-		return new NextResponse('failed. Something went wrong', { status: 400 });
+		return new NextResponse('Failed to receive jwt token', { status: 400 });
 	}
 
 	res.cookies.set('jwt', jwt, {
@@ -26,17 +24,10 @@ function getCookies(req: NextRequest) {
 	const params = req.nextUrl.searchParams;
 
 	if (!params.has('code')) {
-		return 'no code exception';
+		throw 'no code in url';
 	}
 
 	return pipe(params.get('code') as string, generateBody, getToken, getJwt);
-}
-
-async function getToken(body: string): Promise<string> {
-	const { data } = await getTokenQuery(body);
-	const token = data?.access_token;
-
-	return token;
 }
 
 function generateBody(code: string) {
@@ -54,10 +45,17 @@ function generateBody(code: string) {
 	return body.toString();
 }
 
+async function getToken(body: string): Promise<string> {
+	const { data } = await getTokenQuery(body);
+	const token = data?.access_token;
+
+	if (!token) throw 'was an error';
+
+	return token;
+}
+
 async function getJwt(token: Promise<string>) {
 	const { headers, data } = await getUserHeaders(await token);
-
-	console.log({ headers, data });
 
 	if (!headers['set-cookie']) {
 		throw 'there were no cookies in response';

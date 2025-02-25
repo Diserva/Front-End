@@ -3,8 +3,6 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-console.log(process.env);
-
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -17,7 +15,7 @@ console.log(process.env);
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-	testDir: './end2end_tests',
+	testDir: './__tests__/end2end_tests',
 	/* Run tests in files in parallel */
 	fullyParallel: true,
 	/* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -78,7 +76,7 @@ export default defineConfig({
 	webServer: [
 		{
 			command: 'npm run start:dev',
-			cwd: process.env.NEXT_PUBLIC_BACKEND_ABSOLUTE_PATH,
+			cwd: process.env.BACKEND_ABSOLUTE_PATH,
 			reuseExistingServer: true,
 			port: 4000
 		},
@@ -87,12 +85,7 @@ export default defineConfig({
 			reuseExistingServer: true,
 			port: 3000
 		}
-	]
+	],
 
-	/* Run your local dev server before starting the tests */
-	// webServer: {
-	//   command: 'npm run start',
-	//   url: 'http://127.0.0.1:3000',
-	//   reuseExistingServer: !process.env.CI,
-	// },
+	timeout: 45_000
 });

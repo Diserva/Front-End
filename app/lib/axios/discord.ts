@@ -3,7 +3,7 @@ import { TokenSchema, TokenType } from '../definitions/apiRequests';
 import { json, validate } from './utils';
 
 const discord = axios.create({
-	baseURL: 'https://discord.com/api/oauth2/token'
+	baseURL: process.env.DISCORD_API_PATH
 });
 
 export const getTokenQuery = (body: string) =>
