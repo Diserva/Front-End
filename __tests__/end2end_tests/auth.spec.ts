@@ -11,6 +11,12 @@ test.describe('authorization', async () => {
 		);
 	});
 
+	test('should provide to go in as authorized if token exists', ({
+		context
+	}) => {
+		
+	});
+
 	test('should redirect user to dashboard if cookie exist', async ({
 		context,
 		page
@@ -37,10 +43,7 @@ test.describe('authorization', async () => {
 
 		await page.route(
 			`${process.env.BACKEND_URL}/auth/discord/`,
-			async route => {
-
-				
-			}
+			async route => {}
 		);
 
 		await page.goto(
