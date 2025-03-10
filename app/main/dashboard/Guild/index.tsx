@@ -1,13 +1,7 @@
-'use client';
-
 import { GuildType } from '@/app/lib/definitions/apiRequests';
-import {
-	AmountOfUsersUI,
-	BackgroundContainer,
-	MainBgUI,
-	Title
-} from './UI';
+import { AmountOfUsersUI, BackgroundContainer, MainBgUI, Title } from './UI';
 import clsx from 'clsx';
+import Link from 'next/link';
 
 export function MainBg({ guild }: { guild: GuildType }) {
 	const bgSrc = guild.banner
@@ -35,12 +29,14 @@ export function AmountOfUsers({ guild }: { guild: GuildType }) {
 
 export default function Guild({ guild }: { guild: GuildType }) {
 	return (
-		<section className={clsx('guild group', { 'opacity-80': !guild.isBot })}>
+		<Link
+			href={`manage-server?server-name=${guild.name.toLowerCase()}`}
+			className={clsx('guild group', { 'opacity-80': !guild.isBot })}>
 			<BackgroundContainer guild={guild} />
 			<section className='guild-info'>
 				<Title name={guild.name} />
 				<AmountOfUsers guild={guild} />
 			</section>
-		</section>
+		</Link>
 	);
 }

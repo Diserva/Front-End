@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+// AUTHORIZATION
+
 export const bodySchema = z.object({
 	client_id: z.string(),
 	client_secret: z.string(),
@@ -36,9 +38,67 @@ export const GuildShema = z.object({
 	isBot: z.boolean()
 });
 
-export const GuildsSchema = z.array(GuildShema);
+// MANAGE-SECTIONS
 
+const ElemSelectSchema = z.object({
+	type: z.literal('Select'),
+	name: z.string(),
+	defaultOption: z.string(),
+	options: z.array(z.string())
+});
+
+const ElemCheckboxSchema = z.object({
+	type: z.literal('Checkbox'),
+	isCheckedByDefault: z.boolean(),
+	description: z.string()
+});
+
+const ElemTextInputSchema = z.object({
+	type: z.literal('TextInput'),
+	name: z.string(),
+	extandable: z.boolean(),
+	placeholder: z.string(),
+	defaultText: z.string()
+});
+
+const allElementsSchema = z.union([
+	ElemSelectSchema,
+	ElemCheckboxSchema,
+	ElemTextInputSchema
+]);
+
+const ContainerCol2Schema = z.object({
+	type: z.literal('Container2'),
+	children: allElementsSchema
+});
+
+const AnyContent = z.union([allElementsSchema, ContainerCol2Schema]);
+
+const MainContainerSchema = z.object({
+	type: z.literal('ContainerMain'),
+	heading: z.string(),
+	removeable: z.boolean(),
+	children: z.union([AnyContent, AnyContent.array()])
+});
+
+const SectionSchema = z.object({
+	name: z.string(),
+	href: z.string(),
+	content: z.union([MainContainerSchema, MainContainerSchema.array()])
+});
+
+const Settings = z.array(SectionSchema);
+
+export const GuildsSchema = z.array(GuildShema);
 export type TokenType = z.infer<typeof TokenSchema>;
 export type UserType = z.infer<typeof UserSchema>;
 export type GuildsType = z.infer<typeof GuildsSchema>;
 export type GuildType = z.infer<typeof GuildShema>;
+
+export type SettingsType = z.infer<typeof Settings>;
+export type ElSelectArgs = z.infer<typeof ElemSelectSchema>;
+export type ElCheckboxArgs = z.infer<typeof ElemCheckboxSchema>;
+export type ElTextInputArgs = z.infer<typeof ElemTextInputSchema>;
+export type ElMainContArgs = z.infer<typeof MainContainerSchema>;
+export type ElContCol2Args = z.infer<typeof ContainerCol2Schema>;
+export type ElSectionArgs = z.infer<typeof SectionSchema>;

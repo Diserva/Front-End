@@ -2,11 +2,10 @@ import clsx from 'clsx';
 import { inter } from './lib/fonts';
 import './globals.css';
 import { Metadata } from 'next';
-import { DESCRIPTION, TITLE } from './lib/constants/meta';
 
 export const metadata: Metadata = {
-	title: TITLE,
-	description: DESCRIPTION
+	title: 'Diserva',
+	description: 'Developing such a perfect product'
 };
 export default function RootLayout({
 	children

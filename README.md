@@ -130,6 +130,8 @@ async function getJwt(token: Promise<string>): Promise<string>;
   ```
   Here, `[server]` represents a dynamic segment that is used to construct the request URI.
 
+---
+
 ## Manage Server Page (`/main/manage-server/[server]`)
 
 - **Dynamic Content Loading:**  
@@ -156,7 +158,7 @@ async function getJwt(token: Promise<string>): Promise<string>;
   - Users are required to save their changes before proceeding to another page.
   - **TypeScript and components description:**
 
-  ```typescript
+- ```typescript
   type Element_Select = {
   	type: 'Select';
   	name: string;
@@ -200,6 +202,8 @@ async function getJwt(token: Promise<string>): Promise<string>;
   	| Element_TextInput
   	| SimpleContainer;
   ```
+
+  
 
 ## State Management and Form Interaction
 
