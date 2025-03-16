@@ -1,6 +1,6 @@
 import { NavigationMenuItem } from '@/components/ui/navigation-menu';
-import { MAIN_NAV_LINKS } from '@/app/lib/constants/header';
 import NavLink from '../NavLink';
+import { MAIN_NAV_LINKS } from '../constants';
 
 export default function NavSection() {
 	return (

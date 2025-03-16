@@ -49,6 +49,7 @@
 		"@types/underscore": "^1.13.0",
 		"eslint": "^9.16.0",
 		"eslint-config-next": "15.0.3",
+		"msw": "^2.7.3",
 		"postcss": "^8.4.49",
 		"tailwindcss": "^3.4.16",
 		"typescript": "^5.7.2"

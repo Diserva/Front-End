@@ -3,12 +3,12 @@ import { json, validate } from './utils';
 import { SettingsSchema } from './apiSchemas';
 
 const postman = axios.create({
-	baseURL: `${process.env.NEXT_PUBLIC_POSTMAN}/manage-server`
+	baseURL: `${process.env.MOCK_SERVER_DEST}/get-server`
 });
 
 export const getSpecificServerSettingsOptions = (serverName: string) =>
 	postman({
 		method: 'GET',
 		url: `/${serverName}`,
-		// transformResponse: json(validate(SettingsSchema))
+		transformResponse: json(validate(SettingsSchema))
 	});

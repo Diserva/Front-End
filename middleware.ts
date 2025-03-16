@@ -15,9 +15,13 @@ export default function middleware(request: NextRequest) {
 		return ifNotAuthorized(request);
 	}
 
-	// set headers so we can access pathname from server components
-	const headers = new Headers(request.headers);
-	headers.set('x-current-path', request.nextUrl.pathname);
+	// add url property to headers so we can access pathname from server components
+	const requestHeaders = new Headers(request.headers);
+	requestHeaders.set('x-url', request.nextUrl.pathname);
 
-	return NextResponse.next({ headers });
+	return NextResponse.next({
+		request: {
+			headers: requestHeaders
+		}
+	});
 }

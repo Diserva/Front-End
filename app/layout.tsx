@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { inter } from './lib/fonts';
 import './globals.css';
 import { Metadata } from 'next';
+import './msw'; // enable mocked server
 
 export const metadata: Metadata = {
 	title: 'Diserva',

@@ -69,22 +69,21 @@ const allElementsSchema = z.union([
 
 const ContainerCol2Schema = z.object({
 	type: z.literal('Container2'),
-	children: allElementsSchema
+	children: z.union([allElementsSchema, allElementsSchema.array()])
 });
 
 const AnyContent = z.union([allElementsSchema, ContainerCol2Schema]);
 
 const MainContainerSchema = z.object({
 	type: z.literal('ContainerMain'),
-	heading: z.string(),
+	name: z.string(),
 	removeable: z.boolean(),
 	children: z.union([AnyContent, AnyContent.array()])
 });
 
 const SectionSchema = z.object({
 	name: z.string(),
-	href: z.string(),
-	content: z.union([MainContainerSchema, MainContainerSchema.array()])
+	children: z.union([MainContainerSchema, MainContainerSchema.array()])
 });
 
 export const SettingsSchema = z.array(SectionSchema);

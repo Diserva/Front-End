@@ -1,4 +1,4 @@
-import { getSpecificServerSettingsOptions } from '@/app/lib/axios/postman';
+import { getSpecificServerSettingsOptions } from '@/app/lib/axios/mockedServer';
 import HydrateManageServerAtoms from '@/app/lib/providers/HydrateManageServerAtoms';
 import Render from './Render';
 

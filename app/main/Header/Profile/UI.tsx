@@ -1,4 +1,3 @@
-import { MODAL_NAV_LINKS } from '@/app/lib/constants/header';
 import { MODAL_LINK_TYPE } from '@/app/lib/definitions';
 import { UserType } from '@/app/lib/axios/apiSchemas';
 import {
@@ -16,6 +15,7 @@ import Link from 'next/link';
 import { AvatarSection, Balance, Username } from './client';
 import { ReactNode } from 'react';
 import { NavigationMenuItem } from '@/components/ui/navigation-menu';
+import { MODAL_NAV_LINKS } from '../constants';
 
 export function UsernameUI({ user }: { user: UserType | undefined }) {
 	return <h3 className='text-white select-none'>{user?.username}</h3>;
