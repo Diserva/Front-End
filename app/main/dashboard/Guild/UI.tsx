@@ -1,4 +1,4 @@
-import { GuildType } from '@/app/lib/definitions/apiRequests';
+import { GuildType } from '@/app/lib/axios/apiSchemas';
 import clsx from 'clsx';
 import { RiUser3Line } from 'react-icons/ri';
 import { MainBg } from '.';

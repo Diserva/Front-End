@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactNode } from 'react';
-import { GuildsType } from '../definitions/apiRequests';
+import { GuildsType } from '../axios/apiSchemas';
 import { useHydrateAtoms } from 'jotai/utils';
 import { guildsAtom, loadTimeAtom } from '../jotai/dashboardAtoms';
 

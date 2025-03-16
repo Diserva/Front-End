@@ -1,9 +1,9 @@
-import { LINK, MODAL_LINK_TYPE } from '../definitions';
-import SettingsSVG from './svgIcons/SettingsSVG';
-import HelpSVG from './svgIcons/HelpSVG';
-import DashboardSVG from './svgIcons/DashboardSVG';
-import InfoSVG from './svgIcons/InfoSVG';
-import StickyNoteSVG from './svgIcons/StickyNoteSVG';
+import SettingsSVG from '../Footer/Icons/svgIcons/SettingsSVG';
+import HelpSVG from '../Footer/Icons/svgIcons/HelpSVG';
+import DashboardSVG from '../Footer/Icons/svgIcons/DashboardSVG';
+import InfoSVG from '../Footer/Icons/svgIcons/InfoSVG';
+import StickyNoteSVG from '../Footer/Icons/svgIcons/StickyNoteSVG';
+import { LINK, MODAL_LINK_TYPE } from '@/app/lib/definitions';
 
 export const MAIN_NAV_LINKS: LINK[] = [
 	{

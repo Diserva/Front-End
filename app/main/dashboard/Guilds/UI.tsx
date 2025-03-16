@@ -1,4 +1,4 @@
-import { GuildType } from '@/app/lib/definitions/apiRequests';
+import { GuildType } from '@/app/lib/axios/apiSchemas';
 import React from 'react';
 import Guild from '../Guild';
 

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { TokenSchema, TokenType } from '../definitions/apiRequests';
+import { TokenSchema, TokenType } from './apiSchemas';
 import { json, validate } from './utils';
 
 const discord = axios.create({

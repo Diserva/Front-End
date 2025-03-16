@@ -4,7 +4,7 @@ import {
 	GuildsType,
 	UserSchema,
 	UserType
-} from '../definitions/apiRequests';
+} from './apiSchemas';
 import { json, validate } from './utils';
 
 const server = axios.create({

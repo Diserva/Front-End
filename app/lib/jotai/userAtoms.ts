@@ -1,5 +1,5 @@
 import { atom } from 'jotai';
-import { UserType } from '../definitions/apiRequests';
+import { UserType } from '../axios/apiSchemas';
 
 export const userAtom = atom<UserType>();
 export const userAvatarUrl = atom(get => {

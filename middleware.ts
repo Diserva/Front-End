@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 function ifNotAuthorized(request: NextRequest) {
-	if (request.nextUrl.pathname === '/main') {
-		// ця перевірка не є чимось хорошим. Треба буде доробити
-		// console.log(request.nextUrl.pathname);
+	if (request.nextUrl.pathname.startsWith('/main')) {
 		return NextResponse.redirect(new URL('/', request.url));
 	} else {
 		return NextResponse.next();
@@ -17,5 +15,9 @@ export default function middleware(request: NextRequest) {
 		return ifNotAuthorized(request);
 	}
 
-	return NextResponse.next();
+	// set headers so we can access pathname from server components
+	const headers = new Headers(request.headers);
+	headers.set('x-current-path', request.nextUrl.pathname);
+
+	return NextResponse.next({ headers });
 }

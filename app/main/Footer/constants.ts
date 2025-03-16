@@ -1,3 +1,4 @@
+import { FOOTER_NAVIGATIION, ICON_LINK } from '@/app/lib/definitions';
 import {
 	FaDiscord,
 	FaGithub,
@@ -6,7 +7,6 @@ import {
 	FaThreads,
 	FaXTwitter
 } from 'react-icons/fa6';
-import type { FOOTER_NAVIGATIION, ICON_LINK } from '../definitions';
 
 type FOOTER_LINK_ICON = ICON_LINK & {
 	hoverColor: string;
@@ -26,22 +26,22 @@ export const LINK_ICONS: FOOTER_LINK_ICON[] = [
 	{
 		Icon: FaDiscord,
 		href: '3',
-		hoverColor: "discord"
+		hoverColor: 'discord'
 	},
 	{
 		Icon: FaThreads,
 		href: '4',
-		hoverColor: "threads"
+		hoverColor: 'threads'
 	},
 	{
 		Icon: FaXTwitter,
 		href: '5',
-		hoverColor: "twitter"
+		hoverColor: 'twitter'
 	},
 	{
 		Icon: FaInstagram,
 		href: '6',
-		hoverColor: "instagram"
+		hoverColor: 'instagram'
 	}
 ];
 

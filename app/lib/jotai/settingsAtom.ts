@@ -1,5 +1,5 @@
 import { atom } from 'jotai';
-import { SettingsType } from '../definitions/apiRequests';
+import { SettingsType } from '../axios/apiSchemas';
 import { isEqual } from 'underscore';
 
 export const LAST_SERVER_SETTINGS_ATOM = atom<SettingsType>(); // This atom may only be once initiated with data, but mustn't be changed later

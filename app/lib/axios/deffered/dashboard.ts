@@ -2,7 +2,7 @@
 
 import { cookies } from 'next/headers';
 import { getGuilds, getUserWithExistingToken } from '../server';
-import { GuildsType, UserType } from '../../definitions/apiRequests';
+import { GuildsType, UserType } from '../apiSchemas';
 
 export async function doHydrationListReqWithCreds<T>( // do hydration list request with credentials
 	callback: (credentials: RequestCredentials) => Promise<T>

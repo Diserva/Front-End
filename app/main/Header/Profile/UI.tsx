@@ -1,6 +1,6 @@
 import { MODAL_NAV_LINKS } from '@/app/lib/constants/header';
 import { MODAL_LINK_TYPE } from '@/app/lib/definitions';
-import { UserType } from '@/app/lib/definitions/apiRequests';
+import { UserType } from '@/app/lib/axios/apiSchemas';
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -10,7 +10,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import clsx from 'clsx';
-import LogOutSVG from '@/app/lib/constants/svgIcons/LogOutSVG';
+import LogOutSVG from '@/app/main/Footer/Icons/svgIcons/LogOutSVG';
 import { logout } from '@/app/lib/actions';
 import Link from 'next/link';
 import { AvatarSection, Balance, Username } from './client';

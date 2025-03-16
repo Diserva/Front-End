@@ -1,11 +1,12 @@
 import { atom } from 'jotai';
-import { GuildsType } from '../definitions/apiRequests';
-import { MAX_PAGE_LENGTH } from '../constants/dashboard';
+import { GuildsType } from '../axios/apiSchemas';
 
 export const guildsAtom = atom<GuildsType>();
 export const pageAtom = atom(1);
 export const searchInputAtom = atom('');
 export const loadTimeAtom = atom('');
+
+const MAX_PAGE_LENGTH = 9;
 
 export const filteredGuildsAtom = atom(get => {
 	const allGuilds = get(guildsAtom);

@@ -3,11 +3,13 @@ import { pipe } from 'fp-ts/lib/function';
 import { getTokenQuery } from '../lib/axios/discord';
 import { getUserHeaders } from '../lib/axios/server';
 import { parseCookie } from 'next/dist/compiled/@edge-runtime/cookies';
-import { bodySchema } from '../lib/definitions/apiRequests';
+import { bodySchema } from '../lib/axios/apiSchemas';
 
 export async function GET(req: NextRequest) {
 	const jwt = await getCookies(req);
 	const res = NextResponse.redirect(new URL('/main/dashboard', req.url));
+
+	await new Promise(resolve => setTimeout(() => resolve('ready'), 2500));
 
 	if (!jwt) {
 		return new NextResponse('Failed to receive jwt token', { status: 400 });

@@ -1,4 +1,5 @@
-import { LINK_ICONS } from '@/app/lib/constants/footer';
+import { LINK_ICONS } from "../constants";
+
 
 export default function IconsUI() {
 	return (

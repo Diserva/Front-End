@@ -1,4 +1,4 @@
-import { FOOTER_NAV } from '@/app/lib/constants/footer';
+import { FOOTER_NAV } from '../constants';
 import { LinksUI } from './UI';
 
 export default function Links() {

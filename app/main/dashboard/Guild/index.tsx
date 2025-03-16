@@ -1,4 +1,4 @@
-import { GuildType } from '@/app/lib/definitions/apiRequests';
+import { GuildType } from '@/app/lib/axios/apiSchemas';
 import { AmountOfUsersUI, BackgroundContainer, MainBgUI, Title } from './UI';
 import clsx from 'clsx';
 import Link from 'next/link';
@@ -30,7 +30,7 @@ export function AmountOfUsers({ guild }: { guild: GuildType }) {
 export default function Guild({ guild }: { guild: GuildType }) {
 	return (
 		<Link
-			href={`manage-server?server-name=${guild.name.toLowerCase()}`}
+			href={`manage-server/${guild.name.toLowerCase()}`}
 			className={clsx('guild group', { 'opacity-80': !guild.isBot })}>
 			<BackgroundContainer guild={guild} />
 			<section className='guild-info'>

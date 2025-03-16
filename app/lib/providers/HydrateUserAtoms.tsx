@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactNode } from 'react';
-import { UserType } from '../definitions/apiRequests';
+import { UserType } from '../axios/apiSchemas';
 import { useHydrateAtoms } from 'jotai/utils';
 import { userAtom } from '../jotai/userAtoms';
 

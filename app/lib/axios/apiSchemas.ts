@@ -87,7 +87,7 @@ const SectionSchema = z.object({
 	content: z.union([MainContainerSchema, MainContainerSchema.array()])
 });
 
-const Settings = z.array(SectionSchema);
+export const SettingsSchema = z.array(SectionSchema);
 
 export const GuildsSchema = z.array(GuildShema);
 export type TokenType = z.infer<typeof TokenSchema>;
@@ -95,7 +95,7 @@ export type UserType = z.infer<typeof UserSchema>;
 export type GuildsType = z.infer<typeof GuildsSchema>;
 export type GuildType = z.infer<typeof GuildShema>;
 
-export type SettingsType = z.infer<typeof Settings>;
+export type SettingsType = z.infer<typeof SettingsSchema>;
 export type ElSelectArgs = z.infer<typeof ElemSelectSchema>;
 export type ElCheckboxArgs = z.infer<typeof ElemCheckboxSchema>;
 export type ElTextInputArgs = z.infer<typeof ElemTextInputSchema>;
