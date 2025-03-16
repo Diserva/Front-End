@@ -3,6 +3,7 @@ import { inter } from './lib/fonts';
 import './globals.css';
 import { Metadata } from 'next';
 import './msw'; // enable mocked server
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
 
 export const metadata: Metadata = {
 	title: 'Diserva',
@@ -20,7 +21,7 @@ export default function RootLayout({
 					inter,
 					'bg-mainBg m-0 box-border flex flex-col items-center justify-center'
 				)}>
-				{children}
+				<NuqsAdapter>{children}</NuqsAdapter>
 			</body>
 		</html>
 	);
