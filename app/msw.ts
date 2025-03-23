@@ -125,7 +125,9 @@ const responseBody = [
 ];
 
 const server = setupServer(
-	http.get('http://localhost:5000/get-server/test', () => HttpResponse.json(responseBody))
+	http.get('http://localhost:5000/get-server/test', () =>
+		HttpResponse.json(responseBody)
+	)
 );
 
-server.listHandlers()
+server.listen();
