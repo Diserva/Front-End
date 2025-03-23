@@ -3,6 +3,8 @@ import HydrateManageServerAtoms from '@/app/lib/providers/HydrateManageServerAto
 import { headers } from 'next/headers';
 import Render from './Render';
 import SettingsHeading from './PageHeading';
+import { inter } from '@/app/lib/fonts';
+import clsx from 'clsx';
 
 export default async function page() {
 	const myHeaders = await headers(),
@@ -15,8 +17,10 @@ export default async function page() {
 
 	return (
 		<HydrateManageServerAtoms settingsData={data}>
-			<SettingsHeading serverName={serverName as string} />
-			<Render />
+			<section className={clsx(inter.className, 'flex flex-col w-full')}>
+				<SettingsHeading serverName={serverName as string} />
+				<Render />
+			</section>
 		</HydrateManageServerAtoms>
 	);
 }

@@ -7,18 +7,20 @@ export const newServerSettingsAtom = atom<SettingsType>(); // this atom initiate
 
 export const sectionNameAtom = atom<string>();
 
-type SectionLink = {
+export type SectionLink = {
 	displayedName: string;
 	searchParamsName: string;
 };
 
-export const sectionNamesListAtom = atom<SectionLink[]>((get): SectionLink[] => {
-	const serverSettings = get(LAST_SERVER_SETTINGS_ATOM) || [];
-	return serverSettings.map(section => ({
-		displayedName: section.name,
-		searchParamsName: section.name.toLowerCase()
-	}));
-});
+export const sectionNamesListAtom = atom<SectionLink[]>(
+	(get): SectionLink[] => {
+		const serverSettings = get(LAST_SERVER_SETTINGS_ATOM) || [];
+		return serverSettings.map(section => ({
+			displayedName: section.name,
+			searchParamsName: section.name.toLowerCase()
+		}));
+	}
+);
 
 export const isChangedAtom = atom<boolean>(get =>
 	isEqual(get(LAST_SERVER_SETTINGS_ATOM), get(newServerSettingsAtom))
