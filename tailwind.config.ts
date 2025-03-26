@@ -22,6 +22,9 @@ export default {
 				skeletonCardBg: '#232323',
 				skeletonIconBg: '#252525',
 				blueAccent: '#4285F4',
+				inputLabel: '#F3F3F3',
+				alternateBorder: '#767676',
+
 				footIcon: {
 					telegram: '#2AABEE',
 					github: '#24292F',
@@ -98,7 +101,8 @@ export default {
 	},
 	safelist: [
 		{
-			pattern: /text-footIcon-(telegram|github|discord|threads|twitter|instagram)/,
+			pattern:
+				/text-footIcon-(telegram|github|discord|threads|twitter|instagram)/,
 			variants: ['hover']
 		}
 	],

@@ -14,7 +14,7 @@ export function HeadingUI({ serverName }: { serverName: string }) {
 }
 
 export function NavigationUI({
-	allSectionNames,
+	allSectionNames,	
 	onClick,
 	currSectionName,
 	ref,

@@ -4,8 +4,14 @@ import { isEqual } from 'underscore';
 
 export const LAST_SERVER_SETTINGS_ATOM = atom<SettingsType>(); // This atom may only be once initiated with data, but mustn't be changed later
 export const newServerSettingsAtom = atom<SettingsType>(); // this atom initiates with value of LAST_SERVER_SETTINGS_ATOM
-
 export const sectionNameAtom = atom<string>();
+export const currentSectionAtom = atom(get => {
+	const settings = get(newServerSettingsAtom);
+	const key = get(sectionNameAtom);
+	if (key && settings) {
+		return settings.find(setting => setting.name.toLowerCase() === key);
+	}
+});
 
 export type SectionLink = {
 	displayedName: string;

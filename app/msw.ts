@@ -130,4 +130,4 @@ const server = setupServer(
 	)
 );
 
-server.listen();
+server.listen({ onUnhandledRequest: 'bypass' });

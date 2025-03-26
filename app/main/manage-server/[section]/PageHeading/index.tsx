@@ -13,7 +13,7 @@ export default function SettingsHeading({
 	serverName: string;
 }) {
 	return (
-		<header className='flex flex-col w-full pt-8 px-[5vw]'>
+		<header className='flex flex-col w-full pt-8 px-[5vw] bg-blue-500'>
 			<HeadingUI serverName={serverName} />
 			<Navigation />
 		</header>
