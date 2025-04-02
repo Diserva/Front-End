@@ -14,12 +14,13 @@ export function HeadingUI({ serverName }: { serverName: string }) {
 }
 
 export function NavigationUI({
-	allSectionNames,	
+	allSectionNames,
 	onClick,
 	currSectionName,
 	ref,
 	onHover,
-	onMouseLeave
+	onMouseLeave,
+	currSectionEl
 }: {
 	allSectionNames: SectionLink[];
 	onClick: (arg: string) => void;
@@ -27,7 +28,9 @@ export function NavigationUI({
 	ref: React.Ref<HTMLSpanElement> | undefined;
 	onHover: (arg: any) => void;
 	onMouseLeave: (arg: any) => void;
+	currSectionEl: React.Ref<HTMLButtonElement> | null;
 }) {
+
 	return (
 		<nav className='flex justify-center'>
 			<div className='flex flex-col items-center relative'>
@@ -35,10 +38,14 @@ export function NavigationUI({
 					{allSectionNames.map(({ searchParamsName, displayedName }) => (
 						<button
 							key={searchParamsName}
+							ref={
+								searchParamsName === currSectionName ? currSectionEl : undefined
+							}
 							className={clsx(
 								'hover:text-white font-bold text-defaultText duration-200',
 								{
-									' !text-white currSectSelectorClass': searchParamsName === currSectionName
+									' !text-white currSectSelectorClass':
+										searchParamsName === currSectionName
 								}
 							)}
 							onClick={() => onClick(searchParamsName)}

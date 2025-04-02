@@ -14,8 +14,11 @@ gsap.registerPlugin(useGSAP);
 
 function useNavigationHandlers() {
 	const bottomBarRef = useRef<HTMLDivElement>(null);
-	const xToRef = useRef<gsap.QuickToFunc | (() => void)>(() => {});
-	const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+	const currSectionRef = useRef<HTMLButtonElement>(null);
+	const xToRef = useRef<gsap.QuickToFunc | ((x: number) => void)>(() => {});
+	const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(
+		undefined
+	);
 
 	const { contextSafe } = useGSAP({ scope: bottomBarRef });
 
@@ -25,32 +28,30 @@ function useNavigationHandlers() {
 	};
 
 	const goToCurrSection = useCallback(() => {
-		const currentSection = document.querySelector(
-			'.currSectSelectorClass'
-		) as HTMLButtonElement;
-		if (currentSection) {
-			xToRef.current(getXParam(currentSection));
+		if (currSectionRef.current) {
+			xToRef.current(getXParam(currSectionRef.current));
 		}
 	}, []);
-
 
 	useLayoutEffect(() => {
 		if (bottomBarRef.current) {
 			xToRef.current = contextSafe(
 				gsap.quickTo(bottomBarRef.current, 'x', {
-					duration: 0.8,
+					duration: 0.4,
 					ease: 'power3'
 				})
 			);
 		}
+
 		goToCurrSection();
 
+		return () => {
+			if (timeoutRef.current) clearTimeout(timeoutRef.current);
+		};
 	}, [contextSafe]);
 
 	const onSectionNameHover = useCallback((e: MouseEvent<HTMLButtonElement>) => {
-		if (timeoutRef.current) {
-			clearTimeout(timeoutRef.current);
-		}
+		if (timeoutRef.current) clearTimeout(timeoutRef.current);
 		xToRef.current(getXParam(e.currentTarget));
 	}, []);
 
@@ -58,18 +59,26 @@ function useNavigationHandlers() {
 		timeoutRef.current = setTimeout(goToCurrSection, 500);
 	}, [goToCurrSection]);
 
-	return { bottomBarRef, onSectionNameHover, onSectionNameMouseLeave };
+	return {
+		bottomBarRef,
+		currSectionRef,
+		onSectionNameHover,
+		onSectionNameMouseLeave
+	};
 }
 
 export function Navigation() {
 	const [currentSectionName, setSectionName] = useAtom(sectionNameAtom);
 	const allSectionNames = useAtomValue(sectionNamesListAtom);
-	const onSectionNameClick = useCallback(
-		(nameInSearchParams: string) => setSectionName(nameInSearchParams),
-		[setSectionName]
-	);
-	const { bottomBarRef, onSectionNameHover, onSectionNameMouseLeave } =
-		useNavigationHandlers();
+	const onSectionNameClick = (nameInSearchParams: string) =>
+		setSectionName(nameInSearchParams);
+
+	const {
+		bottomBarRef,
+		currSectionRef,
+		onSectionNameHover,
+		onSectionNameMouseLeave
+	} = useNavigationHandlers();
 
 	return (
 		<NavigationUI
@@ -79,6 +88,7 @@ export function Navigation() {
 			ref={bottomBarRef}
 			onHover={onSectionNameHover}
 			onMouseLeave={onSectionNameMouseLeave}
+			currSectionEl={currSectionRef}
 		/>
 	);
 }

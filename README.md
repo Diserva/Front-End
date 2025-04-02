@@ -186,7 +186,7 @@ async function getJwt(token: Promise<string>): Promise<string>;
 
   type Container_Main = {
   	type: 'ContainerMain';
-  	removeable: boolean;
+  	switchable: boolean;
   	children: AnyContent | AnyContent[];
   };
 

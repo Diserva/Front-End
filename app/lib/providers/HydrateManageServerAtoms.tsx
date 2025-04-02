@@ -9,6 +9,7 @@ import {
 	sectionNameAtom
 } from '../jotai/settingsAtom';
 import { useQueryState } from 'nuqs';
+import { useSearchParams } from 'next/navigation';
 
 export default function HydrateManageServerAtoms({
 	settingsData,
@@ -17,16 +18,12 @@ export default function HydrateManageServerAtoms({
 	settingsData: SettingsType;
 	children: ReactNode;
 }) {
-	const useSectionName = (settingsData: SettingsType) => {
-		const [sectionName, setSectionName] = useQueryState('section-name'),
-			settingsSectionName = settingsData[0].name.toLowerCase();
+	const searchParams = useSearchParams();
 
-		if (!sectionName) setSectionName(settingsSectionName);
+	console.log(searchParams.get('section-name'));
 
-		return sectionName || '';
-	};
-
-	const sectionName = useSectionName(settingsData);
+	const sectionName =
+		searchParams.get('section-name') || settingsData[0].name.toLowerCase();
 
 	useHydrateAtoms([
 		[LAST_SERVER_SETTINGS_ATOM, settingsData],
