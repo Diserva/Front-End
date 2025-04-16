@@ -8,7 +8,13 @@ import {
 import clsx from 'clsx';
 import { useAtomValue } from 'jotai';
 import Image from 'next/image';
-import { FormEventHandler, ReactNode, useState } from 'react';
+import {
+	ChangeEventHandler,
+	FormEventHandler,
+	ReactNode,
+	useId,
+	useState
+} from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
 
 export default function Render() {
@@ -18,7 +24,7 @@ export default function Render() {
 
 	return (
 		<main className='flex flex-col gap-5 items-center py-[5.343vh]'>
-			<Section>
+			<Section name='Main' isSwitchable={true}>
 				<Input
 					name={'some label'}
 					placeholder='some placeholder'
@@ -39,20 +45,74 @@ export default function Render() {
 						{ name: 'opt4', value: 'Option 4' }
 					]}
 				/>
+
+				<Container2
+					children={[
+						<Input
+							name={'some label'}
+							placeholder='some placeholder'
+							defaultText='default value'
+							key={useId()}
+						/>,
+						<ExtandableInput
+							name='another label'
+							placeholder='another placeholder'
+							defaultText='some another text'
+							key={useId()}
+						/>
+					]}
+				/>
+
+				<FileInput name='Files' />
+
 				<Checkbox name='some description' isDefaultChecked={false} />
+				<Checkbox name='some another description' isDefaultChecked={true} />
 			</Section>
 		</main>
 	);
 }
 
-function Section({ children }: { children: ReactNode }) {
+function Section({
+	children,
+	isSwitchable,
+	name
+}: {
+	children: ReactNode;
+	isSwitchable: boolean;
+	name: string;
+}) {
+	const [checked, setChecked] = useState(true);
+
 	return (
-		<section className='flex flex-col gap-3 w-4/5'>
-			<h3 className='text-white text-xl pl-6'>Main</h3>
-			<section className='flex flex-col bg-modalGray p-[1.875vw] gap-4 rounded-2xl'>
+		<div className='flex flex-col gap-3 w-4/5'>
+			<div className='flex'>
+				<section
+					className={clsx('flex justify-start items-center duration-200', {
+						hidden: !isSwitchable,
+						'!justify-end duration-200': checked
+					})}
+					onClick={() => setChecked(prev => !prev)}>
+					<span className='w-5 h-5 absolute rounded-full bg-white mx-0.5' />
+					<div
+						className={clsx(
+							'appearance-none w-10 h-6 rounded-full bg-defaultText',
+							{ '!bg-blueAccent': checked }
+						)}
+					/>
+				</section>
+
+				<h3
+					className={clsx('text-defaultText text-xl pl-6', {
+						'text-white': checked
+					})}>
+					{name}
+				</h3>
+			</div>
+
+			<section className='flex flex-col bg-modalGray p-[1.875vw] gap-5 rounded-2xl'>
 				{children}
 			</section>
-		</section>
+		</div>
 	);
 }
 
@@ -89,8 +149,6 @@ function ExtandableInput({
 }
 
 function WithInputLabel({
-	// пофіксити баг: на :focus за рахунок збільшення рамок текст трохи з'їзджає
-	// додати невелику анімацію, що label буде трохи підніматися на фокус. - бачив таке в інших місцях, то чому не реалізувати
 	name,
 	children
 }: {
@@ -166,7 +224,7 @@ function Select({
 			<div className={clsx({ hidden: !selectShown }, 'relative w-full h-0')}>
 				<ul
 					className={clsx(
-						'flex flex-col absolute top-2 left-0 w-full p-6 bg-modalGray rounded-lg border border-alternateBorder'
+						'flex flex-col absolute top-2 left-0 w-full p-6 bg-modalGray z-10 rounded-lg border border-alternateBorder'
 					)}>
 					{options.map(({ value }) => (
 						<li
@@ -180,6 +238,10 @@ function Select({
 			</div>
 		</WithInputLabel>
 	);
+}
+
+function Container2({ children }: { children: ReactNode }) {
+	return <section className='flex gap-4'>{children}</section>;
 }
 
 function Checkbox({
@@ -204,14 +266,52 @@ function Checkbox({
 					width={11}
 					height={11}
 					src='/checkmark.png'
-					className={clsx('z-10 absolute top-1.5 left-1', {
+					className={clsx('absolute top-1.5 left-1', {
 						hidden: !checked
 					})}
 					alt='tick'
 				/>
 			</div>
 
-			<p className='not-peer-checked:bg-gray-500'>{name}</p>
+			<p className={clsx('text-defaultText', { 'text-white': checked })}>
+				{name}
+			</p>
 		</section>
+	);
+}
+
+function FileInput({ name }: { name: string }) {
+	const [fileName, setFileName] = useState<string>();
+	const onSelect: ChangeEventHandler<HTMLInputElement> = e => {
+		const fullPath = e.target.value;
+		const newFileName = fullPath.split('\\').pop();
+		setFileName(newFileName);
+	};
+
+	const defaultText = 'Choose file';
+	const outputText = fileName || defaultText;
+
+	return (
+		<WithInputLabel name={name}>
+			<section className='flex justify-between items-center settings-input '>
+				<label htmlFor='file-upload' className='w-full flex items-center'>
+					<p>{outputText}</p>
+					<input
+						id='file-upload'
+						type='file'
+						className='hidden'
+						onChange={onSelect}
+						value={fileName}
+					/>
+				</label>
+				<Image
+					src='/trashcan.png'
+					width={17}
+					height={17}
+					alt='trashcan icon'
+					className='w-5 h-5'
+				/>
+			</section>
+		</WithInputLabel>
 	);
 }

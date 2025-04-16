@@ -164,6 +164,6 @@
 		@apply w-full flex justify-center text-white mt-11;
 	}
 	.settings-input {
-		@apply w-full rounded-lg bg-transparent border-alternateBorder border px-6 box-border leading-5 py-3 focus:border-white focus:border-2 focus-visible:outline-none text-sm text-defaultText h-12;
+		@apply w-full rounded-lg bg-transparent outline outline-1 outline-alternateBorder px-6 box-border leading-5 py-3 focus:outline-white focus:outline-2 text-sm text-defaultText h-12;
 	}
 }

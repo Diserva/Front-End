@@ -1,16 +1,4 @@
 
-const components = {
-    TextInput: () => {},
-    Select: () => {},
-    container: ({children}) => {
-        return <div>
-        
-        {children}</div>
-    }
-}
+export default function RenderSettingNodes(nodes) {
 
-function algo(object) {
-    return components[object.type].call({children: object.children.map((child) => algo(child)}))
 }
-
-Container({children: [<input /> <select>, </select>]})

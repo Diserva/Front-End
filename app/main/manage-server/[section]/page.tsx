@@ -11,9 +11,8 @@ export default async function page() {
 		pathname = myHeaders.get('x-url'),
 		serverName = pathname?.split('/').pop();
 
-	console.log('here I work');
 
-	const { data } = await getSpecificServerSettingsOptions(serverName as string);
+	const { data } = await getSpecificServerSettingsOptions(serverName as string); // test
 
 	return (
 		<HydrateManageServerAtoms settingsData={data}>
