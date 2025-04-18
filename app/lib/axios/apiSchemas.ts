@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { z } from 'zod';
 
 // AUTHORIZATION
@@ -50,21 +51,34 @@ const ElemSelectSchema = z.object({
 const ElemCheckboxSchema = z.object({
 	type: z.literal('Checkbox'),
 	isCheckedByDefault: z.boolean(),
-	description: z.string()
+	name: z.string()
 });
 
-const ElemTextInputSchema = z.object({
-	type: z.literal('TextInput'),
+const ElemDefaultTextInputShema = z.object({
+	type: z.literal('DefTextInput'),
 	name: z.string(),
-	extandable: z.boolean(),
 	placeholder: z.string(),
 	defaultText: z.string()
+});
+
+const ElemExtandableTextInputSchema = z.object({
+	type: z.literal('ExtandableTextInput'),
+	name: z.string(),
+	placeholder: z.string(),
+	defaultText: z.string()
+});
+
+const ElemFileInputSchema = z.object({
+	type: z.literal('FileInput'),
+	name: z.string()
 });
 
 const allElementsSchema = z.union([
 	ElemSelectSchema,
 	ElemCheckboxSchema,
-	ElemTextInputSchema
+	ElemDefaultTextInputShema,
+	ElemExtandableTextInputSchema,
+	ElemFileInputSchema
 ]);
 
 const ContainerCol2Schema = z.object({
@@ -74,16 +88,16 @@ const ContainerCol2Schema = z.object({
 
 const AnyContent = z.union([allElementsSchema, ContainerCol2Schema]);
 
-const MainContainerSchema = z.object({
+const DefContainerSchema = z.object({
 	type: z.literal('ContainerMain'),
 	name: z.string(),
-	removeable: z.boolean(),
+	isSwitchable: z.boolean(),
 	children: z.union([AnyContent, AnyContent.array()])
 });
 
 const SectionSchema = z.object({
 	name: z.string(),
-	children: z.union([MainContainerSchema, MainContainerSchema.array()])
+	children: z.union([DefContainerSchema, DefContainerSchema.array()])
 });
 
 export const SettingsSchema = z.array(SectionSchema);
@@ -94,10 +108,23 @@ export type UserType = z.infer<typeof UserSchema>;
 export type GuildsType = z.infer<typeof GuildsSchema>;
 export type GuildType = z.infer<typeof GuildShema>;
 
+export type SectionElArgs = Omit<z.infer<typeof SectionSchema>, 'type'>;
+export type SelectElArgs = Omit<z.infer<typeof ElemSelectSchema>, 'type'>;
+export type CheckboxElArgs = Omit<z.infer<typeof ElemCheckboxSchema>, 'type'>;
+export type DefTextInpElArgs = Omit<
+	z.infer<typeof ElemDefaultTextInputShema>,
+	'type'
+>;
+export type ExtandableInpElArgs = Omit<
+	z.infer<typeof ElemExtandableTextInputSchema>,
+	'type'
+>;
+export type FileInputArgs = Omit<z.infer<typeof ElemFileInputSchema>, 'type'>;
+export type DefContainerElArgs = Omit<
+	// in DefContainerElArgs I overwrite the property children, cause` object won't be compatible with type of ReactNode, when I assert it as function arguments type
+	z.infer<typeof DefContainerSchema>,
+	'type' | 'children'
+> & {
+	children: ReactNode;
+};
 export type SettingsType = z.infer<typeof SettingsSchema>;
-export type ElSelectArgs = z.infer<typeof ElemSelectSchema>;
-export type ElCheckboxArgs = z.infer<typeof ElemCheckboxSchema>;
-export type ElTextInputArgs = z.infer<typeof ElemTextInputSchema>;
-export type ElMainContArgs = z.infer<typeof MainContainerSchema>;
-export type ElContCol2Args = z.infer<typeof ContainerCol2Schema>;
-export type ElSectionArgs = z.infer<typeof SectionSchema>;

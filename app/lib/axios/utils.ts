@@ -15,6 +15,8 @@ export function validate(schema: ZodSchema) {
 	return (response: unknown): z.infer<typeof schema> => {
 		const { success, data, error } = schema.safeParse(response);
 
+		console.log({response})
+
 		if (!success) {
 			return returnValidationError(error);
 		}

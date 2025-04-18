@@ -1,6 +1,14 @@
 'use client';
 
 import {
+	CheckboxElArgs,
+	DefContainerElArgs,
+	DefTextInpElArgs,
+	ExtandableInpElArgs,
+	SectionElArgs,
+	SelectElArgs
+} from '@/app/lib/axios/apiSchemas';
+import {
 	currentSectionAtom,
 	newServerSettingsAtom,
 	sectionNameAtom
@@ -37,13 +45,8 @@ export default function Render() {
 				/>
 				<Select
 					name='hello'
-					defaultValue='some def value'
-					options={[
-						{ name: 'opt1', value: 'Option 1' },
-						{ name: 'opt2', value: 'Option 2' },
-						{ name: 'opt3', value: 'Option 3' },
-						{ name: 'opt4', value: 'Option 4' }
-					]}
+					defaultOption='some def value'
+					options={['Option 1', 'Option 2', 'Option 3', 'Option 4']}
 				/>
 
 				<Container2
@@ -65,22 +68,14 @@ export default function Render() {
 
 				<FileInput name='Files' />
 
-				<Checkbox name='some description' isDefaultChecked={false} />
-				<Checkbox name='some another description' isDefaultChecked={true} />
+				<Checkbox name='some description' isCheckedByDefault={false} />
+				<Checkbox name='some another description' isCheckedByDefault={true} />
 			</Section>
 		</main>
 	);
 }
 
-function Section({
-	children,
-	isSwitchable,
-	name
-}: {
-	children: ReactNode;
-	isSwitchable: boolean;
-	name: string;
-}) {
+function Section({ children, isSwitchable, name }: DefContainerElArgs) {
 	const [checked, setChecked] = useState(true);
 
 	return (
@@ -120,11 +115,7 @@ function ExtandableInput({
 	name,
 	placeholder,
 	defaultText
-}: {
-	name: string;
-	placeholder: string;
-	defaultText: string;
-}) {
+}: ExtandableInpElArgs) {
 	const onInput: FormEventHandler<HTMLTextAreaElement> = e => {
 		console.log({ e, style1: e.nativeEvent.target });
 		const textarea = e.nativeEvent.target as HTMLTextAreaElement;
@@ -168,15 +159,7 @@ function WithInputLabel({
 	);
 }
 
-function Input({
-	name,
-	placeholder,
-	defaultText
-}: {
-	name: string;
-	placeholder: string;
-	defaultText: string;
-}) {
+function Input({ name, placeholder, defaultText }: DefTextInpElArgs) {
 	return (
 		<WithInputLabel name={name}>
 			<input
@@ -195,16 +178,8 @@ type Option = {
 	value: string;
 };
 
-function Select({
-	name,
-	options,
-	defaultValue
-}: {
-	name: string;
-	options: Option[];
-	defaultValue: string;
-}) {
-	const [currOption, setOption] = useState(() => defaultValue);
+function Select({ name, options, defaultOption }: SelectElArgs) {
+	const [currOption, setOption] = useState(() => defaultOption);
 	const [selectShown, setSelShown] = useState(false);
 	const toggleSelShown = () => setSelShown(prev => !prev);
 	const onOptionClick = (optVal: string) => {
@@ -226,7 +201,7 @@ function Select({
 					className={clsx(
 						'flex flex-col absolute top-2 left-0 w-full p-6 bg-modalGray z-10 rounded-lg border border-alternateBorder'
 					)}>
-					{options.map(({ value }) => (
+					{options.map(value => (
 						<li
 							key={value}
 							className='hover:bg-[#2E2E2E] py-1 px-2'
@@ -244,14 +219,8 @@ function Container2({ children }: { children: ReactNode }) {
 	return <section className='flex gap-4'>{children}</section>;
 }
 
-function Checkbox({
-	name,
-	isDefaultChecked
-}: {
-	name: string;
-	isDefaultChecked: boolean;
-}) {
-	const [checked, setChecked] = useState(isDefaultChecked);
+function Checkbox({ name, isCheckedByDefault }: CheckboxElArgs) {
+	const [checked, setChecked] = useState(isCheckedByDefault);
 
 	return (
 		<section className='w-full flex gap-3 items-center pl-3'>

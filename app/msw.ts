@@ -1,19 +1,19 @@
 import { setupServer } from 'msw/node';
 import { http, HttpResponse } from 'msw';
+import { SettingsType } from './lib/axios/apiSchemas';
 
-const responseBody = [
+const responseBody: SettingsType = [
 	{
 		name: 'Main',
 		children: [
 			{
 				type: 'ContainerMain',
-				removeable: false,
 				name: 'Main',
+				isSwitchable: false, // раніше removeable: false
 				children: [
 					{
-						type: 'TextInput',
+						type: 'DefTextInput',
 						name: 'Prefix',
-						extandable: false,
 						placeholder: 'some prefix',
 						defaultText: ''
 					},
@@ -36,18 +36,18 @@ const responseBody = [
 					},
 					{
 						type: 'Checkbox',
-						isCheckedByDefault: true,
-						description: 'Use message Commands'
+						name: 'Use message Commands',
+						isCheckedByDefault: true
 					},
 					{
 						type: 'Checkbox',
-						isCheckedByDefault: false,
-						description: 'Disable context commands'
+						name: 'Disable context commands',
+						isCheckedByDefault: false
 					},
 					{
 						type: 'Checkbox',
-						isCheckedByDefault: false,
-						description: 'Delete member information after guild leaving'
+						name: 'Delete member information after guild leaving',
+						isCheckedByDefault: false
 					}
 				]
 			}
@@ -57,24 +57,24 @@ const responseBody = [
 		name: 'Moderation',
 		children: {
 			type: 'ContainerMain',
-			removeable: false,
 			name: 'Загальні параметри модерації',
+			isSwitchable: false, // раніше removeable: false
 			children: [
 				{
 					type: 'Checkbox',
-					isCheckedByDefault: true,
-					description: 'Підключити модерацію'
+					name: 'Підключити модерацію',
+					isCheckedByDefault: true
 				},
 				{
 					type: 'Checkbox',
-					isCheckedByDefault: false,
-					description: 'Виносити попередження за кацапську'
+					name: 'Виносити попередження за кацапську',
+					isCheckedByDefault: false
 				},
 				{
 					type: 'Select',
-					options: ['консерватор', 'кава', 'курумі'],
+					name: 'адмін права має',
 					defaultOption: 'консерватор',
-					name: 'адмін права має'
+					options: ['консерватор', 'кава', 'курумі']
 				}
 			]
 		}
@@ -83,14 +83,13 @@ const responseBody = [
 		name: 'Greeting',
 		children: {
 			type: 'ContainerMain',
-			removeable: true,
 			name: 'Greeting',
+			isSwitchable: true, // раніше removeable: true
 			children: {
-				type: 'TextInput',
-				defaultText: 'Привіт мандрівник',
-				placeholder: 'введіть якийсь текст',
+				type: 'ExtandableTextInput',
 				name: 'Привітання',
-				extandable: true
+				placeholder: 'введіть якийсь текст',
+				defaultText: 'Привіт мандрівник'
 			}
 		}
 	},
@@ -98,12 +97,12 @@ const responseBody = [
 		name: 'Level',
 		children: {
 			type: 'ContainerMain',
-			removeable: true,
 			name: 'Головні налаштування',
+			isSwitchable: true, // раніше removeable: true
 			children: {
 				type: 'Checkbox',
-				isCheckedByDefault: true,
-				description: 'Оберіть правду чи брехню'
+				name: 'Оберіть правду чи брехню',
+				isCheckedByDefault: true
 			}
 		}
 	},
@@ -112,13 +111,12 @@ const responseBody = [
 		children: {
 			type: 'ContainerMain',
 			name: 'Про себе',
-			removeable: false,
+			isSwitchable: false, // раніше removeable: false
 			children: {
-				type: 'TextInput',
-				defaultText: '',
+				type: 'ExtandableTextInput',
 				name: 'Повідайте свою історію',
 				placeholder: 'шлях у тисячу миль починається з першого кроку',
-				extandable: true
+				defaultText: ''
 			}
 		}
 	}

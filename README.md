@@ -159,51 +159,65 @@ async function getJwt(token: Promise<string>): Promise<string>;
   - **TypeScript and components description:**
 
 - ```typescript
-  type Element_Select = {
+  type ElemSelectSchema = {
   	type: 'Select';
+  	name: string;
   	name: string;
   	defaultOption: string;
   	options: string[];
   };
 
-  type Element_Checkbox = {
+  type ElemCheckboxSchema = {
   	type: 'Checkbox';
   	isCheckedByDefault: boolean;
-  	description: string;
-  };
+  	name: string;
+  };     
 
-  type Element_TextInput = {
-  	type: 'TextInput';
-  	extandable: boolean;
+  type ElemDefaultTextInputShema = {
+  	type: 'DefTextInput';
+  	name: string;
   	placeholder: string;
   	defaultText: string;
   };
 
-  type SimpleContainer = {
-  	type: 'Container1' | 'Container2';
+  type ElemExtandableTextInputSchema = {
+  	type: 'ExtandableTextInput';
+  	name: string;
+  	placeholder: string;
+  	defaultText: string;
+  };
+
+  type ElemFileInputSchema = {
+  	type: 'FileInput';
+  	name: string;
+  };
+
+  type allElementsSchema =
+  	| ElemSelectSchema
+  	| ElemCheckboxSchema
+  	| ElemDefaultTextInputShema
+  	| ElemExtandableTextInputSchema
+  	| ElemFileInputSchema;
+
+  type ContainerCol2Schema = {
+  	type: 'Container2';
+  	children: allElementsSchema | allElementsSchema[];
+  };
+
+  type AnyContent = allElementsSchema | ContainerCol2Schema;
+
+  type DefContainerSchema = {
+  	type: 'DefaultContainer';
+  	name: string;
+  	isSwitchable: boolean;
   	children: AnyContent | AnyContent[];
   };
 
-  type Container_Main = {
-  	type: 'ContainerMain';
-  	switchable: boolean;
-  	children: AnyContent | AnyContent[];
+  type SectionSchema = {
+  	name: string;
+  	children: DefContainerSchema | DefContainerSchema[];
   };
-
-  type Section = {
-  	sectionName: string;
-  	sectionHref: string;
-  	sectionContent: Container_Main;
-  };
-
-  type AnyContent =
-  	| Element_Select
-  	| Element_Checkbox
-  	| Element_TextInput
-  	| SimpleContainer;
   ```
-
-  
 
 ## State Management and Form Interaction
 
@@ -213,3 +227,7 @@ async function getJwt(token: Promise<string>): Promise<string>;
 - Specific parts of this object are editable via form inputs, each bound to separate Jotai atoms.
 
 ---
+
+```
+
+```
