@@ -45,7 +45,7 @@ export function AmountOfUsersUI({
 	displayedNum: number;
 	prefix: string;
 }) {
-	return (
+	return ( // p("section", {className: str}, 
 		<section className='flex justify-between p-1 bg-lightBg rounded-[4px] items-center gap-1 max-h-5'>
 			<span className='text-white'>
 				{`${displayedNum}${prefix}`.toUpperCase()}

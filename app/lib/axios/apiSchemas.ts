@@ -89,13 +89,14 @@ const ContainerCol2Schema = z.object({
 const AnyContent = z.union([allElementsSchema, ContainerCol2Schema]);
 
 const DefContainerSchema = z.object({
-	type: z.literal('ContainerMain'),
+	type: z.literal('DefContainer'),
 	name: z.string(),
 	isSwitchable: z.boolean(),
 	children: z.union([AnyContent, AnyContent.array()])
 });
 
 const SectionSchema = z.object({
+	type: z.literal('Section'),
 	name: z.string(),
 	children: z.union([DefContainerSchema, DefContainerSchema.array()])
 });
@@ -108,23 +109,34 @@ export type UserType = z.infer<typeof UserSchema>;
 export type GuildsType = z.infer<typeof GuildsSchema>;
 export type GuildType = z.infer<typeof GuildShema>;
 
-export type SectionElArgs = Omit<z.infer<typeof SectionSchema>, 'type'>;
-export type SelectElArgs = Omit<z.infer<typeof ElemSelectSchema>, 'type'>;
-export type CheckboxElArgs = Omit<z.infer<typeof ElemCheckboxSchema>, 'type'>;
-export type DefTextInpElArgs = Omit<
-	z.infer<typeof ElemDefaultTextInputShema>,
-	'type'
->;
-export type ExtandableInpElArgs = Omit<
-	z.infer<typeof ElemExtandableTextInputSchema>,
-	'type'
->;
-export type FileInputArgs = Omit<z.infer<typeof ElemFileInputSchema>, 'type'>;
+export type SettingsType = z.infer<typeof SettingsSchema>;
+export type SectionType = z.infer<typeof SectionSchema>;
+export type SelectType = z.infer<typeof ElemSelectSchema>;
+export type CheckboxType = z.infer<typeof ElemCheckboxSchema>;
+export type DefTextInpType = z.infer<typeof ElemDefaultTextInputShema>;
+export type ExtandableInpType = z.infer<typeof ElemExtandableTextInputSchema>;
+export type DefContainerType = z.infer<typeof DefContainerSchema>;
+export type FileInputType = z.infer<typeof ElemFileInputSchema>;
+export type ContainerCol2Type = z.infer<typeof ContainerCol2Schema>;
+
+export type SelectElArgs = Omit<SelectType, 'type'>;
+export type CheckboxElArgs = Omit<CheckboxType, 'type'>;
+export type DefTextInpElArgs = Omit<DefTextInpType, 'type'>;
+export type ExtandableInpElArgs = Omit<ExtandableInpType, 'type'>;
+export type FileInputArgs = Omit<FileInputType, 'type'>;
 export type DefContainerElArgs = Omit<
 	// in DefContainerElArgs I overwrite the property children, cause` object won't be compatible with type of ReactNode, when I assert it as function arguments type
-	z.infer<typeof DefContainerSchema>,
+	DefContainerType,
 	'type' | 'children'
 > & {
 	children: ReactNode;
 };
-export type SettingsType = z.infer<typeof SettingsSchema>;
+export type ContainerCol2ElArgs = Omit<
+	ContainerCol2Type,
+	'type' | 'children'
+> & {
+	children: ReactNode;
+};
+export type SectionElArgs = Omit<SectionType, 'type' | 'children'> & {
+	children: ReactNode;
+};

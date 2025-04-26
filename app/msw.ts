@@ -4,10 +4,11 @@ import { SettingsType } from './lib/axios/apiSchemas';
 
 const responseBody: SettingsType = [
 	{
+		type: 'Section',
 		name: 'Main',
 		children: [
 			{
-				type: 'ContainerMain',
+				type: 'DefContainer',
 				name: 'Main',
 				isSwitchable: false, // раніше removeable: false
 				children: [
@@ -55,8 +56,9 @@ const responseBody: SettingsType = [
 	},
 	{
 		name: 'Moderation',
+		type: 'Section',
 		children: {
-			type: 'ContainerMain',
+			type: 'DefContainer',
 			name: 'Загальні параметри модерації',
 			isSwitchable: false, // раніше removeable: false
 			children: [
@@ -80,9 +82,10 @@ const responseBody: SettingsType = [
 		}
 	},
 	{
+		type: 'Section',
 		name: 'Greeting',
 		children: {
-			type: 'ContainerMain',
+			type: 'DefContainer',
 			name: 'Greeting',
 			isSwitchable: true, // раніше removeable: true
 			children: {
@@ -94,9 +97,11 @@ const responseBody: SettingsType = [
 		}
 	},
 	{
+		type: 'Section',
+
 		name: 'Level',
 		children: {
-			type: 'ContainerMain',
+			type: 'DefContainer',
 			name: 'Головні налаштування',
 			isSwitchable: true, // раніше removeable: true
 			children: {
@@ -107,9 +112,11 @@ const responseBody: SettingsType = [
 		}
 	},
 	{
+		type: 'Section',
+
 		name: 'Other',
 		children: {
-			type: 'ContainerMain',
+			type: 'DefContainer',
 			name: 'Про себе',
 			isSwitchable: false, // раніше removeable: false
 			children: {
