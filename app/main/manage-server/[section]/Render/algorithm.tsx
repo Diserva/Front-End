@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import {
 	CheckboxType,
@@ -34,9 +34,11 @@ export function RenderNode({ node }: { node: UniNode }): ReactNode {
 		const rawChildren = node.children;
 
 		if (Array.isArray(rawChildren)) {
-			children = rawChildren.map(child => RenderNode({node: child}));
+			children = rawChildren.map(child => (
+				<RenderNode node={child} key={Math.random()} /> // we cannot use here hook as it consequences in error;
+			));
 		} else {
-			children = RenderNode({node: rawChildren});
+			children = <RenderNode node={rawChildren} />;
 		}
 	}
 
