@@ -10,7 +10,7 @@ import {
 	SectionType,
 	SelectType
 } from '@/app/lib/axios/apiSchemas';
-import { components, ComponentsMap } from './constants';
+import { components } from './constants';
 import React, { ReactNode, useId } from 'react';
 
 type UniNode =
@@ -35,7 +35,7 @@ export function RenderNode({ node }: { node: UniNode }): ReactNode {
 
 		if (Array.isArray(rawChildren)) {
 			children = rawChildren.map(child => (
-				<RenderNode node={child} key={Math.random()} /> // we cannot use here hook as it consequences in error;
+				<RenderNode node={child} key={crypto.randomUUID()} /> // we cannot use here hook as it consequences in error;
 			));
 		} else {
 			children = <RenderNode node={rawChildren} />;
