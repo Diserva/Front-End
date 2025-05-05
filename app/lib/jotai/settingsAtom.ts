@@ -13,6 +13,7 @@ export const currentSectionAtom = atom<SectionType | undefined>(get => {
 	}
 });
 
+
 export type SectionLink = {
 	displayedName: string;
 	searchParamsName: string;
@@ -31,3 +32,4 @@ export const sectionNamesListAtom = atom<SectionLink[]>(
 export const isChangedAtom = atom<boolean>(get =>
 	isEqual(get(LAST_SERVER_SETTINGS_ATOM), get(newServerSettingsAtom))
 );
+
