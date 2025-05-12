@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import { ChangeEventHandler, FormEventHandler, ReactNode } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
+import { ConnectInput } from './constants';
 
 export function Foreground({
 	onClick,
@@ -112,13 +113,17 @@ export function ExtandableTextInputUI({
 }) {
 	return (
 		<WithInputLabel name={name}>
-			<textarea
-				name={name}
-				placeholder={placeholder}
-				className={clsx('resize-none overflow-hidden settings-input')}
-				defaultValue={defaultText}
-				onInput={onInput}
-			/>
+			<ConnectInput>
+				{({ register }) => (
+					<textarea
+						placeholder={placeholder}
+						className={clsx('resize-none overflow-hidden settings-input')}
+						defaultValue={defaultText}
+						onInput={onInput}
+						{...register(name)}
+					/>
+				)}
+			</ConnectInput>
 		</WithInputLabel>
 	);
 }
@@ -130,13 +135,17 @@ export function DefTextInput({
 }: DefTextInpElArgs) {
 	return (
 		<WithInputLabel name={name}>
-			<input
-				type='text'
-				name={name}
-				placeholder={placeholder}
-				className='settings-input peer'
-				defaultValue={defaultText}
-			/>
+			<ConnectInput>
+				{({ register }) => (
+					<input
+						type='text'
+						placeholder={placeholder}
+						className='settings-input peer'
+						defaultValue={defaultText}
+						{...register(name)}
+					/>
+				)}
+			</ConnectInput>
 		</WithInputLabel>
 	);
 }
@@ -205,12 +214,16 @@ export function CheckboxUI({
 	return (
 		<section className='w-full flex gap-3 items-center pl-3'>
 			<div className='relative flex items-center rounded-sm  border-alternateBorder border-2 has-[:checked]:bg-blueAccent'>
-				<input
-					type='checkbox'
-					className='appearance-none w-5 h-5 bg-transparent z-10'
-					checked={checked}
-					onChange={onCheckboxClick}
-				/>
+				<ConnectInput>
+					{({ register }) => (
+						<input
+							type='checkbox'
+							className='appearance-none w-5 h-5 bg-transparent z-10'
+							checked={checked}
+							{...register(name, { onChange: onCheckboxClick })}
+						/>
+					)}
+				</ConnectInput>
 				<Image
 					width={11}
 					height={11}
@@ -233,14 +246,12 @@ export function FileInputUI({
 	name,
 	id,
 	outputText,
-	onSelect,
 	fileName,
 	clearFile
 }: {
 	name: string;
 	id: string;
 	outputText: string;
-	onSelect: ChangeEventHandler<HTMLInputElement>;
 	fileName: string | undefined;
 	clearFile: () => void;
 }) {
@@ -251,7 +262,16 @@ export function FileInputUI({
 					htmlFor={id}
 					className='flex w-full items-center justify-between settings-input'>
 					<span className='truncate'>{outputText}</span>
-					<input id={id} type='file' className='hidden' onChange={onSelect} />
+					<ConnectInput>
+						{({ register }) => (
+							<input
+								id={id}
+								type='file'
+								className='hidden'
+								{...register(name)}
+							/>
+						)}
+					</ConnectInput>
 					{fileName && (
 						<button
 							type='button'

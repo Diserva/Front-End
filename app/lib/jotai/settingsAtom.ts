@@ -1,6 +1,6 @@
 import { atom } from 'jotai';
-import { SectionType, SettingsType } from '../axios/apiSchemas';
 import { isEqual } from 'underscore';
+import { SectionType, SettingsType } from '../axios/apiSchemas';
 
 export const LAST_SERVER_SETTINGS_ATOM = atom<SettingsType>(); // This atom may only be once initiated with data, but mustn't be changed later
 export const newServerSettingsAtom = atom<SettingsType>(); // this atom initiates with value of LAST_SERVER_SETTINGS_ATOM

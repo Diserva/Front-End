@@ -6,7 +6,6 @@ import {
 	ExtandableInpElArgs,
 	SelectElArgs
 } from '@/app/lib/axios/apiSchemas';
-import clsx from 'clsx';
 import { createStore } from 'jotai';
 import { ChangeEventHandler, FormEventHandler, useId, useState } from 'react';
 import {
@@ -14,12 +13,8 @@ import {
 	DefContainerUI,
 	ExtandableTextInputUI,
 	FileInputUI,
-	Foreground,
-	SelectUI,
-	WithInputLabel
+	SelectUI
 } from './UI';
-import { IoIosArrowDown } from 'react-icons/io';
-import Image from 'next/image';
 
 export function DefContainer({
 	children,
@@ -94,10 +89,6 @@ export function FileInput({ name }: { name: string }) {
 	const id = useId();
 	const [fileName, setFileName] = useState<string>();
 
-	const onSelect: ChangeEventHandler<HTMLInputElement> = e => {
-		const file = e.target.files?.[0];
-		if (file) setFileName(file.name);
-	};
 
 	const clearFile = () => {
 		setFileName(undefined);
@@ -106,6 +97,6 @@ export function FileInput({ name }: { name: string }) {
 	const outputText = fileName || 'Choose file';
 
 	return (
-		<FileInputUI {...{ name, id, onSelect, clearFile, outputText, fileName }} />
+		<FileInputUI {...{ name, id, clearFile, outputText, fileName }} />
 	);
 }

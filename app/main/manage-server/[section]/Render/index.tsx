@@ -1,13 +1,11 @@
 'use client';
 
+import { SectionType } from '@/app/lib/axios/apiSchemas';
 import {
-	currentSectionAtom,
-	newServerSettingsAtom,
-	sectionNameAtom
+	currentSectionAtom
 } from '@/app/lib/jotai/settingsAtom';
 import { useAtomValue } from 'jotai';
-import { RenderNode } from './algorithm';
-import { SectionType } from '@/app/lib/axios/apiSchemas';
+import { ReactNode } from 'react';
 import {
 	FieldValues,
 	FormProvider,
@@ -15,17 +13,9 @@ import {
 	useFormContext,
 	UseFormReturn
 } from 'react-hook-form';
-import { ReactNode } from 'react';
+import { RenderNode } from './algorithm';
 
-export function ConnectForm({
-	children
-}: {
-	children: (arg: UseFormReturn<FieldValues, any, undefined>) => ReactNode;
-}) {
-	const methods = useFormContext();
 
-	return children(methods);
-}
 
 
 export default function index() {
