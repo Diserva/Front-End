@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { ReactNode } from 'react';
-import { FaChevronLeft } from 'react-icons/fa6';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6';
 
 function Btn({
 	disabled,
@@ -47,7 +47,7 @@ export function BtnNextUI({
 }) {
 	return (
 		<Btn onCLick={onClick} disabled={disabled}>
-			<FaChevronLeft />
+			<FaChevronRight />
 		</Btn>
 	);
 }

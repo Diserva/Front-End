@@ -7,7 +7,7 @@ import {
 	SelectElArgs
 } from '@/app/lib/axios/apiSchemas';
 import { createStore } from 'jotai';
-import { ChangeEventHandler, FormEventHandler, useId, useState } from 'react';
+import { FormEventHandler, useId, useState } from 'react';
 import {
 	CheckboxUI,
 	DefContainerUI,
@@ -89,14 +89,21 @@ export function FileInput({ name }: { name: string }) {
 	const id = useId();
 	const [fileName, setFileName] = useState<string>();
 
-
 	const clearFile = () => {
 		setFileName(undefined);
 	};
 
 	const outputText = fileName || 'Choose file';
 
+	return <FileInputUI {...{ name, id, clearFile, outputText, fileName }} />;
+}
+
+export function SubmitButton() {
 	return (
-		<FileInputUI {...{ name, id, clearFile, outputText, fileName }} />
+		<section className='flex w-full justify-end sticky bottom-10 left-5'>
+			<button type='submit' className='bg-blueAccent rounded-sm px-4 py-2'>
+				Підтвердити збережння
+			</button>
+		</section>
 	);
 }
