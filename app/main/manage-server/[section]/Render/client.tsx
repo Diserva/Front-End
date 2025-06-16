@@ -4,6 +4,7 @@ import {
 	CheckboxElArgs,
 	DefContainerElArgs,
 	ExtandableInpElArgs,
+	FileInputArgs,
 	SelectElArgs
 } from '@/app/lib/axios/apiSchemas';
 import { createStore } from 'jotai';
@@ -34,7 +35,8 @@ export function DefContainer({
 export function ExtandableTextInput({
 	name,
 	placeholder,
-	defaultText
+	defaultText,
+	id
 }: ExtandableInpElArgs) {
 	const onInput: FormEventHandler<HTMLTextAreaElement> = e => {
 		console.log({ e, style1: e.nativeEvent.target });
@@ -47,11 +49,11 @@ export function ExtandableTextInput({
 	};
 
 	return (
-		<ExtandableTextInputUI {...{ name, placeholder, defaultText, onInput }} />
+		<ExtandableTextInputUI {...{ name, placeholder, defaultText, onInput, id }} />
 	);
 }
 
-export function Select({ name, options, defaultOption }: SelectElArgs) {
+export function Select({ name, options, defaultOption, id }: SelectElArgs) {
 	const [currOption, setOption] = useState(() => defaultOption);
 	const [selectShown, setSelShown] = useState(false);
 	const toggleSelShown = () => setSelShown(prev => !prev);
@@ -78,15 +80,15 @@ export function Select({ name, options, defaultOption }: SelectElArgs) {
 	);
 }
 
-export function Checkbox({ name, isCheckedByDefault }: CheckboxElArgs) {
+export function Checkbox({ name, isCheckedByDefault, id }: CheckboxElArgs) {
 	const [checked, setChecked] = useState(isCheckedByDefault);
 	const onCheckboxClick = () => setChecked(prev => !prev);
 
 	return <CheckboxUI {...{ name, checked, onCheckboxClick }} />;
 }
 
-export function FileInput({ name }: { name: string }) {
-	const id = useId();
+export function FileInput({ name, id }: FileInputArgs) {
+	const inputId = useId();
 	const [fileName, setFileName] = useState<string>();
 
 	const clearFile = () => {
@@ -95,15 +97,7 @@ export function FileInput({ name }: { name: string }) {
 
 	const outputText = fileName || 'Choose file';
 
-	return <FileInputUI {...{ name, id, clearFile, outputText, fileName }} />;
-}
-
-export function SubmitButton() {
 	return (
-		<section className='flex w-full justify-end sticky bottom-10 left-5'>
-			<button type='submit' className='bg-blueAccent rounded-sm px-4 py-2'>
-				Підтвердити збережння
-			</button>
-		</section>
+		<FileInputUI {...{ name, inputId, clearFile, outputText, fileName }} />
 	);
 }

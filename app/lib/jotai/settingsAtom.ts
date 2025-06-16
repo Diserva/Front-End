@@ -1,8 +1,7 @@
 import { atom } from 'jotai';
-import { isEqual } from 'underscore';
-import { SectionType, SettingsType } from '../axios/apiSchemas';
+import { AnyInput, SectionType, SettingsType } from '../axios/apiSchemas';
 
-export const LAST_SERVER_SETTINGS_ATOM = atom<SettingsType>(); // This atom may only be once initiated with data, but mustn't be changed later
+export const SETTINGS = atom<SettingsType>(); // This atom may only be once initiated with data, but mustn't be changed later
 export const newServerSettingsAtom = atom<SettingsType>(); // this atom initiates with value of LAST_SERVER_SETTINGS_ATOM
 export const sectionNameAtom = atom<string>();
 export const currentSectionAtom = atom<SectionType | undefined>(get => {
@@ -12,6 +11,8 @@ export const currentSectionAtom = atom<SectionType | undefined>(get => {
 		return settings.find(setting => setting.name.toLowerCase() === key);
 	}
 });
+
+export const inputsAtom = atom<Record<string, AnyInput>>();
 
 
 export type SectionLink = {
@@ -29,7 +30,4 @@ export const sectionNamesListAtom = atom<SectionLink[]>(
 	}
 );
 
-export const isChangedAtom = atom<boolean>(get =>
-	isEqual(get(LAST_SERVER_SETTINGS_ATOM), get(newServerSettingsAtom))
-);
 

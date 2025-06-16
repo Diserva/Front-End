@@ -11,7 +11,7 @@ import {
 	SelectType
 } from '@/app/lib/axios/apiSchemas';
 import { components } from './constants';
-import React, { ReactNode, useId } from 'react';
+import React, { memo, ReactNode, useId } from 'react';
 
 type UniNode =
 	| SectionType
@@ -23,7 +23,11 @@ type UniNode =
 	| FileInputType
 	| ContainerCol2Type;
 
-export function RenderNode({ node }: { node: UniNode }): ReactNode {
+export const RenderNode = memo(function({
+	node
+}: {
+	node: UniNode;
+}): ReactNode {
 	let children: ReactNode;
 
 	if (
@@ -45,4 +49,4 @@ export function RenderNode({ node }: { node: UniNode }): ReactNode {
 	const Component = components[node.type];
 
 	return <Component key={useId()} {...(node as any)} children={children} />;
-}
+});

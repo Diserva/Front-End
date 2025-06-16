@@ -45,32 +45,37 @@ const ElemSelectSchema = z.object({
 	type: z.literal('Select'),
 	name: z.string(),
 	defaultOption: z.string(),
-	options: z.array(z.string())
+	options: z.array(z.string()),
+	id: z.string()
 });
 
 const ElemCheckboxSchema = z.object({
 	type: z.literal('Checkbox'),
 	isCheckedByDefault: z.boolean(),
-	name: z.string()
+	name: z.string(),
+	id: z.string()
 });
 
 const ElemDefaultTextInputShema = z.object({
 	type: z.literal('DefTextInput'),
 	name: z.string(),
 	placeholder: z.string(),
-	defaultText: z.string()
+	defaultText: z.string(),
+	id: z.string()
 });
 
 const ElemExtandableTextInputSchema = z.object({
 	type: z.literal('ExtandableTextInput'),
 	name: z.string(),
 	placeholder: z.string(),
-	defaultText: z.string()
+	defaultText: z.string(),
+	id: z.string()
 });
 
 const ElemFileInputSchema = z.object({
 	type: z.literal('FileInput'),
-	name: z.string()
+	name: z.string(),
+	id: z.string()
 });
 
 const allElementsSchema = z.union([
@@ -118,6 +123,7 @@ export type ExtandableInpType = z.infer<typeof ElemExtandableTextInputSchema>;
 export type DefContainerType = z.infer<typeof DefContainerSchema>;
 export type FileInputType = z.infer<typeof ElemFileInputSchema>;
 export type ContainerCol2Type = z.infer<typeof ContainerCol2Schema>;
+export type AnyInput = z.infer<typeof allElementsSchema>;
 
 export type SelectElArgs = Omit<SelectType, 'type'>;
 export type CheckboxElArgs = Omit<CheckboxType, 'type'>;

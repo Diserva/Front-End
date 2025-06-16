@@ -12,7 +12,7 @@ import {
 } from '@/app/lib/axios/apiSchemas';
 import { ReactNode } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { Container2, DefTextInput, Section } from './UI';
+import { Container2, DefTextInputUI, Section } from './UI';
 import {
 	Checkbox,
 	DefContainer,
@@ -59,7 +59,7 @@ export const components: ComponentsMap = {
 	Section: Section,
 	DefContainer: DefContainer,
 	ExtandableTextInput: ExtandableTextInput, //
-	DefTextInput: DefTextInput, //
+	DefTextInput: DefTextInputUI, //
 	Select: Select, //
 	Container2: Container2,
 	Checkbox: Checkbox, //

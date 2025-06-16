@@ -44,7 +44,11 @@ export function WithInputLabel({
 			</h4>
 		</section>
 	);
+
+
+
 }
+
 
 export function Section({ children }: { children: ReactNode }) {
 	return (
@@ -104,12 +108,14 @@ export function ExtandableTextInputUI({
 	name,
 	placeholder,
 	defaultText,
-	onInput
+	onInput,
+	id
 }: {
 	name: string;
 	placeholder: string;
 	defaultText: string;
 	onInput: FormEventHandler<HTMLTextAreaElement>;
+	id: string;
 }) {
 	return (
 		<WithInputLabel name={name}>
@@ -120,7 +126,7 @@ export function ExtandableTextInputUI({
 						className={clsx('resize-none overflow-hidden settings-input')}
 						defaultValue={defaultText}
 						onInput={onInput}
-						{...register(name)}
+						{...register(id)}
 					/>
 				)}
 			</ConnectInput>
@@ -128,10 +134,11 @@ export function ExtandableTextInputUI({
 	);
 }
 
-export function DefTextInput({
+export function DefTextInputUI({
 	name,
 	placeholder,
-	defaultText
+	defaultText,
+	id
 }: DefTextInpElArgs) {
 	return (
 		<WithInputLabel name={name}>
@@ -142,7 +149,7 @@ export function DefTextInput({
 						placeholder={placeholder}
 						className='settings-input peer'
 						defaultValue={defaultText}
-						{...register(name)}
+						{...register(id)}
 					/>
 				)}
 			</ConnectInput>
@@ -150,14 +157,15 @@ export function DefTextInput({
 	);
 }
 
-export function SelectUI({
+export function SelectUI({ // це треба буде виправити
 	selectShown,
 	name,
 	onForegroundClick,
 	toggleSelShown,
 	onOptionClick,
 	currOption,
-	options
+	options,
+	id
 }: {
 	selectShown: boolean;
 	onForegroundClick: () => void;
@@ -166,6 +174,7 @@ export function SelectUI({
 	currOption: string;
 	options: string[];
 	onOptionClick: (arg: string) => void;
+	id: string;
 }) {
 	return (
 		<>
@@ -205,11 +214,13 @@ export function Container2({ children }: { children: ReactNode }) {
 export function CheckboxUI({
 	checked,
 	onCheckboxClick,
-	name
+	name,
+	id
 }: {
 	name: string;
 	onCheckboxClick: () => void;
 	checked: boolean;
+	id: string;
 }) {
 	return (
 		<section className='w-full flex gap-3 items-center pl-3'>
@@ -220,7 +231,7 @@ export function CheckboxUI({
 							type='checkbox'
 							className='appearance-none w-5 h-5 bg-transparent z-10'
 							checked={checked}
-							{...register(name, { onChange: onCheckboxClick })}
+							{...register(id, { onChange: onCheckboxClick })}
 						/>
 					)}
 				</ConnectInput>
@@ -244,31 +255,33 @@ export function CheckboxUI({
 
 export function FileInputUI({
 	name,
-	id,
+	inputId,
 	outputText,
 	fileName,
-	clearFile
+	clearFile,
+	id
 }: {
 	name: string;
-	id: string;
+	inputId: string;
 	outputText: string;
 	fileName: string | undefined;
 	clearFile: () => void;
+	id: string;
 }) {
 	return (
 		<WithInputLabel name={name}>
 			<div>
 				<label
-					htmlFor={id}
+					htmlFor={inputId}
 					className='flex w-full items-center justify-between settings-input'>
 					<span className='truncate'>{outputText}</span>
 					<ConnectInput>
 						{({ register }) => (
 							<input
-								id={id}
+								id={inputId}
 								type='file'
 								className='hidden'
-								{...register(name)}
+								{...register(id)}
 							/>
 						)}
 					</ConnectInput>
@@ -284,5 +297,17 @@ export function FileInputUI({
 				</label>
 			</div>
 		</WithInputLabel>
+	);
+}
+
+export function SubmitButton() {
+	return (
+		<section className='flex justify-center w-full py-4'>
+			<div className='w-4/5 flex justify-end'>
+				<button type='submit' className='bg-blueAccent rounded-sm px-4 py-2'>
+					Зберегти
+				</button>
+			</div>
+		</section>
 	);
 }
