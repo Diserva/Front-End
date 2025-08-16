@@ -27,7 +27,7 @@ export const UserSchema = z.object({
 });
 
 export const GuildShema = z.object({
-	id: z.string(),
+	id: z.string(), 
 	name: z.string(),
 	icon: z.string().nullable(),
 	banner: z.string().nullable(),

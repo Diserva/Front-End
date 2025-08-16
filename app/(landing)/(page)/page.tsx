@@ -4,6 +4,8 @@ import LoginUI from '../Login';
 import LandingUI from './UI';
 
 export default async function page() {
+
+	
 	const displayedButton = (await isLogined()) ? (
 		<GoInAsAuthorized />
 	) : (
@@ -12,3 +14,4 @@ export default async function page() {
 
 	return <LandingUI displayedButton={displayedButton} />;
 }
+

@@ -33,5 +33,5 @@ export const getGuilds = (cookies: RequestCredentials) =>
 		headers: {
 			Cookie: cookies
 		},
-		transformResponse: json(validate(GuildsSchema))
+		transformResponse: json(validate(GuildsSchema)) 
 	});

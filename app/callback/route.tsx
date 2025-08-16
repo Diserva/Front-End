@@ -8,7 +8,7 @@ import { bodySchema } from '../lib/definitions/apiRequests';
 export async function GET(req: NextRequest) {
 	const jwt = await getCookies(req);
 	const res = NextResponse.redirect(
-		new URL(process.env.NEXT_PUBLIC_DASHBOARD_ROOT as string, req.url)
+		new URL(process.env.NEXT_PUBLIC_DASHBOARD_ROOT as string, req.url) // main/dashboard
 	);
 
 	if (!jwt) {
@@ -51,7 +51,7 @@ function generateBody(code: string) {
 		})
 	);
 
-	return body.toString();
+	return body.toString(); 
 }
 
 async function getJwt(token: Promise<string>) {
@@ -64,3 +64,5 @@ async function getJwt(token: Promise<string>) {
 	const cookies = parseCookie(headers['set-cookie'][0] as string);
 	return cookies.get('jwt') as string;
 }
+
+
